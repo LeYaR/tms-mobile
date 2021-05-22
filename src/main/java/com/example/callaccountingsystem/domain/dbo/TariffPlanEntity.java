@@ -10,12 +10,15 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name="tariff_plan")
 public class TariffPlanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
+
+    @Column(name = "abonent_payment")
     private Integer abonentPayment;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

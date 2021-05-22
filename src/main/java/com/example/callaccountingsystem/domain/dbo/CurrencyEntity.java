@@ -9,8 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name = "currency")
 public class CurrencyEntity {
     @Id
+    @Column(name = "numerical_code")
     private Integer numericalCode;
     private String name;
 
