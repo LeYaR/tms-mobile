@@ -18,8 +18,8 @@ public class StreetEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "city_id")
-    private CityEntity cityEntity;
+    private CityEntity city;
 
     @OneToMany(mappedBy = "streetEntity", orphanRemoval = true)
-    private List<AddressEntity> addressEntities;
+    private List<AddressEntity> addresses;
 }

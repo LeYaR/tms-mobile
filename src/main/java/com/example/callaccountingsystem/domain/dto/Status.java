@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Status {
+    private Integer code;
     private String status;
-    private List<Call> callList;
+    private List<Call> calls;
 }

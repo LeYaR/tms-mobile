@@ -2,22 +2,15 @@ package com.example.callaccountingsystem.domain.mapping;
 
 import com.example.callaccountingsystem.domain.dbo.StatusEntity;
 import com.example.callaccountingsystem.domain.dto.Status;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Component
-public class StatusMapper {
+@Mapper(uses = {CallMapper.class})
+public interface StatusMapper {
 
-    public Status fromDbo(StatusEntity entity) {
-        final Status dto = new Status();
-        dto.setStatus(entity.getStatus());
-        entity.getCallEntities().forEach(call -> dto.getCallList().add(new CallMapper().fromDbo(call)));
-        return dto;
-    }
+    StatusMapper STATUS_MAPPER = Mappers.getMapper(StatusMapper.class);
 
-    public StatusEntity toDbo(Status dto) {
-        final StatusEntity entity = new StatusEntity();
-        entity.setStatus(dto.getStatus());
-        dto.getCallList().forEach(call -> entity.getCallEntities().add(new CallMapper().toDbo(call)));
-        return entity;
-    }
+    Status fromDbo(StatusEntity entity);
+
+    StatusEntity toDbo(Status dto);
 }

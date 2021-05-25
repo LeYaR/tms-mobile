@@ -19,18 +19,18 @@ public class TariffPlanEntity {
     private String description;
 
     @Column(name = "abonent_payment")
-    private Integer abonentPayment;
+    private BigDecimal abonentPayment;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "pricing_unit_id")
-    private PricingUnitEntity pricingUnitEntity;
+    private PricingUnitEntity pricingUnit;
 
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "currency_numerical_code")
-    private CurrencyEntity currencyEntity;
+    private CurrencyEntity currency;
 
     @OneToMany(mappedBy = "tariffPlanEntity", orphanRemoval = true)
-    private List<ContractEntity> contractEntities;
+    private List<ContractEntity> contracts;
 }

@@ -2,22 +2,15 @@ package com.example.callaccountingsystem.domain.mapping;
 
 import com.example.callaccountingsystem.domain.dbo.PricingUnitEntity;
 import com.example.callaccountingsystem.domain.dto.PricingUnit;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Component
-public class PricingUnitMapper {
+@Mapper(uses = {TariffPlanMapper.class})
+public interface PricingUnitMapper {
 
-    public PricingUnit fromDbo(PricingUnitEntity entity) {
-        final PricingUnit dto = new PricingUnit();
-        dto.setUnit(entity.getUnit());
-        entity.getTariffPlanEntities().forEach(tariffPlan -> dto.getTariffPlanList().add(new TariffPlanMapper().fromDbo(tariffPlan)));
-        return dto;
-    }
+    PricingUnitMapper PRICING_UNIT_MAPPER = Mappers.getMapper(PricingUnitMapper.class);
 
-    public PricingUnitEntity toDbo(PricingUnit dto) {
-        final PricingUnitEntity entity = new PricingUnitEntity();
-        entity.setUnit(dto.getUnit());
-        dto.getTariffPlanList().forEach(tariffPlan -> entity.getTariffPlanEntities().add(new TariffPlanMapper().toDbo(tariffPlan)));
-        return entity;
-    }
+    PricingUnit fromDbo(PricingUnitEntity entity);
+
+    PricingUnitEntity toDbo(PricingUnit dto);
 }

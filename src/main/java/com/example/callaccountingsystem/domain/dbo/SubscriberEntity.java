@@ -14,7 +14,7 @@ import java.util.List;
 public class SubscriberEntity {
     @Id
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     @Column(name = "last_name")
     private String lastName;
@@ -27,26 +27,26 @@ public class SubscriberEntity {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_id")
-    private PassportEntity passportEntity;
+    private PassportEntity passport;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
-    private AddressEntity addressEntity;
+    private AddressEntity address;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "contract_id")
-    private ContractEntity contractEntity;
+    private ContractEntity contract;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "mobile_operator_id")
-    private MobileOperatorEntity mobileOperatorEntity;
+    private MobileOperatorEntity mobileOperator;
 
     private String email;
     private LocalDate birthday;
 
     @ManyToMany(mappedBy = "incomingSubscriberEntities")
-    private List<CallEntity> incomingCallEntity;
+    private List<CallEntity> incomingCalls;
 
     @ManyToMany(mappedBy = "outgoingSubscriberEntities")
-    private List<CallEntity> outgoingCallEntity;
+    private List<CallEntity> outgoingCalls;
 }

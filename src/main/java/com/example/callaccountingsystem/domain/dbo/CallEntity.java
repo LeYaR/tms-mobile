@@ -20,19 +20,19 @@ public class CallEntity {
 
     @ManyToMany
     @JoinColumn(name = "incoming_phone_number")
-    private List<SubscriberEntity> incomingSubscriberEntities;
+    private List<SubscriberEntity> incomingSubscribers;
 
     @ManyToMany
     @JoinColumn(name = "outgoing_phone_number")
-    private List<SubscriberEntity> outgoingSubscriberEntities;
+    private List<SubscriberEntity> outgoingSubscribers;
 
     private LocalTime duration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tower_id")
-    private TowerEntity towerEntity;
+    private TowerEntity tower;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_code")
-    private StatusEntity statusEntity;
+    private StatusEntity status;
 }

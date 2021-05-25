@@ -17,11 +17,11 @@ public class AddressEntity {
 
     @ManyToOne(optional = false,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "street_id")
-    private StreetEntity streetEntity;
+    private StreetEntity street;
 
     private String house;
     private String flat;
 
     @OneToMany(mappedBy = "addressEntity", orphanRemoval = true)
-    private List<SubscriberEntity> subscriberEntities;
+    private List<SubscriberEntity> subscribers;
 }

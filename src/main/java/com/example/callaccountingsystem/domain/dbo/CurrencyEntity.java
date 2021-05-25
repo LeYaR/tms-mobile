@@ -18,7 +18,7 @@ public class CurrencyEntity {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "country_id")
-    private List<CountryEntity> countryEntityList;
+    private List<CountryEntity> countries;
 
     private String code;
 }

@@ -11,11 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TariffPlan {
+    private Integer id;
     private String name;
     private String description;
-    private Integer abonentPayment;
+    private BigDecimal abonentPayment;
     private PricingUnit pricingUnit;
     private BigDecimal price;
     private Currency currency;
-    private List<Contract> contractList;
+    private List<Contract> contracts;
 }

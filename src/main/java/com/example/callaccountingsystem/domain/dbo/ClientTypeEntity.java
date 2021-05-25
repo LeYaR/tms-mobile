@@ -17,5 +17,5 @@ public class ClientTypeEntity {
     private String type;
 
     @OneToMany(mappedBy = "clientTypeEntity")
-    private List<ContractEntity> contractEntities;
+    private List<ContractEntity> contracts;
 }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Contract {
+    private Long id;
     private String number;
     private LocalDate date;
     private ClientType clientType;

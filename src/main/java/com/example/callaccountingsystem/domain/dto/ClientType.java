@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientType {
+    private Integer id;
     private String type;
-    private List<Contract> contractList;
+    private List<Contract> contracts;
 }

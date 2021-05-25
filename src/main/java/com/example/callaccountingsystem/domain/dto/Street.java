@@ -10,7 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Street {
+    private Long id;
     private String street;
     private City city;
-    private List<Address> addressList;
+    private List<Address> addresses;
 }

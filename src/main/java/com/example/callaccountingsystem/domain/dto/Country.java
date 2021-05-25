@@ -10,7 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Country {
+    private Long id;
     private String country;
-    private List<City> cityList;
-    private List<Currency> currencyList;
+    private List<City> cities;
+    private List<Currency> currencies;
 }

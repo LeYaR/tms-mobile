@@ -19,5 +19,5 @@ public class StatusEntity {
     private String status;
 
     @OneToMany(mappedBy = "statusEntity")
-    private List<CallEntity> callEntities;
+    private List<CallEntity> calls;
 }

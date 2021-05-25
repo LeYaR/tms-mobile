@@ -2,22 +2,15 @@ package com.example.callaccountingsystem.domain.mapping;
 
 import com.example.callaccountingsystem.domain.dbo.ClientTypeEntity;
 import com.example.callaccountingsystem.domain.dto.ClientType;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Component
-public class ClientTypeMapper {
+@Mapper(uses = {ContractMapper.class})
+public interface ClientTypeMapper {
 
-    public ClientType fromDbo(ClientTypeEntity entity) {
-        final ClientType dto = new ClientType();
-        dto.setType(entity.getType());
-        entity.getContractEntities().forEach(contract -> dto.getContractList().add(new ContractMapper().fromDbo(contract)));
-        return dto;
-    }
+    ClientTypeMapper CLIENT_TYPE_MAPPER = Mappers.getMapper(ClientTypeMapper.class);
 
-    public ClientTypeEntity toDbo(ClientType dto) {
-        final ClientTypeEntity entity = new ClientTypeEntity();
-        entity.setType(dto.getType());
-        dto.getContractList().forEach(contract -> entity.getContractEntities().add(new ContractMapper().toDbo(contract)));
-        return entity;
-    }
+    ClientType fromDbo(ClientTypeEntity entity);
+
+    ClientTypeEntity toDbo(ClientType dto);
 }

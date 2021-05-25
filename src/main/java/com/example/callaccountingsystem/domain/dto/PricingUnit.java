@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PricingUnit {
+    private Integer id;
     private String unit;
-    private List<TariffPlan> tariffPlanList;
+    private List<TariffPlan> tariffPlans;
 }

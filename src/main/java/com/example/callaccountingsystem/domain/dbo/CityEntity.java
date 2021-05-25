@@ -18,11 +18,11 @@ public class CityEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "country_id")
-    private CountryEntity countryEntity;
+    private CountryEntity country;
 
     @OneToMany(mappedBy = "locationCity")
-    private List<TowerEntity> towerEntities;
+    private List<TowerEntity> towers;
 
     @OneToMany(mappedBy = "cityEntity")
-    private List<StreetEntity> streetEntities;
+    private List<StreetEntity> streets;
 }

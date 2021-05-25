@@ -10,20 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CallService {
+public class CallService implements ICallService {
 
     private final ICallRepo repository;
-    private final CallMapper mapper;
 
-    public CallService(ICallRepo repository, CallMapper mapper) {
+    public CallService(ICallRepo repository) {
         this.repository = repository;
-        this.mapper = mapper;
     }
 
+    @Override
     public List<Call> getAllCalls() {
-        final Iterable<CallEntity> list = repository.findAll();
+        final List<CallEntity> list = repository.findAll();
         List<Call> calls = new ArrayList<>();
-        list.forEach((callEntity -> calls.add(mapper.fromDbo(callEntity))));
+        list.forEach((callEntity -> calls.add(CallMapper.CALL_MAPPER.fromDbo(callEntity))));
         return calls;
     }
 }

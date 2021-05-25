@@ -10,8 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MobileOperator {
+    private Integer id;
     private String operator;
     private Integer code;
-    private List<Country> countryList;
-    private List<Subscriber> subscriberList;
+    private List<Country> countries;
+    private List<Subscriber> subscribers;
 }

@@ -19,8 +19,8 @@ public class MobileOperatorEntity {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "country_id")
-    private List<CountryEntity> countryEntities;
+    private List<CountryEntity> countries;
 
     @OneToMany(mappedBy = "mobileOperatorEntity", orphanRemoval = true)
-    private List<SubscriberEntity> subscriberEntities;
+    private List<SubscriberEntity> subscribers;
 }

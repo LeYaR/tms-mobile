@@ -19,14 +19,14 @@ public class ContractEntity {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_type_id")
-    private ClientTypeEntity clientTypeEntity;
+    private ClientTypeEntity client;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tariff_plan_id")
-    private TariffPlanEntity tariffPlanEntity;
+    private TariffPlanEntity tariffPlan;
 
     private Integer discount;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private SubscriberEntity subscriberEntity;
+    private SubscriberEntity subscriber;
 }

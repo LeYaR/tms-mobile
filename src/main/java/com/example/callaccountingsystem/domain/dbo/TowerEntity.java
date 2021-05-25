@@ -20,5 +20,5 @@ public class TowerEntity {
     private CityEntity locationCity;
 
     @OneToMany(mappedBy = "towerEntity", orphanRemoval = true)
-    private List<CallEntity> callEntities;
+    private List<CallEntity> calls;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Subscriber {
-    private Integer phoneNumber;
+    private Long phoneNumber;
     private String lastName;
     private String firstName;
     private String middleName;
@@ -21,6 +21,6 @@ public class Subscriber {
     private MobileOperator mobileOperator;
     private String email;
     private LocalDate birthday;
-    private List<Call> incomingCallList;
-    private List<Call> outgoingCallList;
+    private List<Call> incomingCalls;
+    private List<Call> outgoingCalls;
 }

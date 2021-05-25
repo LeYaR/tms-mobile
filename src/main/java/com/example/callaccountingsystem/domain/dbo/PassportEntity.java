@@ -20,5 +20,5 @@ public class PassportEntity {
     private String issuer;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "passportEntity")
-    private SubscriberEntity subscriberEntity;
+    private SubscriberEntity subscriber;
 }

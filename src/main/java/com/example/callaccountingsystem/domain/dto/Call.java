@@ -12,9 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Call {
+    private Long id;
     private LocalDateTime date;
-    private List<Subscriber> incomingSubscriberList;
-    private List<Subscriber> outgoingSubscriberList;
+    private List<Subscriber> incomingSubscribers;
+    private List<Subscriber> outgoingSubscribers;
     private LocalTime duration;
     private Tower tower;
     private Status status;

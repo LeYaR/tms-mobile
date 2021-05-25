@@ -13,6 +13,6 @@ import java.util.List;
 public class Currency {
     private Integer numericalCode;
     private String name;
-    private List<CountryEntity> countryList;
+    private List<Country> countries;
     private String code;
 }

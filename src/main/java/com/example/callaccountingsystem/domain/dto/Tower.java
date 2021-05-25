@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tower {
+    private Integer id;
     private City locationCity;
-    private List<Call> callList;
+    private List<Call> calls;
 }

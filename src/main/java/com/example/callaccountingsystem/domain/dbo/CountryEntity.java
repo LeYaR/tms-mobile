@@ -13,12 +13,12 @@ import java.util.List;
 public class CountryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String country;
 
     @OneToMany(mappedBy = "countryEntity")
-    private List<CityEntity> cityEntities;
+    private List<CityEntity> cities;
 
     @ManyToMany(mappedBy = "countryEntityList")
-    private List<CurrencyEntity> currencyEntities;
+    private List<CurrencyEntity> currencies;
 }

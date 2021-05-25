@@ -10,8 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
+    private Long id;
     private Street street;
     private String house;
     private String flat;
-    private List<Subscriber> subscriberList;
+    private List<Subscriber> subscribers;
 }
