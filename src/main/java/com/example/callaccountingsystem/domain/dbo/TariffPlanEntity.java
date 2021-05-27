@@ -1,6 +1,7 @@
 package com.example.callaccountingsystem.domain.dbo;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name="tariff_plan")
 public class TariffPlanEntity {
