@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+</head>
+<body>
+<div>
+    <h1>Countries list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="country : ${countries}">
+            <td th:text="${country.country}"></td>
+            <td th:text="${country.cities}"></td>
+            <td th:text="${country.currencies}"></td>
+            <a th:href="'/currency'">Next page</a>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

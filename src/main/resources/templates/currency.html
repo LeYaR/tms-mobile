@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currencies</title>
+</head>
+<body>
+<div>
+    <h1>Currencies list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Numerical Code</th>
+            <th>Name</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="currency : ${currencies}">
+            <td th:text="${currency.numericalCode}"></td>
+            <td th:text="${currency.name}"></td>
+            <td th:text="${currency.code}"></td>
+            <td th:text="${currency.countries}"></td>
+            <a th:href="'/mobileOperator'">Next page</a>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

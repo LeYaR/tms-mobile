@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Streets</title>
+</head>
+<body>
+<div>
+    <h1>Streets list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Street</th>
+            <th>City</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="street : ${streets}">
+            <td th:text="${street.street}"></td>
+            <td th:text="${street.city}"></td>
+            <td th:text="${street.addresses}"></td>
+            <a th:href="'/subscriber'">Next page</a>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

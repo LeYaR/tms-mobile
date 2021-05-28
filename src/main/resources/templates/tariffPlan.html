@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tariff plans</title>
+</head>
+<body>
+<div>
+    <h1>Tariff plans list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Abonent payment</th>
+            <th>Pricing unit</th>
+            <th>Price</th>
+            <th>Currency</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tariffPlan : ${tariffPlans}">
+            <td th:text="${tariffPlan.name}"></td>
+            <td th:text="${tariffPlan.description}"></td>
+            <td th:text="${tariffPlan.abonentPayment}"></td>
+            <td th:text="${tariffPlan.pricingUnit}"></td>
+            <td th:text="${tariffPlan.price}"></td>
+            <td th:text="${tariffPlan.currency}"></td>
+            <td th:text="${tariffPlan.contracts}"></td>
+            <a th:href="'/tower'">Next page</a>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

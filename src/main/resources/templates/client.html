@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<div>
+    <h1>Clients Type list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client: ${clients}">
+            <td th:text="${client.type}"></td>
+            <td th:text="${client.contracts}"></td>
+            <a th:href="'/contract'">Next page</a>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
