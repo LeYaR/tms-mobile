@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface PricingUnitMapper {
 
@@ -13,4 +15,6 @@ public interface PricingUnitMapper {
     PricingUnit fromDbo(PricingUnitEntity entity);
 
     PricingUnitEntity toDbo(PricingUnit dto);
+
+    List<PricingUnit> listFromDbo(List<PricingUnitEntity> streets);
 }

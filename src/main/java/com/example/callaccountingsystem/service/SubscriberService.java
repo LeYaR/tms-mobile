@@ -6,11 +6,10 @@ import com.example.callaccountingsystem.domain.mapping.SubscriberMapper;
 import com.example.callaccountingsystem.repository.ISubscriberRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SubscriberService implements ISubscriberService{
+public class SubscriberService implements ISubscriberService {
 
     private final ISubscriberRepo repository;
 
@@ -21,9 +20,7 @@ public class SubscriberService implements ISubscriberService{
     @Override
     public List<Subscriber> getAllSubscribers() {
         final List<SubscriberEntity> list = repository.findAll();
-        List<Subscriber> subscribers = new ArrayList<>();
-        list.forEach((subscriberEntity -> subscribers.add(SubscriberMapper.SUBSCRIBER_MAPPER.fromDbo(subscriberEntity))));
-        return subscribers;
+        return SubscriberMapper.SUBSCRIBER_MAPPER.listFromDbo(list);
     }
 
 }

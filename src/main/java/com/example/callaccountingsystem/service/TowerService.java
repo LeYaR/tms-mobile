@@ -6,11 +6,10 @@ import com.example.callaccountingsystem.domain.mapping.TowerMapper;
 import com.example.callaccountingsystem.repository.ITowerRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TowerService implements ITowerService{
+public class TowerService implements ITowerService {
 
     private final ITowerRepo repository;
 
@@ -21,9 +20,7 @@ public class TowerService implements ITowerService{
     @Override
     public List<Tower> getAllTowers() {
         final List<TowerEntity> list = repository.findAll();
-        List<Tower> towers = new ArrayList<>();
-        list.forEach((towerEntity -> towers.add(TowerMapper.TOWER_MAPPER.fromDbo(towerEntity))));
-        return towers;
+        return TowerMapper.TOWER_MAPPER.listFromDbo(list);
     }
 
 }

@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.ClientType;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface ClientTypeMapper {
 
@@ -13,4 +15,6 @@ public interface ClientTypeMapper {
     ClientType fromDbo(ClientTypeEntity entity);
 
     ClientTypeEntity toDbo(ClientType dto);
+
+    List<ClientType> listFromDbo(List<ClientTypeEntity> streets);
 }

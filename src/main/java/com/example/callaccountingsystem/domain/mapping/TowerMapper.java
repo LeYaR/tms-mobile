@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.Tower;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface TowerMapper {
 
@@ -13,4 +15,6 @@ public interface TowerMapper {
     Tower fromDbo(TowerEntity entity);
 
     TowerEntity toDbo(Tower dto);
+
+    List<Tower> listFromDbo(List<TowerEntity> streets);
 }

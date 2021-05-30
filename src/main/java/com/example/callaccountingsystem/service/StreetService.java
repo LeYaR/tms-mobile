@@ -6,11 +6,10 @@ import com.example.callaccountingsystem.domain.mapping.StreetMapper;
 import com.example.callaccountingsystem.repository.IStreetRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StreetService implements IStreetService{
+public class StreetService implements IStreetService {
     private final IStreetRepo repository;
 
     public StreetService(IStreetRepo repository) {
@@ -20,9 +19,7 @@ public class StreetService implements IStreetService{
     @Override
     public List<Street> getAllStreets() {
         final List<StreetEntity> list = repository.findAll();
-        List<Street> streets = new ArrayList<>();
-        list.forEach((streetEntity -> streets.add(StreetMapper.STREET_MAPPER.fromDbo(streetEntity))));
-        return streets;
+        return StreetMapper.STREET_MAPPER.listFromDbo(list);
     }
 
 }

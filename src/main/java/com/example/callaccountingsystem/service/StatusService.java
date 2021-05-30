@@ -6,11 +6,10 @@ import com.example.callaccountingsystem.domain.mapping.StatusMapper;
 import com.example.callaccountingsystem.repository.IStatusRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StatusService implements IStatusService{
+public class StatusService implements IStatusService {
     private final IStatusRepo repository;
 
     public StatusService(IStatusRepo repository) {
@@ -20,9 +19,7 @@ public class StatusService implements IStatusService{
     @Override
     public List<Status> getAllStatuses() {
         final List<StatusEntity> list = repository.findAll();
-        List<Status> statuses = new ArrayList<>();
-        list.forEach((statusEntity -> statuses.add(StatusMapper.STATUS_MAPPER.fromDbo(statusEntity))));
-        return statuses;
+        return StatusMapper.STATUS_MAPPER.listFromDbo(list);
     }
 
 }

@@ -6,7 +6,6 @@ import com.example.callaccountingsystem.domain.mapping.PassportMapper;
 import com.example.callaccountingsystem.repository.IPassportRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +21,7 @@ public class PassportService implements IPassportService {
     @Override
     public List<Passport> getAllPassports() {
         final List<PassportEntity> list = repository.findAll();
-        List<Passport> passports = new ArrayList<>();
-        list.forEach((passportEntity -> passports.add(PassportMapper.PASSPORT_MAPPER.fromDbo(passportEntity))));
-        return passports;
+        return PassportMapper.PASSPORT_MAPPER.listFromDbo(list);
     }
+
 }

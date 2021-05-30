@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.Currency;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface CurrencyMapper {
 
@@ -13,4 +15,6 @@ public interface CurrencyMapper {
     Currency fromDbo(CurrencyEntity entity);
 
     CurrencyEntity toDbo(Currency dto);
+
+    List<Currency> listFromDbo(List<CurrencyEntity> streets);
 }

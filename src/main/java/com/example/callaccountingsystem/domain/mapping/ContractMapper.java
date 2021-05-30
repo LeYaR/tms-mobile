@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.Contract;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface ContractMapper {
 
@@ -13,4 +15,6 @@ public interface ContractMapper {
     Contract fromDbo(ContractEntity entity);
 
     ContractEntity toDbo(Contract dto);
+
+    List<Contract> listFromDbo(List<ContractEntity> streets);
 }

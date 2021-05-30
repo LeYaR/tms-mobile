@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.City;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface CityMapper {
 
@@ -13,4 +15,6 @@ public interface CityMapper {
     City fromDbo(CityEntity entity);
 
     CityEntity toDbo(City dto);
+
+    List<City> listFromDbo(List<CityEntity> streets);
 }

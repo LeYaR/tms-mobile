@@ -5,6 +5,8 @@ import com.example.callaccountingsystem.domain.dto.Status;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface StatusMapper {
 
@@ -13,4 +15,6 @@ public interface StatusMapper {
     Status fromDbo(StatusEntity entity);
 
     StatusEntity toDbo(Status dto);
+
+    List<Status> listFromDbo(List<StatusEntity> streets);
 }
