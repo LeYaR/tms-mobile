@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,8 +13,8 @@ import java.util.List;
 public class Call {
     private Long id;
     private LocalDateTime date;
-    private List<Subscriber> incomingSubscribers;
-    private List<Subscriber> outgoingSubscribers;
+    private Subscriber incomingSubscriber;
+    private Subscriber outgoingSubscriber;
     private LocalTime duration;
     private Tower tower;
     private Status status;

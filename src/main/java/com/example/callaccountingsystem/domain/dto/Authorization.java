@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Authorization {
-    String login;
-    String password;
+    private String login;
+    private String password;
 }

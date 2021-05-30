@@ -10,15 +10,16 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Unit</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="pricingUnit : ${pricingUnits}">
+            <td th:text="${pricingUnit.id}"></td>
             <td th:text="${pricingUnit.unit}"></td>
-            <td th:text="${pricingUnit.tariffPlans}"></td>
-            <a th:href="'/status'">Next page</a>
         </tr>
+        <a th:href="'/status'">Next page</a>
         </tbody>
     </table>
 </div>

@@ -16,5 +16,4 @@ public class Contract {
     private ClientType clientType;
     private TariffPlan tariffPlan;
     private Integer discount;
-    private Subscriber subscriber;
 }

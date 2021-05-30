@@ -15,14 +15,15 @@ import java.util.List;
 public class MobileOperatorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String operator;
     private Integer code;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "country_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "mobile_operator_country", joinColumns = @JoinColumn(name = "mobile_operator_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id"))
     private List<CountryEntity> countries;
 
-    @OneToMany(mappedBy = "mobileOperatorEntity", orphanRemoval = true)
+    @OneToMany(mappedBy = "mobileOperator", orphanRemoval = true)
     private List<SubscriberEntity> subscribers;
 }

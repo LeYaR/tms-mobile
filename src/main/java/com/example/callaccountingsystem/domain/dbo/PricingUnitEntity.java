@@ -18,6 +18,6 @@ public class PricingUnitEntity {
     private Integer id;
     private String unit;
 
-    @OneToMany(mappedBy = "pricingUnitEntity")
+    @OneToMany(mappedBy = "pricingUnit")
     private List<TariffPlanEntity> tariffPlans;
 }

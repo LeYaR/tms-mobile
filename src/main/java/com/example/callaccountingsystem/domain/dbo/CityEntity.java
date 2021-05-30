@@ -25,6 +25,6 @@ public class CityEntity {
     @OneToMany(mappedBy = "locationCity")
     private List<TowerEntity> towers;
 
-    @OneToMany(mappedBy = "cityEntity")
+    @OneToMany(mappedBy = "city")
     private List<StreetEntity> streets;
 }

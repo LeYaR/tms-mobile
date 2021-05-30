@@ -10,6 +10,7 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Description</th>
             <th>Abonent payment</th>
@@ -20,15 +21,15 @@
         </thead>
         <tbody>
         <tr th:each="tariffPlan : ${tariffPlans}">
+            <td th:text="${tariffPlan.id}"></td>
             <td th:text="${tariffPlan.name}"></td>
             <td th:text="${tariffPlan.description}"></td>
             <td th:text="${tariffPlan.abonentPayment}"></td>
-            <td th:text="${tariffPlan.pricingUnit}"></td>
+            <td th:text="${tariffPlan.pricingUnit.id}"></td>
             <td th:text="${tariffPlan.price}"></td>
-            <td th:text="${tariffPlan.currency}"></td>
-            <td th:text="${tariffPlan.contracts}"></td>
-            <a th:href="'/tower'">Next page</a>
+            <td th:text="${tariffPlan.currency.id}"></td>
         </tr>
+        <a th:href="'/tower'">Next page</a>
         </tbody>
     </table>
 </div>

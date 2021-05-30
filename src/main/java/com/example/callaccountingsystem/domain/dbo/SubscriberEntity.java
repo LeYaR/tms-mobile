@@ -24,9 +24,6 @@ public class SubscriberEntity {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "middle_name")
-    private String middleName;
-
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_id")
     private PassportEntity passport;
@@ -46,9 +43,9 @@ public class SubscriberEntity {
     private String email;
     private LocalDate birthday;
 
-    @ManyToMany(mappedBy = "incomingSubscriberEntities")
+    @OneToMany(mappedBy = "incomingSubscriber")
     private List<CallEntity> incomingCalls;
 
-    @ManyToMany(mappedBy = "outgoingSubscriberEntities")
+    @OneToMany(mappedBy = "outgoingSubscriber")
     private List<CallEntity> outgoingCalls;
 }

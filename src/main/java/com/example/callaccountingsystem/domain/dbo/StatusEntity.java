@@ -20,6 +20,6 @@ public class StatusEntity {
     private Integer code;
     private String status;
 
-    @OneToMany(mappedBy = "statusEntity")
+    @OneToMany(mappedBy = "status")
     private List<CallEntity> calls;
 }

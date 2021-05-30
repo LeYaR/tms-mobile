@@ -10,18 +10,18 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Country</th>
+            <th>ID</th>
             <th>City</th>
+            <th>Country id</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="city: ${cities}">
-            <td th:text="${city.country}"></td>
+            <td th:text="${city.id}"></td>
             <td th:text="${city.city}"></td>
-            <td th:text="${city.streets}"></td>
-            <td th:text="${city.towers}"></td>
-            <a th:href="'/client'">Next page</a>
+            <td th:text="${city.country.id}"></td>
         </tr>
+        <a th:href="'/client'">Next page</a>
         </tbody>
     </table>
 </div>

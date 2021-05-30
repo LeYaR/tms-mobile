@@ -21,8 +21,8 @@
         <tbody>
         <tr th:each="call : ${calls}">
             <td th:text="${call.date}"></td>
-            <td th:text="${call.incomingSubscriberList}"></td>
-            <td th:text="${call.outgoingSubscriberList}"></td>
+            <td th:text="${call.incomingSubscriber}"></td>
+            <td th:text="${call.outgoingSubscriber}"></td>
             <td th:text="${call.duration}"></td>
             <td th:text="${call.tower}"></td>
             <td th:text="${call.status}"></td>

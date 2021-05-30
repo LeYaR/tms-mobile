@@ -18,6 +18,6 @@ public class ClientTypeEntity {
     private Integer id;
     private String type;
 
-    @OneToMany(mappedBy = "clientTypeEntity")
+    @OneToMany(mappedBy = "clientType")
     private List<ContractEntity> contracts;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="tariff_plan")
+@Table(name = "tariff_plan")
 public class TariffPlanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +30,9 @@ public class TariffPlanEntity {
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "currency_numerical_code")
+    @JoinColumn(name = "currency_id")
     private CurrencyEntity currency;
 
-    @OneToMany(mappedBy = "tariffPlanEntity", orphanRemoval = true)
+    @OneToMany(mappedBy = "tariffPlan", orphanRemoval = true)
     private List<ContractEntity> contracts;
 }

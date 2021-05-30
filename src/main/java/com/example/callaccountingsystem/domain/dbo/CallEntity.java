@@ -7,7 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,13 +19,13 @@ public class CallEntity {
     private Long id;
     private LocalDateTime date;
 
-    @ManyToMany
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "incoming_phone_number")
-    private List<SubscriberEntity> incomingSubscribers;
+    private SubscriberEntity incomingSubscriber;
 
-    @ManyToMany
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "outgoing_phone_number")
-    private List<SubscriberEntity> outgoingSubscribers;
+    private SubscriberEntity outgoingSubscriber;
 
     private LocalTime duration;
 

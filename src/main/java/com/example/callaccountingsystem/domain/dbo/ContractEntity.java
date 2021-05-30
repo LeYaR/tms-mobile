@@ -21,7 +21,7 @@ public class ContractEntity {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_type_id")
-    private ClientTypeEntity client;
+    private ClientTypeEntity clientType;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tariff_plan_id")

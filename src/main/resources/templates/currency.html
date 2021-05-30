@@ -10,6 +10,7 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Numerical Code</th>
             <th>Name</th>
             <th>Code</th>
@@ -17,12 +18,12 @@
         </thead>
         <tbody>
         <tr th:each="currency : ${currencies}">
+            <td th:text="${currency.id}"></td>
             <td th:text="${currency.numericalCode}"></td>
             <td th:text="${currency.name}"></td>
             <td th:text="${currency.code}"></td>
-            <td th:text="${currency.countries}"></td>
-            <a th:href="'/mobileOperator'">Next page</a>
         </tr>
+        <a th:href="'/mobileOperator'">Next page</a>
         </tbody>
     </table>
 </div>

@@ -5,7 +5,7 @@ import com.example.callaccountingsystem.domain.dto.Subscriber;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {CallMapper.class})
+@Mapper
 public interface SubscriberMapper {
 
     SubscriberMapper SUBSCRIBER_MAPPER = Mappers.getMapper(SubscriberMapper.class);

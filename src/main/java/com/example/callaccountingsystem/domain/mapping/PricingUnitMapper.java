@@ -5,7 +5,7 @@ import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {TariffPlanMapper.class})
+@Mapper
 public interface PricingUnitMapper {
 
     PricingUnitMapper PRICING_UNIT_MAPPER = Mappers.getMapper(PricingUnitMapper.class);

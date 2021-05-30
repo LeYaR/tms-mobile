@@ -18,9 +18,8 @@
         <tr th:each="status : ${statuses}">
             <td th:text="${status.code}"></td>
             <td th:text="${status.status}"></td>
-            <td th:text="${status.calls}"></td>
-            <a th:href="'/street'">Next page</a>
         </tr>
+        <a th:href="'/street'">Next page</a>
         </tbody>
     </table>
 </div>

@@ -14,5 +14,4 @@ public class Passport {
     private String seriesNumber;
     private LocalDate date;
     private String issuer;
-    private Subscriber subscriber;
 }

@@ -10,20 +10,20 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id number</th>
             <th>Series number</th>
             <th>Date</th>
             <th>Issuer</th>
-            <th>Subscriber</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="passport : ${passports}">
+            <td th:text="${passport.idNumber}"></td>
             <td th:text="${passport.seriesNumber}"></td>
             <td th:text="${passport.date}"></td>
             <td th:text="${passport.issuer}"></td>
-            <td th:text="${passport.subscriber}"></td>
-            <a th:href="'/pricingUnit'">Next page</a>
         </tr>
+        <a th:href="'/pricingUnit'">Next page</a>
         </tbody>
     </table>
 </div>

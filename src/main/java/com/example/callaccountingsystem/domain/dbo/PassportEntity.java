@@ -21,6 +21,6 @@ public class PassportEntity {
     private LocalDate date;
     private String issuer;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passportEntity")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
     private SubscriberEntity subscriber;
 }

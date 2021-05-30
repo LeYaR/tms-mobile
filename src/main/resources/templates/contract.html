@@ -10,6 +10,7 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Local Date</th>
             <th>Number</th>
             <th>Client Type</th>
@@ -20,14 +21,14 @@
         </thead>
         <tbody>
         <tr th:each="contract: ${contracts}">
+            <td th:text="${contract.id}"></td>
             <td th:text="${contract.date}"></td>
             <td th:text="${contract.number}"></td>
             <td th:text="${contract.clientType}"></td>
             <td th:text="${contract.tariffPlan}"></td>
             <td th:text="${contract.discount}"></td>
-            <td th:text="${contract.subscriber}"></td>
-            <a th:href="'/country'">Next page</a>
         </tr>
+        <a th:href="'/country'">Next page</a>
         </tbody>
     </table>
 </div>

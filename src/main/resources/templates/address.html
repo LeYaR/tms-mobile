@@ -10,18 +10,20 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Street</th>
+            <th>Id</th>
+            <th>Street id</th>
             <th>House</th>
             <th>Flat</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="address : ${addresses}">
-            <td th:text="${address.street}"></td>
+            <td th:text="${address.id}"></td>
+            <td th:text="${address.street.id}"></td>
             <td th:text="${address.house}"></td>
             <td th:text="${address.flat}"></td>
-            <a th:href="'/city'">Next page</a>
         </tr>
+        <a th:href="'/city'">Next page</a>
         </tbody>
     </table>
 </div>

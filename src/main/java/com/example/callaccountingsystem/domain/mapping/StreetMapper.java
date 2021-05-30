@@ -5,7 +5,7 @@ import com.example.callaccountingsystem.domain.dto.Street;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {AddressMapper.class})
+@Mapper
 public interface StreetMapper {
 
     StreetMapper STREET_MAPPER = Mappers.getMapper(StreetMapper.class);

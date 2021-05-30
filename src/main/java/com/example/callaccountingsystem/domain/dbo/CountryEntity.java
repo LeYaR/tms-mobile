@@ -18,9 +18,12 @@ public class CountryEntity {
     private Long id;
     private String country;
 
-    @OneToMany(mappedBy = "countryEntity")
+    @OneToMany(mappedBy = "country")
     private List<CityEntity> cities;
 
-    @ManyToMany(mappedBy = "countryEntityList")
+    @ManyToMany(mappedBy = "countryList")
     private List<CurrencyEntity> currencies;
+
+    @ManyToMany(mappedBy = "countries")
+    private List<MobileOperatorEntity> mobileOperators;
 }
