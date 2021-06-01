@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/country")
 public class CountryController {
+
     private final CountryService service;
 
     public CountryController(CountryService service) {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/status")
 public class StatusController {
+
     private final StatusService service;
 
     public StatusController(StatusService service) {
