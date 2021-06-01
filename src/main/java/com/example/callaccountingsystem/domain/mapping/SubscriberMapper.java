@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface SubscriberMapper {
-
-    SubscriberMapper SUBSCRIBER_MAPPER = Mappers.getMapper(SubscriberMapper.class);
 
     Subscriber fromDbo(SubscriberEntity entity);
 
     SubscriberEntity toDbo(Subscriber dto);
 
-    List<Subscriber> listFromDbo(List<SubscriberEntity> streets);
+    List<Subscriber> listFromDbo(List<SubscriberEntity> subscriberEntities);
 }

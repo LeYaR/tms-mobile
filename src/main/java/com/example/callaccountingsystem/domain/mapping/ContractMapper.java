@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ContractMapper {
-
-    ContractMapper CONTRACT_MAPPER = Mappers.getMapper(ContractMapper.class);
 
     Contract fromDbo(ContractEntity entity);
 
     ContractEntity toDbo(Contract dto);
 
-    List<Contract> listFromDbo(List<ContractEntity> streets);
+    List<Contract> listFromDbo(List<ContractEntity> contractEntities);
 }

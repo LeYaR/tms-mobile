@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CallMapper {
-
-    CallMapper CALL_MAPPER = Mappers.getMapper(CallMapper.class);
 
     Call fromDbo(CallEntity entity);
 
     CallEntity toDbo(Call dto);
 
-    List<Call> listFromDbo(List<CallEntity> streets);
+    List<Call> listFromDbo(List<CallEntity> callEntities);
 }

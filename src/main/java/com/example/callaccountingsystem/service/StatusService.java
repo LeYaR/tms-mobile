@@ -10,16 +10,19 @@ import java.util.List;
 
 @Service
 public class StatusService implements StatusServiceInterface {
-    private final StatusRepository repository;
 
-    public StatusService(StatusRepository repository) {
+    private final StatusRepository repository;
+    private final StatusMapper mapper;
+
+    public StatusService(StatusRepository repository, StatusMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Status> getAllStatuses() {
         final List<StatusEntity> list = repository.findAll();
-        return StatusMapper.STATUS_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

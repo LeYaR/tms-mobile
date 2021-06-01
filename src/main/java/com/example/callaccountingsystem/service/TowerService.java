@@ -12,15 +12,16 @@ import java.util.List;
 public class TowerService implements TowerServiceInterface {
 
     private final TowerRepository repository;
+    private final TowerMapper mapper;
 
-    public TowerService(TowerRepository repository) {
+    public TowerService(TowerRepository repository, TowerMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Tower> getAllTowers() {
         final List<TowerEntity> list = repository.findAll();
-        return TowerMapper.TOWER_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
-
 }

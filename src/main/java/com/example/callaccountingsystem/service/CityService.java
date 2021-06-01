@@ -12,15 +12,17 @@ import java.util.List;
 public class CityService implements CityServiceInterface {
 
     private final CityRepository repository;
+    private final CityMapper mapper;
 
-    public CityService(CityRepository repository) {
+    public CityService(CityRepository repository, CityMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<City> getAllCity() {
         final List<CityEntity> list = repository.findAll();
-        return CityMapper.CITY_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

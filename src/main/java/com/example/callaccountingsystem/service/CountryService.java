@@ -12,14 +12,16 @@ import java.util.List;
 public class CountryService implements CountryServiceInterface {
 
     private final CountryRepository repository;
+    private final CountryMapper mapper;
 
-    public CountryService(CountryRepository repository) {
+    public CountryService(CountryRepository repository, CountryMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Country> getAllCountries() {
         final List<CountryEntity> list = repository.findAll();
-        return CountryMapper.COUNTRY_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 }

@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PassportMapper {
-
-    PassportMapper PASSPORT_MAPPER = Mappers.getMapper(PassportMapper.class);
 
     Passport fromDbo(PassportEntity entity);
 
     PassportEntity toDbo(Passport dto);
 
-    List<Passport> listFromDbo(List<PassportEntity> streets);
+    List<Passport> listFromDbo(List<PassportEntity> passportEntities);
 }

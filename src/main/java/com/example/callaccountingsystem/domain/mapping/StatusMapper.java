@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StatusMapper {
-
-    StatusMapper STATUS_MAPPER = Mappers.getMapper(StatusMapper.class);
 
     Status fromDbo(StatusEntity entity);
 
     StatusEntity toDbo(Status dto);
 
-    List<Status> listFromDbo(List<StatusEntity> streets);
+    List<Status> listFromDbo(List<StatusEntity> statusEntities);
 }

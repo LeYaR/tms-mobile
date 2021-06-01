@@ -5,12 +5,14 @@ import com.example.callaccountingsystem.domain.dto.Authorization;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
-public interface AuthorizationMapper {
+import java.util.List;
 
-    AuthorizationMapper AUTHORIZATION_MAPPER = Mappers.getMapper(AuthorizationMapper.class);
+@Mapper(componentModel = "spring")
+public interface AuthorizationMapper {
 
     Authorization fromDbo(AuthorizationEntity entity);
 
     AuthorizationEntity toDbo(Authorization dto);
+
+    List<Authorization> listFromDbo(List<AuthorizationEntity> authorizationEntities);
 }

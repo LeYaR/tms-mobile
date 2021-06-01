@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PricingUnitMapper {
-
-    PricingUnitMapper PRICING_UNIT_MAPPER = Mappers.getMapper(PricingUnitMapper.class);
 
     PricingUnit fromDbo(PricingUnitEntity entity);
 
     PricingUnitEntity toDbo(PricingUnit dto);
 
-    List<PricingUnit> listFromDbo(List<PricingUnitEntity> streets);
+    List<PricingUnit> listFromDbo(List<PricingUnitEntity> pricingUnitEntities);
 }

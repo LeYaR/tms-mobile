@@ -11,15 +11,17 @@ import java.util.List;
 @Service
 public class MobileOperatorService implements MobileOperatorServiceInterface {
     private final MobileOperatorRepository repository;
+    private final MobileOperatorMapper mapper;
 
-    public MobileOperatorService(MobileOperatorRepository repository) {
+    public MobileOperatorService(MobileOperatorRepository repository, MobileOperatorMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<MobileOperator> getAllMobileOperators() {
         final List<MobileOperatorEntity> list = repository.findAll();
-        return MobileOperatorMapper.MOBILE_OPERATOR_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

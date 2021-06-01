@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TowerMapper {
-
-    TowerMapper TOWER_MAPPER = Mappers.getMapper(TowerMapper.class);
 
     Tower fromDbo(TowerEntity entity);
 
     TowerEntity toDbo(Tower dto);
 
-    List<Tower> listFromDbo(List<TowerEntity> streets);
+    List<Tower> listFromDbo(List<TowerEntity> towerEntities);
 }
