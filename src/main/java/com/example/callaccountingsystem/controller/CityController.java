@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/city")
 public class CityController {
+
     private final CityService service;
 
     public CityController(CityService service){this.service = service;}

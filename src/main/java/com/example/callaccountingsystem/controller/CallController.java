@@ -21,5 +21,4 @@ public class CallController{
         model.addAttribute("calls", service.getAllCalls());
         return "call";
     }
-
 }

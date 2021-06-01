@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/contract")
 public class ContractController {
+
     private final ContractService service;
 
     public ContractController(ContractService service){this.service = service;}

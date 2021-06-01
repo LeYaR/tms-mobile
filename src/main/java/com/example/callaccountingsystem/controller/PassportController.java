@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/passport")
 public class PassportController {
+
     private final PassportService service;
 
     public PassportController(PassportService service) {

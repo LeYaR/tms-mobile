@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/tariffPlan")
+@RequestMapping("/tariff-plan")
 public class TariffPlanController {
+
     private final TariffPlanService service;
 
     public TariffPlanController(TariffPlanService service) {

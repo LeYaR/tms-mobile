@@ -12,15 +12,17 @@ import java.util.List;
 public class AddressService implements AddressServiceInterface {
 
     private final AddressRepository repository;
+    private final AddressMapper mapper;
 
-    public AddressService(AddressRepository repository) {
+    public AddressService(AddressRepository repository, AddressMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Address> getAllAddress() {
         final List<AddressEntity> list = repository.findAll();
-        return AddressMapper.ADDRESS_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }
