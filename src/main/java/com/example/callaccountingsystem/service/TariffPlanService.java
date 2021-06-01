@@ -3,17 +3,17 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.TariffPlanEntity;
 import com.example.callaccountingsystem.domain.dto.TariffPlan;
 import com.example.callaccountingsystem.domain.mapping.TariffPlanMapper;
-import com.example.callaccountingsystem.repository.ITariffPlanRepo;
+import com.example.callaccountingsystem.repository.TariffPlanRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TariffPlanService implements ITariffPlanService {
+public class TariffPlanService implements TariffPlanServiceInterface {
 
-    private final ITariffPlanRepo repository;
+    private final TariffPlanRepository repository;
 
-    public TariffPlanService(ITariffPlanRepo repository) {
+    public TariffPlanService(TariffPlanRepository repository) {
         this.repository = repository;
     }
 

@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Contract;
 
 import java.util.List;
 
-public interface IContract {
+public interface ContractServiceInterface {
 
     List<Contract> getAllContracts();
 

@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Tower;
 
 import java.util.List;
 
-public interface ITowerService {
+public interface TowerServiceInterface {
 
     List<Tower> getAllTowers();
 

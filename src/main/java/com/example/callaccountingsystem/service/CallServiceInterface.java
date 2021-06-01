@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Call;
 
 import java.util.List;
 
-public interface ICallService {
+public interface CallServiceInterface {
 
     List<Call> getAllCalls();
 

@@ -3,17 +3,17 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.ClientTypeEntity;
 import com.example.callaccountingsystem.domain.dto.ClientType;
 import com.example.callaccountingsystem.domain.mapping.ClientTypeMapper;
-import com.example.callaccountingsystem.repository.IClientTypeRepo;
+import com.example.callaccountingsystem.repository.ClientTypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClientTypeService implements IClientTypeService {
+public class ClientTypeService implements ClientTypeServiceInterface {
 
-    private final IClientTypeRepo repository;
+    private final ClientTypeRepository repository;
 
-    public ClientTypeService(IClientTypeRepo repository) {
+    public ClientTypeService(ClientTypeRepository repository) {
         this.repository = repository;
     }
 

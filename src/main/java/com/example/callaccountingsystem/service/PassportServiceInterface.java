@@ -5,7 +5,7 @@ import com.example.callaccountingsystem.domain.dto.Passport;
 
 import java.util.List;
 
-public interface IPassportService {
+public interface PassportServiceInterface {
 
     List<Passport> getAllPassports();
 

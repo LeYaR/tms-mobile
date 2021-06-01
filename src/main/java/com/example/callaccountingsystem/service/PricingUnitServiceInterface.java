@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.PricingUnit;
 
 import java.util.List;
 
-public interface IPricingUnitService {
+public interface PricingUnitServiceInterface {
 
     List<PricingUnit> getAllPricingUnits();
 

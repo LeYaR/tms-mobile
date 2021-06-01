@@ -3,17 +3,17 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.CountryEntity;
 import com.example.callaccountingsystem.domain.dto.Country;
 import com.example.callaccountingsystem.domain.mapping.CountryMapper;
-import com.example.callaccountingsystem.repository.ICountryRepo;
+import com.example.callaccountingsystem.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CountryService implements ICountryService {
+public class CountryService implements CountryServiceInterface {
 
-    private final ICountryRepo repository;
+    private final CountryRepository repository;
 
-    public CountryService(ICountryRepo repository) {
+    public CountryService(CountryRepository repository) {
         this.repository = repository;
     }
 

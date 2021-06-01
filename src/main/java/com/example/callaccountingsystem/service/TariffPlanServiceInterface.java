@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.TariffPlan;
 
 import java.util.List;
 
-public interface ITariffPlanService {
+public interface TariffPlanServiceInterface {
 
     List<TariffPlan> getAllTariffPlans();
 

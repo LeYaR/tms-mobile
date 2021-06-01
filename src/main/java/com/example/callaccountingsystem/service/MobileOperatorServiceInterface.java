@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.MobileOperator;
 
 import java.util.List;
 
-public interface IMobileOperatorService {
+public interface MobileOperatorServiceInterface {
 
     List<MobileOperator> getAllMobileOperators();
 

@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Status;
 
 import java.util.List;
 
-public interface IStatusService {
+public interface StatusServiceInterface {
 
     List<Status> getAllStatuses();
 

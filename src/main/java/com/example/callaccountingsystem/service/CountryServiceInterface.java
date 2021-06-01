@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Country;
 
 import java.util.List;
 
-public interface ICountryService {
+public interface CountryServiceInterface {
 
     List<Country> getAllCountries();
 

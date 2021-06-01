@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 
 import java.util.List;
 
-public interface IClientTypeService {
+public interface ClientTypeServiceInterface {
 
     List<ClientType> getAllClients();
 

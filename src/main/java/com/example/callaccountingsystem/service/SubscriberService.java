@@ -3,17 +3,17 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.SubscriberEntity;
 import com.example.callaccountingsystem.domain.dto.Subscriber;
 import com.example.callaccountingsystem.domain.mapping.SubscriberMapper;
-import com.example.callaccountingsystem.repository.ISubscriberRepo;
+import com.example.callaccountingsystem.repository.SubscriberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class SubscriberService implements ISubscriberService {
+public class SubscriberService implements SubscriberServiceInterface {
 
-    private final ISubscriberRepo repository;
+    private final SubscriberRepository repository;
 
-    public SubscriberService(ISubscriberRepo repository) {
+    public SubscriberService(SubscriberRepository repository) {
         this.repository = repository;
     }
 

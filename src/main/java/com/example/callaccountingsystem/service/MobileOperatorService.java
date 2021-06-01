@@ -3,16 +3,16 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.MobileOperatorEntity;
 import com.example.callaccountingsystem.domain.dto.MobileOperator;
 import com.example.callaccountingsystem.domain.mapping.MobileOperatorMapper;
-import com.example.callaccountingsystem.repository.IMobileOperatorRepo;
+import com.example.callaccountingsystem.repository.MobileOperatorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MobileOperatorService implements IMobileOperatorService {
-    private final IMobileOperatorRepo repository;
+public class MobileOperatorService implements MobileOperatorServiceInterface {
+    private final MobileOperatorRepository repository;
 
-    public MobileOperatorService(IMobileOperatorRepo repository) {
+    public MobileOperatorService(MobileOperatorRepository repository) {
         this.repository = repository;
     }
 

@@ -4,7 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Address;
 
 import java.util.List;
 
-public interface IAddressService {
+public interface AddressServiceInterface {
 
     List<Address> getAllAddress();
 
