@@ -20,6 +20,9 @@ h1{
     text-transform: uppercase;
     font-weight: 500;
 }
+a{
+    color: honeydew;
+}
 .box input[type = "text"],.box input[type = "password"]{
     background: none;
     display: block;
