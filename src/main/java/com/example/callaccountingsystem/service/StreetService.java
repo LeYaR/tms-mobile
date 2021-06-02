@@ -10,16 +10,18 @@ import java.util.List;
 
 @Service
 public class StreetService implements StreetServiceInterface {
-    private final StreetRepository repository;
 
-    public StreetService(StreetRepository repository) {
+    private final StreetRepository repository;
+    private final StreetMapper mapper;
+    public StreetService(StreetRepository repository, StreetMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Street> getAllStreets() {
         final List<StreetEntity> list = repository.findAll();
-        return StreetMapper.STREET_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ClientTypeMapper {
-
-    ClientTypeMapper CLIENT_TYPE_MAPPER = Mappers.getMapper(ClientTypeMapper.class);
 
     ClientType fromDbo(ClientTypeEntity entity);
 
     ClientTypeEntity toDbo(ClientType dto);
 
-    List<ClientType> listFromDbo(List<ClientTypeEntity> streets);
+    List<ClientType> listFromDbo(List<ClientTypeEntity> clientTypeEntities);
 }

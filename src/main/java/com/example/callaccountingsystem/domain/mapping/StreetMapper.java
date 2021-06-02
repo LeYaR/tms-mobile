@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StreetMapper {
-
-    StreetMapper STREET_MAPPER = Mappers.getMapper(StreetMapper.class);
 
     Street fromDbo(StreetEntity entity);
 
     StreetEntity toDbo(Street dto);
 
-    List<Street> listFromDbo(List<StreetEntity> streets);
+    List<Street> listFromDbo(List<StreetEntity> streetEntities);
 }

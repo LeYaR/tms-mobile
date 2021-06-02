@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CurrencyMapper {
-
-    CurrencyMapper CURRENCY_MAPPER = Mappers.getMapper(CurrencyMapper.class);
 
     Currency fromDbo(CurrencyEntity entity);
 
     CurrencyEntity toDbo(Currency dto);
 
-    List<Currency> listFromDbo(List<CurrencyEntity> streets);
+    List<Currency> listFromDbo(List<CurrencyEntity> currencyEntities);
 }

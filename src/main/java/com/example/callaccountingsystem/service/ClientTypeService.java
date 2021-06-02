@@ -12,15 +12,17 @@ import java.util.List;
 public class ClientTypeService implements ClientTypeServiceInterface {
 
     private final ClientTypeRepository repository;
+    private final ClientTypeMapper mapper;
 
-    public ClientTypeService(ClientTypeRepository repository) {
+    public ClientTypeService(ClientTypeRepository repository, ClientTypeMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<ClientType> getAllClients() {
         final List<ClientTypeEntity> list = repository.findAll();
-        return ClientTypeMapper.CLIENT_TYPE_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

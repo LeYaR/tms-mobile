@@ -12,15 +12,17 @@ import java.util.List;
 public class SubscriberService implements SubscriberServiceInterface {
 
     private final SubscriberRepository repository;
+    private final SubscriberMapper mapper;
 
-    public SubscriberService(SubscriberRepository repository) {
+    public SubscriberService(SubscriberRepository repository, SubscriberMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Subscriber> getAllSubscribers() {
         final List<SubscriberEntity> list = repository.findAll();
-        return SubscriberMapper.SUBSCRIBER_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

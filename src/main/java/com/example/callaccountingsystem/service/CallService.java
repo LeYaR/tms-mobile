@@ -12,15 +12,17 @@ import java.util.List;
 public class CallService implements CallServiceInterface {
 
     private final CallRepository repository;
+    private final CallMapper mapper;
 
-    public CallService(CallRepository repository) {
+    public CallService(CallRepository repository, CallMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Call> getAllCalls() {
         final List<CallEntity> list = repository.findAll();
-        return CallMapper.CALL_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

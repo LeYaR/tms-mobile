@@ -19,6 +19,7 @@ public class AddressService implements AddressServiceInterface {
         this.mapper = mapper;
     }
 
+
     @Override
     public List<Address> getAllAddress() {
         final List<AddressEntity> list = repository.findAll();

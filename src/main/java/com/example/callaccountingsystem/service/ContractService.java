@@ -12,14 +12,16 @@ import java.util.List;
 public class ContractService implements ContractServiceInterface {
 
     private final ContractRepository repository;
+    private final ContractMapper mapper;
 
-    public ContractService(ContractRepository repository) {
+    public ContractService(ContractRepository repository, ContractMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Contract> getAllContracts() {
         final List<ContractEntity> list = repository.findAll();
-        return ContractMapper.CONTRACT_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 }

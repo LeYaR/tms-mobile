@@ -12,14 +12,16 @@ import java.util.List;
 public class CurrencyService implements CurrencyServiceInterface {
 
     private final CurrencyRepository repository;
+    private final CurrencyMapper mapper;
 
-    public CurrencyService(CurrencyRepository repository) {
+    public CurrencyService(CurrencyRepository repository, CurrencyMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Currency> getAllCurrencies() {
         final List<CurrencyEntity> list = repository.findAll();
-        return CurrencyMapper.CURRENCY_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 }

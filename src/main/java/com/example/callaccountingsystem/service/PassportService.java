@@ -13,15 +13,17 @@ public class PassportService implements PassportServiceInterface {
 
 
     private final PassportRepository repository;
+    private final PassportMapper mapper;
 
-    public PassportService(PassportRepository repository) {
+    public PassportService(PassportRepository repository, PassportMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<Passport> getAllPassports() {
         final List<PassportEntity> list = repository.findAll();
-        return PassportMapper.PASSPORT_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

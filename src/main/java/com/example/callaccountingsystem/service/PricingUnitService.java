@@ -12,15 +12,17 @@ import java.util.List;
 public class PricingUnitService implements PricingUnitServiceInterface {
 
     private final PricingUnitRepository repository;
+    private final PricingUnitMapper mapper;
 
-    public PricingUnitService(PricingUnitRepository repository) {
+    public PricingUnitService(PricingUnitRepository repository, PricingUnitMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<PricingUnit> getAllPricingUnits() {
         final List<PricingUnitEntity> list = repository.findAll();
-        return PricingUnitMapper.PRICING_UNIT_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

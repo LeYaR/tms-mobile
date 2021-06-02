@@ -12,15 +12,17 @@ import java.util.List;
 public class TariffPlanService implements TariffPlanServiceInterface {
 
     private final TariffPlanRepository repository;
+    private final TariffPlanMapper mapper;
 
-    public TariffPlanService(TariffPlanRepository repository) {
+    public TariffPlanService(TariffPlanRepository repository, TariffPlanMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<TariffPlan> getAllTariffPlans() {
         final List<TariffPlanEntity> list = repository.findAll();
-        return TariffPlanMapper.TARIFF_PLAN_MAPPER.listFromDbo(list);
+        return mapper.listFromDbo(list);
     }
 
 }

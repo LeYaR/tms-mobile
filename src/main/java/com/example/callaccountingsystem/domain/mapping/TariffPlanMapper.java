@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TariffPlanMapper {
-
-    TariffPlanMapper TARIFF_PLAN_MAPPER = Mappers.getMapper(TariffPlanMapper.class);
 
     TariffPlan fromDbo(TariffPlanEntity entity);
 
     TariffPlanEntity toDbo(TariffPlan dto);
 
-    List<TariffPlan> listFromDbo(List<TariffPlanEntity> streets);
+    List<TariffPlan> listFromDbo(List<TariffPlanEntity> tariffPlanEntities);
 }

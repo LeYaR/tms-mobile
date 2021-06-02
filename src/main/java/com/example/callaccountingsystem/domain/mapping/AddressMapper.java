@@ -13,5 +13,5 @@ public interface AddressMapper {
 
     AddressEntity toDbo(Address dto);
 
-    List<Address> listFromDbo(List<AddressEntity> streets);
+    List<Address> listFromDbo(List<AddressEntity> addressEntities);
 }

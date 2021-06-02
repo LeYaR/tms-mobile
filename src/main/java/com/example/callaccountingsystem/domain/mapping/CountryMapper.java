@@ -7,14 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CountryMapper {
-
-    CountryMapper COUNTRY_MAPPER = Mappers.getMapper(CountryMapper.class);
 
     Country fromDbo(CountryEntity entity);
 
     CountryEntity toDbo(Country dto);
 
-    List<Country> listFromDbo(List<CountryEntity> streets);
+    List<Country> listFromDbo(List<CountryEntity> countryEntities);
 }
