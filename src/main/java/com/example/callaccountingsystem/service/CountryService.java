@@ -24,4 +24,5 @@ public class CountryService implements CountryServiceInterface {
         final List<CountryEntity> list = repository.findAll();
         return mapper.listFromDbo(list);
     }
+
 }

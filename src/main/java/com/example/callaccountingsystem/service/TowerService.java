@@ -24,4 +24,5 @@ public class TowerService implements TowerServiceInterface {
         final List<TowerEntity> list = repository.findAll();
         return mapper.listFromDbo(list);
     }
+
 }

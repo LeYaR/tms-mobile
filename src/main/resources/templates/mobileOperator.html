@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Operators</title>
+</head>
+<body>
+<div>
+    <h1>Mobile operators list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mobileOperator : ${mobileOperators}">
+            <td th:text="${mobileOperator.operator}"></td>
+            <td th:text="${mobileOperator.code}"></td>
+        </tr>
+        <a th:href="'/passport'">Next page</a>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

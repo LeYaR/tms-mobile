@@ -24,4 +24,5 @@ public class CurrencyService implements CurrencyServiceInterface {
         final List<CurrencyEntity> list = repository.findAll();
         return mapper.listFromDbo(list);
     }
+
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Towers</title>
+</head>
+<body>
+<div>
+    <h1>Towers list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Tower name</th>
+            <th>Country</th>
+            <th>City Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tower : ${towers}">
+            <td th:text="${tower.name}"></td>
+            <td th:text="${tower.locationCity.country.country}"></td>
+            <td th:text="${tower.locationCity.city}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

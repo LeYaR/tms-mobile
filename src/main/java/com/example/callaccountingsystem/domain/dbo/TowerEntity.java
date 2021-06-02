@@ -21,6 +21,8 @@ public class TowerEntity {
     @JoinColumn(name = "location_city_id")
     private CityEntity locationCity;
 
+    private String name;
+
     @OneToMany(mappedBy = "tower", orphanRemoval = true)
     private List<CallEntity> calls;
 }

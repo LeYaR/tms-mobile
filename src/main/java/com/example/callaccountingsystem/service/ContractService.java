@@ -24,4 +24,5 @@ public class ContractService implements ContractServiceInterface {
         final List<ContractEntity> list = repository.findAll();
         return mapper.listFromDbo(list);
     }
+
 }

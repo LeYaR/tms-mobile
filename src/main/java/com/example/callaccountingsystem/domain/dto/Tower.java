@@ -6,4 +6,5 @@ import lombok.Data;
 public class Tower {
     private Integer id;
     private City locationCity;
+    private String name;
 }

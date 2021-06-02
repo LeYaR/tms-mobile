@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribers</title>
+</head>
+<body>
+<div>
+    <h1>Subscribers list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Phone number</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Passport number</th>
+            <th>Passport date</th>
+            <th>Passport issuer</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Street</th>
+            <th>House</th>
+            <th>Flat</th>
+            <th>Contract number</th>
+            <th>Contract date</th>
+            <th>Client type</th>
+            <th>Tariff plan</th>
+            <th>Description</th>
+            <th>Abonent payment</th>
+            <th>Unit</th>
+            <th>Price</th>
+            <th>Currency numerical code</th>
+            <th>Currency name</th>
+            <th>Currency code</th>
+            <th>Discount</th>
+            <th>Mobile operator</th>
+            <th>Operator's code</th>
+            <th>Email</th>
+            <th>Birthday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subscriber : ${subscribers}">
+            <td th:text="${subscriber.phoneNumber}"></td>
+            <td th:text="${subscriber.lastName}"></td>
+            <td th:text="${subscriber.firstName}"></td>
+            <td th:text="${subscriber.passport.idNumber}"></td>
+            <td th:text="${subscriber.passport.seriesNumber}"></td>
+            <td th:text="${subscriber.passport.date}"></td>
+            <td th:text="${subscriber.passport.issuer}"></td>
+            <td th:text="${subscriber.address.street.city.country.country}"></td>
+            <td th:text="${subscriber.address.street.city.city}"></td>
+            <td th:text="${subscriber.address.street.street}"></td>
+            <td th:text="${subscriber.address.house}"></td>
+            <td th:text="${subscriber.address.flat}"></td>
+            <td th:text="${subscriber.contract.number}"></td>
+            <td th:text="${subscriber.contract.date}"></td>
+            <td th:text="${subscriber.contract.clientType.type}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.name}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.description}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.abonentPayment}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.pricingUnit.unit}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.price}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.currency.numericalCode}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.currency.name}"></td>
+            <td th:text="${subscriber.contract.tariffPlan.currency.code}"></td>
+            <td th:text="${subscriber.contract.discount}"></td>
+            <td th:text="${subscriber.mobileOperator.operator}"></td>
+            <td th:text="${subscriber.mobileOperator.code}"></td>
+            <td th:text="${subscriber.email}"></td>
+            <td th:text="${subscriber.birthday}"></td>
+        </tr>
+        <a th:href="'/tariff-plan'">Next page</a>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

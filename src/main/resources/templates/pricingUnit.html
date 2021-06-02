@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing units</title>
+</head>
+<body>
+<div>
+    <h1>Pricing units list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pricingUnit : ${pricingUnits}">
+            <td th:text="${pricingUnit.unit}"></td>
+        </tr>
+        <a th:href="'/status'">Next page</a>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
