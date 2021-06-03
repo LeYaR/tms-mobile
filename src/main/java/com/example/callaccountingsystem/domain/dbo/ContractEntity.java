@@ -29,6 +29,6 @@ public class ContractEntity {
 
     private Integer discount;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "contract", fetch = FetchType.LAZY)
     private SubscriberEntity subscriber;
 }
