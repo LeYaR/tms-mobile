@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.CurrencyService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/currency")
 public class CurrencyController {
 
@@ -17,8 +18,11 @@ public class CurrencyController {
     }
 
     @GetMapping
-    public String viewAllCurrencies(Model model) {
+    public ModelAndView viewAllCurrencies(Model model) {
         model.addAttribute("currencies", service.getAllCurrencies());
-        return "currency";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("currency");
+        return modelAndView;
     }
 }

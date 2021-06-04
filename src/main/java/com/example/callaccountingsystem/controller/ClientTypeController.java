@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.ClientTypeService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/client")
 public class ClientTypeController {
 
@@ -15,8 +16,11 @@ public class ClientTypeController {
     public ClientTypeController(ClientTypeService service){this.service = service;}
 
     @GetMapping
-    public String viewClientsType(Model model){
+    public ModelAndView viewClientsType(Model model){
         model.addAttribute("clients", service.getAllClients());
-        return "client";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("client");
+        return modelAndView;
     }
 }

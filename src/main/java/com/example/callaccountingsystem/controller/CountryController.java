@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.CountryService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/country")
 public class CountryController {
 
@@ -17,8 +18,11 @@ public class CountryController {
     }
 
     @GetMapping
-    public String viewAllCountries(Model model) {
+    public ModelAndView viewAllCountries(Model model) {
         model.addAttribute("countries", service.getAllCountries());
-        return "country";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("country");
+        return modelAndView;
     }
 }

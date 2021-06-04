@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.SubscriberService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/subscriber")
 public class SubscriberController {
 
@@ -17,8 +18,11 @@ public class SubscriberController {
     }
 
     @GetMapping
-    public String viewAllSubscribers(Model model) {
+    public ModelAndView viewAllSubscribers(Model model) {
         model.addAttribute("subscribers", service.getAllSubscribers());
-        return "subscriber";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("subscriber");
+        return modelAndView;
     }
 }

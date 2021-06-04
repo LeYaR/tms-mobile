@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.CityService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/city")
 public class CityController {
 
@@ -15,8 +16,11 @@ public class CityController {
     public CityController(CityService service){this.service = service;}
 
     @GetMapping
-    public String viewAllCities(Model model){
+    public ModelAndView viewAllCities(Model model){
         model.addAttribute("cities", service.getAllCity());
-        return "city";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("city");
+        return modelAndView;
     }
 }

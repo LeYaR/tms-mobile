@@ -1,12 +1,13 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.service.TariffPlanService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/tariff-plan")
 public class TariffPlanController {
 
@@ -17,8 +18,11 @@ public class TariffPlanController {
     }
 
     @GetMapping
-    public String viewAllTariffPlans(Model model) {
+    public ModelAndView viewAllTariffPlans(Model model) {
         model.addAttribute("tariffPlans", service.getAllTariffPlans());
-        return "tariffPlan";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("tariffPlan");
+        return modelAndView;
     }
 }
