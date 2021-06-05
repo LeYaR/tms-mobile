@@ -74,6 +74,12 @@
         <a th:href="'/tariff-plan'">Next page</a>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/subscriber(size=${subscribers.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==subscribers.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

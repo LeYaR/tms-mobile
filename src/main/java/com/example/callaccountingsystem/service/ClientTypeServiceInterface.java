@@ -1,12 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.ClientType;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface ClientTypeServiceInterface {
 
-    List<ClientType> getAllClients();
+    Page<ClientType> getAllClients(int currentPage, int pageSize);
 
 }

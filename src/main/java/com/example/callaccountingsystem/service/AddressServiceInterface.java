@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.Address;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface AddressServiceInterface {
 
-    List<Address> getAllAddress();
+    Page<Address> getAllAddress(int currentPage, int pageSize);
 
 }

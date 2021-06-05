@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.SubscriberEntity;
 import com.example.callaccountingsystem.domain.dto.Subscriber;
 import com.example.callaccountingsystem.domain.mapping.SubscriberMapper;
 import com.example.callaccountingsystem.repository.SubscriberRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class SubscriberService implements SubscriberServiceInterface {
@@ -20,9 +21,10 @@ public class SubscriberService implements SubscriberServiceInterface {
     }
 
     @Override
-    public List<Subscriber> getAllSubscribers() {
-        final List<SubscriberEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Subscriber> getAllSubscribers(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<SubscriberEntity> page = repository.findAll(pageable);
+        return page.map(subscriberEntity -> (mapper.fromDbo(subscriberEntity)));
     }
 
 }

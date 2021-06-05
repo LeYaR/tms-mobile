@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.Country;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface CountryServiceInterface {
 
-    List<Country> getAllCountries();
+    Page<Country> getAllCountries(int currentPage, int pageSize);
 
 }

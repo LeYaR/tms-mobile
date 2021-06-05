@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.Tower;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface TowerServiceInterface {
 
-    List<Tower> getAllTowers();
+    Page<Tower> getAllTowers(int currentPage, int pageSize);
 
 }

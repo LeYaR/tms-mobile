@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.StatusEntity;
 import com.example.callaccountingsystem.domain.dto.Status;
 import com.example.callaccountingsystem.domain.mapping.StatusMapper;
 import com.example.callaccountingsystem.repository.StatusRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class StatusService implements StatusServiceInterface {
@@ -20,9 +21,10 @@ public class StatusService implements StatusServiceInterface {
     }
 
     @Override
-    public List<Status> getAllStatuses() {
-        final List<StatusEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Status> getAllStatuses(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<StatusEntity> page = repository.findAll(pageable);
+        return page.map(statusEntity -> (mapper.fromDbo(statusEntity)));
     }
 
 }

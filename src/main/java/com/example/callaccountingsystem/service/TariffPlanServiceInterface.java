@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.TariffPlan;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface TariffPlanServiceInterface {
 
-    List<TariffPlan> getAllTariffPlans();
+    Page<TariffPlan> getAllTariffPlans(int currentPage, int pageSize);
 
 }

@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.ClientTypeEntity;
 import com.example.callaccountingsystem.domain.dto.ClientType;
 import com.example.callaccountingsystem.domain.mapping.ClientTypeMapper;
 import com.example.callaccountingsystem.repository.ClientTypeRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClientTypeService implements ClientTypeServiceInterface {
@@ -20,9 +21,10 @@ public class ClientTypeService implements ClientTypeServiceInterface {
     }
 
     @Override
-    public List<ClientType> getAllClients() {
-        final List<ClientTypeEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<ClientType> getAllClients(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<ClientTypeEntity> page = repository.findAll(pageable);
+        return page.map(clientTypeEntity -> (mapper.fromDbo(clientTypeEntity)));
     }
 
 }

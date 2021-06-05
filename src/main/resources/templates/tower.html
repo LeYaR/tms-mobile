@@ -23,6 +23,12 @@
         </tr>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/tower(size=${towers.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==towers.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

@@ -26,6 +26,12 @@
         <a th:href="'/pricing-unit'">Next page</a>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/passport(size=${passports.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==passports.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

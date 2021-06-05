@@ -20,6 +20,12 @@
         <a th:href="'/currency'">Next page</a>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/country(size=${countries.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==countries.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

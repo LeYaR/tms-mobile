@@ -42,6 +42,12 @@
         <a th:href="'/country'">Next page</a>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/contract(size=${contracts.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==contracts.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

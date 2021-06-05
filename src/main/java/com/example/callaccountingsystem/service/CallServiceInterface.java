@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.Call;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface CallServiceInterface {
 
-    List<Call> getAllCalls();
+    Page<Call> getAllCalls(int currentPage, int pageSize);
 
 }

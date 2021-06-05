@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.PricingUnitEntity;
 import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import com.example.callaccountingsystem.domain.mapping.PricingUnitMapper;
 import com.example.callaccountingsystem.repository.PricingUnitRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PricingUnitService implements PricingUnitServiceInterface {
@@ -20,9 +21,10 @@ public class PricingUnitService implements PricingUnitServiceInterface {
     }
 
     @Override
-    public List<PricingUnit> getAllPricingUnits() {
-        final List<PricingUnitEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<PricingUnit> getAllPricingUnits(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<PricingUnitEntity> page = repository.findAll(pageable);
+        return page.map(pricingUnitEntity -> (mapper.fromDbo(pricingUnitEntity)));
     }
 
 }

@@ -1,11 +1,10 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dto.Contract;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface ContractServiceInterface {
 
-    List<Contract> getAllContracts();
+    Page<Contract> getAllContracts(int currentPage, int pageSize);
 
 }

@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.CountryEntity;
 import com.example.callaccountingsystem.domain.dto.Country;
 import com.example.callaccountingsystem.domain.mapping.CountryMapper;
 import com.example.callaccountingsystem.repository.CountryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CountryService implements CountryServiceInterface {
@@ -20,9 +21,10 @@ public class CountryService implements CountryServiceInterface {
     }
 
     @Override
-    public List<Country> getAllCountries() {
-        final List<CountryEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Country> getAllCountries(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<CountryEntity> page = repository.findAll(pageable);
+        return page.map(countryEntity -> (mapper.fromDbo(countryEntity)));
     }
 
 }

@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.CallEntity;
 import com.example.callaccountingsystem.domain.dto.Call;
 import com.example.callaccountingsystem.domain.mapping.CallMapper;
 import com.example.callaccountingsystem.repository.CallRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CallService implements CallServiceInterface {
@@ -20,9 +21,10 @@ public class CallService implements CallServiceInterface {
     }
 
     @Override
-    public List<Call> getAllCalls() {
-        final List<CallEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Call> getAllCalls(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<CallEntity> page = repository.findAll(pageable);
+        return page.map(callEntity -> (mapper.fromDbo(callEntity)));
     }
 
 }

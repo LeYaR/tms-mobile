@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.ContractEntity;
 import com.example.callaccountingsystem.domain.dto.Contract;
 import com.example.callaccountingsystem.domain.mapping.ContractMapper;
 import com.example.callaccountingsystem.repository.ContractRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ContractService implements ContractServiceInterface {
@@ -20,9 +21,10 @@ public class ContractService implements ContractServiceInterface {
     }
 
     @Override
-    public List<Contract> getAllContracts() {
-        final List<ContractEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Contract> getAllContracts(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<ContractEntity> page = repository.findAll(pageable);
+        return page.map(contractEntity -> (mapper.fromDbo(contractEntity)));
     }
 
 }

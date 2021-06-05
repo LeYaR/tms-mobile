@@ -29,6 +29,12 @@
         </tr>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/call(size=${calls.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==calls.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

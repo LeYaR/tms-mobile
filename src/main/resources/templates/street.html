@@ -24,6 +24,12 @@
         <a th:href="'/subscriber'">Next page</a>
         </tbody>
     </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/street(size=${streets.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==streets.number + 1} ? active"></a>
+    </span>
 </div>
 </body>
 </html>

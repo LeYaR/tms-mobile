@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.CityEntity;
 import com.example.callaccountingsystem.domain.dto.City;
 import com.example.callaccountingsystem.domain.mapping.CityMapper;
 import com.example.callaccountingsystem.repository.CityRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CityService implements CityServiceInterface {
@@ -20,9 +21,10 @@ public class CityService implements CityServiceInterface {
     }
 
     @Override
-    public List<City> getAllCity() {
-        final List<CityEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<City> getAllCity(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<CityEntity> page = repository.findAll(pageable);
+        return page.map(cityEntity -> (mapper.fromDbo(cityEntity)));
     }
 
 }

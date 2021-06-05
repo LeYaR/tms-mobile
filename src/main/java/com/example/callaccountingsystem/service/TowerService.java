@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.TowerEntity;
 import com.example.callaccountingsystem.domain.dto.Tower;
 import com.example.callaccountingsystem.domain.mapping.TowerMapper;
 import com.example.callaccountingsystem.repository.TowerRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TowerService implements TowerServiceInterface {
@@ -20,9 +21,10 @@ public class TowerService implements TowerServiceInterface {
     }
 
     @Override
-    public List<Tower> getAllTowers() {
-        final List<TowerEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Tower> getAllTowers(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<TowerEntity> page = repository.findAll(pageable);
+        return page.map(towerEntity -> (mapper.fromDbo(towerEntity)));
     }
 
 }

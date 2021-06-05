@@ -4,9 +4,10 @@ import com.example.callaccountingsystem.domain.dbo.AddressEntity;
 import com.example.callaccountingsystem.domain.dto.Address;
 import com.example.callaccountingsystem.domain.mapping.AddressMapper;
 import com.example.callaccountingsystem.repository.AddressRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AddressService implements AddressServiceInterface {
@@ -21,9 +22,10 @@ public class AddressService implements AddressServiceInterface {
 
 
     @Override
-    public List<Address> getAllAddress() {
-        final List<AddressEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public Page<Address> getAllAddress(int currentPage, int pageSize) {
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Page<AddressEntity> page = repository.findAll(pageable);
+        return page.map(addressEntity -> (mapper.fromDbo(addressEntity)));
     }
 
 }
