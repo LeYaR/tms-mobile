@@ -14,4 +14,6 @@ public interface CallMapper {
     CallEntity toDbo(Call dto);
 
     List<Call> listFromDbo(List<CallEntity> callEntities);
+
+    List<CallEntity> listToDbo(List<Call> callEntities);
 }

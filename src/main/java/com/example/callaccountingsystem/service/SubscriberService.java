@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubscriberService implements SubscriberServiceInterface {
 
@@ -25,6 +27,12 @@ public class SubscriberService implements SubscriberServiceInterface {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<SubscriberEntity> page = repository.findAll(pageable);
         return page.map(subscriberEntity -> (mapper.fromDbo(subscriberEntity)));
+    }
+
+    @Override
+    public List<Subscriber> getListSubscribers() {
+        final List<SubscriberEntity> list = repository.findAll();
+        return mapper.listFromDbo(list);
     }
 
 }

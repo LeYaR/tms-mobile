@@ -19,11 +19,11 @@ public class CallEntity {
     private Long id;
     private LocalDateTime date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "incoming_phone_number")
     private SubscriberEntity incomingSubscriber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "outgoing_phone_number")
     private SubscriberEntity outgoingSubscriber;
 

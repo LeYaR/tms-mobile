@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StatusService implements StatusServiceInterface {
 
@@ -25,6 +27,12 @@ public class StatusService implements StatusServiceInterface {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<StatusEntity> page = repository.findAll(pageable);
         return page.map(statusEntity -> (mapper.fromDbo(statusEntity)));
+    }
+
+    @Override
+    public List<Status> getListStatuses() {
+        final List<StatusEntity> list = repository.findAll();
+        return mapper.listFromDbo(list);
     }
 
 }

@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CallService implements CallServiceInterface {
 
@@ -27,4 +29,9 @@ public class CallService implements CallServiceInterface {
         return page.map(callEntity -> (mapper.fromDbo(callEntity)));
     }
 
+    @Override
+    public void saveListCalls(List<Call> list) {
+        final List<CallEntity> entityList = mapper.listToDbo(list);
+        repository.saveAll(entityList);
+    }
 }

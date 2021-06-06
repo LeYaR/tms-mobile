@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TowerService implements TowerServiceInterface {
 
@@ -27,4 +29,9 @@ public class TowerService implements TowerServiceInterface {
         return page.map(towerEntity -> (mapper.fromDbo(towerEntity)));
     }
 
+    @Override
+    public List<Tower> getListTowers() {
+        final List<TowerEntity> list = repository.findAll();
+        return mapper.listFromDbo(list);
+    }
 }
