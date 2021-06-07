@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Calls</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
 </head>
 <body>
-<div>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
     <h1>Calls list</h1>
     <table border="1">
         <thead>
