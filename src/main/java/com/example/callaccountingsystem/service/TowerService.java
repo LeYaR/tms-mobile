@@ -30,8 +30,8 @@ public class TowerService implements TowerServiceInterface {
     }
 
     @Override
-    public List<Tower> getListTowers() {
-        final List<TowerEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public List<Integer> getAllListTowerId() {
+        return repository.findAllById();
     }
+
 }

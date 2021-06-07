@@ -10,15 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HomeController {
 
-    private final GenerationServiceInterface generationService;
+    private final GenerationServiceInterface generationServiceInterface;
     private final CallServiceInterface callServiceInterface;
 
-    public HomeController(GenerationServiceInterface generationService, CallServiceInterface callServiceInterface) {
-        this.generationService = generationService;
+    public HomeController(CallServiceInterface callServiceInterface, GenerationServiceInterface generationServiceInterface) {
         this.callServiceInterface = callServiceInterface;
+        this.generationServiceInterface = generationServiceInterface;
+
     }
 
-    @GetMapping(value = "/home")
+    @GetMapping("/home")
     public ModelAndView showForm(Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home");
@@ -27,6 +28,6 @@ public class HomeController {
 
 
     public void generate(Model model) {
-        generationService.generate();
+        generationServiceInterface.generate();
     }
 }

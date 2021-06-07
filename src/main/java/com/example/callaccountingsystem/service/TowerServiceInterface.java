@@ -9,5 +9,5 @@ public interface TowerServiceInterface {
 
     Page<Tower> getAllTowers(int currentPage, int pageSize);
 
-    List<Tower> getListTowers();
+    List<Integer> getAllListTowerId();
 }

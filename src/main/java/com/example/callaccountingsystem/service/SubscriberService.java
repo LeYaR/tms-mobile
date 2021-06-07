@@ -30,9 +30,8 @@ public class SubscriberService implements SubscriberServiceInterface {
     }
 
     @Override
-    public List<Subscriber> getListSubscribers() {
-        final List<SubscriberEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public List<Long> getAllPhoneNumbers() {
+        return repository.findAllByPhoneNumber();
     }
 
 }

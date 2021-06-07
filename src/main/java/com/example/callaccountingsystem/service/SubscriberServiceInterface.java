@@ -9,5 +9,5 @@ public interface SubscriberServiceInterface {
 
     Page<Subscriber> getAllSubscribers(int currentPage, int pageSize);
 
-    List<Subscriber> getListSubscribers();
+    List<Long> getAllPhoneNumbers();
 }

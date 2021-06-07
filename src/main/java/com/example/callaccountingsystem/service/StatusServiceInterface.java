@@ -9,5 +9,5 @@ public interface StatusServiceInterface {
 
     Page<Status> getAllStatuses(int currentPage, int pageSize);
 
-    List<Status> getListStatuses();
+    List<Integer> getAllListStatusCode();
 }

@@ -30,9 +30,8 @@ public class StatusService implements StatusServiceInterface {
     }
 
     @Override
-    public List<Status> getListStatuses() {
-        final List<StatusEntity> list = repository.findAll();
-        return mapper.listFromDbo(list);
+    public List<Integer> getAllListStatusCode() {
+        return repository.findAllByCode();
     }
 
 }
