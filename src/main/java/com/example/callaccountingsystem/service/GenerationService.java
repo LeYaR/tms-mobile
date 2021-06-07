@@ -22,7 +22,9 @@ public class GenerationService implements GenerationServiceInterface {
     private final StatusServiceInterface statusServiceInterface;
     private final CallServiceInterface callServiceInterface;
 
-    public GenerationService(SubscriberServiceInterface subscriberServiceInterface, TowerServiceInterface towerServiceInterface, StatusServiceInterface statusServiceInterface, CallServiceInterface callServiceInterface) {
+    public GenerationService(SubscriberServiceInterface subscriberServiceInterface,
+                             TowerServiceInterface towerServiceInterface, StatusServiceInterface statusServiceInterface,
+                             CallServiceInterface callServiceInterface) {
         this.subscriberServiceInterface = subscriberServiceInterface;
         this.towerServiceInterface = towerServiceInterface;
         this.statusServiceInterface = statusServiceInterface;
@@ -30,7 +32,14 @@ public class GenerationService implements GenerationServiceInterface {
     }
 
     @Override
-    public void generate() {
+    public void generateMillion() {
+        long start = System.currentTimeMillis();
+        generate(1000000, 01, 2000, 00, 2020);
+        System.out.println("Time: " + (System.currentTimeMillis() - start));
+    }
+
+    @Override
+    public void generate(int quantity, int fromMonth, int fromYear, int toMonth, int toYear) {
         final List<Call> callList = new ArrayList<>();
         final List<Long> listPhoneNumber = subscriberServiceInterface.getAllPhoneNumbers();
         final List<Integer> listTowerName = towerServiceInterface.getAllListTowerId();
@@ -40,16 +49,22 @@ public class GenerationService implements GenerationServiceInterface {
         int listPhoneNumberSize = listPhoneNumber.size();
         int towerListSize = listTowerName.size();
         int statusListSize = listStatusName.size();
-        final Subscriber subscriber1 = new Subscriber();
-        final Subscriber subscriber2 = new Subscriber();
-        final Tower tower = new Tower();
-        final Status status = new Status();
+        int toYearForRandom = (toMonth == 12) ? (toYear + 1) : toYear;
+        int toMonthForRandom = (toMonth == 12) ? 01 : (toMonth + 1);
 
-        for (int i = 1; i <= 1000000; i++) {
-            date = new Timestamp(ThreadLocalRandom.current().nextLong(Timestamp.valueOf("2000-01-01 00:00:00").getTime(), Timestamp.valueOf("2021-01-01 00:00:00").getTime())).toLocalDateTime();
+
+        for (int i = 1; i <= quantity; i++) {
+            Subscriber subscriber1 = new Subscriber();
+            Subscriber subscriber2 = new Subscriber();
+            Tower tower = new Tower();
+            Status status = new Status();
+            date = new Timestamp(ThreadLocalRandom.current().nextLong(Timestamp.valueOf(fromYear + "-" + fromMonth
+                    + "-01 00:00:00").getTime(), Timestamp.valueOf(toYearForRandom + "-" + toMonthForRandom
+                    + "-01 00:00:00").getTime())).toLocalDateTime();
             subscriber1.setPhoneNumber(listPhoneNumber.get(ThreadLocalRandom.current().nextInt(listPhoneNumberSize)));
             subscriber2.setPhoneNumber(listPhoneNumber.get(ThreadLocalRandom.current().nextInt(listPhoneNumberSize)));
-            duration = LocalTime.of(ThreadLocalRandom.current().nextInt(24), ThreadLocalRandom.current().nextInt(60), ThreadLocalRandom.current().nextInt(60));
+            duration = LocalTime.of(ThreadLocalRandom.current().nextInt(24), ThreadLocalRandom.current()
+                    .nextInt(60), ThreadLocalRandom.current().nextInt(60));
             tower.setId(listTowerName.get(ThreadLocalRandom.current().nextInt(towerListSize)));
             status.setCode(listStatusName.get(ThreadLocalRandom.current().nextInt(statusListSize)));
 
@@ -57,4 +72,5 @@ public class GenerationService implements GenerationServiceInterface {
         }
         callServiceInterface.saveListCalls(callList);
     }
+
 }
