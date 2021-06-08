@@ -12,7 +12,7 @@
 
 <header th:insert="blocks/header :: header"/>
 
-<form class="search" action="#" th:method="POST" th:action="@{/generation-facts}">
+<form class="search" th:method="POST" th:action="@{/generation-facts}">
     <div><input type="number" name="quantity" placeholder="Quantity" min="1" max="10000" value="" required></div>
     <span>
         <input type="number" name="fromMonth" placeholder="from month" value="" size="7" min="1" max="12"
@@ -24,14 +24,12 @@
         <input type="number" name="toYear" placeholder="to year" value="" required min="1900">
     </span>
     <div>
-        <button class="generation" type="submit">Generate</button>
+        <input type="submit" value="Generate"/>
     </div>
 </form>
 
-<form class="search" action="#" th:method="POST" th:action="@{/generation-million}">
-    <div class="genBut">
-        <button type="submit">Generation 1 million facts</button>
-    </div>
+<form class="search" th:method="POST" th:action="@{/generation-million}" >
+    <input type="submit" name="" value="Generating 1 million factors">
 </form>
 
 </body>

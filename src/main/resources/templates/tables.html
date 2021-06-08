@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Tables</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/home/search.css}" rel="stylesheet"/>
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"/>
+
+    <div class="search">
+        <form th:method="GET" th:action="@{/address}">
+            <input type="submit" value="address"/>
+        </form>
+        <form th:method="GET" th:action="@{/call}">
+            <input type="submit" value="call"/>
+        </form>
+        <form th:method="GET" th:action="@{/city}">
+            <input type="submit" value="city"/>
+        </form>
+        <form th:method="GET" th:action="@{/client}">
+            <input type="submit" value="client"/>
+        </form>
+        <form th:method="GET" th:action="@{/contract}">
+            <input type="submit" value="contract"/>
+        </form>
+        <form th:method="GET" th:action="@{/country}">
+            <input type="submit" value="country"/>
+        </form>
+        <form th:method="GET" th:action="@{/currency}">
+            <input type="submit" value="currency"/>
+        </form>
+        <form th:method="GET" th:action="@{/mobile-operator}">
+            <input type="submit" value="mobile operator"/>
+        </form>
+        <form th:method="GET" th:action="@{/passport}">
+            <input type="submit" value="passport"/>
+        </form>
+        <form th:method="GET" th:action="@{/pricing-unit}">
+            <input type="submit" value="pricing unit"/>
+        </form>
+        <form th:method="GET" th:action="@{/status}">
+            <input type="submit" value="status"/>
+        </form>
+        <form th:method="GET" th:action="@{/street}">
+            <input type="submit" value="street"/>
+        </form>
+        <form th:method="GET" th:action="@{/subscriber}">
+            <input type="submit" value="subscriber"/>
+        </form>
+        <form th:method="GET" th:action="@{/tariff-plan}">
+            <input type="submit" value="tariff plan"/>
+        </form>
+        <form th:method="GET" th:action="@{/tower}">
+            <input type="submit" value="tower"/>
+        </form>
+    </div>
+
+</body>
+</html>
