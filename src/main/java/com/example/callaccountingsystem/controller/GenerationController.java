@@ -32,7 +32,14 @@ public class GenerationController {
     @PostMapping("/generation-million")
     public ModelAndView generate() {
         generationServiceInterface.generateMillion();
-        return new ModelAndView("redirect:/call");
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        generationServiceInterface.generateMillion();
+        return new ModelAndView("redirect:/generation");
     }
 
     @PostMapping("/generation-facts")

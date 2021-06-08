@@ -1,4 +1,4 @@
-package com.example.callaccountingsystem.configuration;
+package com.example.callaccountingsystem.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -12,12 +12,12 @@ import java.util.concurrent.Executor;
 @EnableAsync
 public class AsyncConfiguration {
 
-    @Bean(name = "taskExecutor")
+    @Bean(name = "generationThread")
     public Executor taskExecutor() {
         final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(30);
         executor.setMaxPoolSize(30);
-        executor.setQueueCapacity(100);
+        executor.setQueueCapacity(500);
         executor.setThreadNamePrefix("generationThread-");
         executor.initialize();
         return executor;

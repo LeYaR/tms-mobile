@@ -1,10 +1,12 @@
 package com.example.callaccountingsystem.service;
 
+import org.springframework.scheduling.annotation.Async;
+
 public interface GenerationServiceInterface {
 
-    //    @Async("taskExecutor")
+    @Async("generationThread")
     void generateMillion();
 
-    //    @Async("taskExecutor")
     void generate(int quantity, int fromMonth, int fromYear, int toMonth, int toYear);
 }
+

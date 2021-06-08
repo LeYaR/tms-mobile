@@ -34,7 +34,7 @@ public class GenerationService implements GenerationServiceInterface {
     @Override
     public void generateMillion() {
         long start = System.currentTimeMillis();
-        generate(1000000, 01, 2000, 00, 2020);
+        generate(125000, 01, 2000, 00, 2020);
         System.out.println("Time: " + (System.currentTimeMillis() - start));
     }
 
