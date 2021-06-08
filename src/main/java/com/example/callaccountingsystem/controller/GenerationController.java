@@ -1,8 +1,7 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.exception.IllegalPeriodForGeneration;
-import com.example.callaccountingsystem.service.CallServiceInterface;
-import com.example.callaccountingsystem.service.GenerationServiceInterface;
+import com.example.callaccountingsystem.service.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +9,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 public class GenerationController {
 
     private final GenerationServiceInterface generationServiceInterface;
     private final CallServiceInterface callServiceInterface;
+    private final SubscriberServiceInterface subscriberServiceInterface;
+    private final TowerServiceInterface towerServiceInterface;
+    private final StatusServiceInterface statusServiceInterface;
 
     public GenerationController(CallServiceInterface callServiceInterface,
-                                GenerationServiceInterface generationServiceInterface) {
+                                GenerationServiceInterface generationServiceInterface,
+                                SubscriberServiceInterface subscriberServiceInterface,
+                                TowerServiceInterface towerServiceInterface,
+                                StatusServiceInterface statusServiceInterface) {
         this.callServiceInterface = callServiceInterface;
         this.generationServiceInterface = generationServiceInterface;
+        this.subscriberServiceInterface = subscriberServiceInterface;
+        this.towerServiceInterface = towerServiceInterface;
+        this.statusServiceInterface = statusServiceInterface;
     }
 
     @GetMapping("/generation")
@@ -31,14 +41,17 @@ public class GenerationController {
 
     @PostMapping("/generation-million")
     public ModelAndView generate() {
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
-        generationServiceInterface.generateMillion();
+        final List<Long> listPhoneNumber = subscriberServiceInterface.getAllPhoneNumbers();
+        final List<Integer> listTowerName = towerServiceInterface.getAllListTowerId();
+        final List<Integer> listStatusName = statusServiceInterface.getAllListStatusCode();
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
+        generationServiceInterface.generateMillion(listPhoneNumber, listTowerName, listStatusName);
         return new ModelAndView("redirect:/generation");
     }
 
@@ -46,10 +59,13 @@ public class GenerationController {
     public ModelAndView generateFacts(@RequestParam(name = "quantity") int quantity, @RequestParam(name = "fromMonth")
             int fromMonth, @RequestParam(name = "fromYear") int fromYear, @RequestParam(name = "toMonth") int toMonth,
                                       @RequestParam(name = "toYear") int toYear) {
-        if (fromYear>toYear || (fromYear==toYear && fromMonth>toMonth)){
+        if (fromYear > toYear || (fromYear == toYear && fromMonth > toMonth)) {
             throw new IllegalPeriodForGeneration("Invalid period.");
         }
-        generationServiceInterface.generate(quantity, fromMonth, fromYear, toMonth, toYear);
+        final List<Long> listPhoneNumber = subscriberServiceInterface.getAllPhoneNumbers();
+        final List<Integer> listTowerName = towerServiceInterface.getAllListTowerId();
+        final List<Integer> listStatusName = statusServiceInterface.getAllListStatusCode();
+        generationServiceInterface.generate(quantity, fromMonth, fromYear, toMonth, toYear, listPhoneNumber, listTowerName, listStatusName);
         return new ModelAndView("redirect:/call");
     }
 }

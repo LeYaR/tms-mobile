@@ -17,33 +17,24 @@ import java.util.concurrent.ThreadLocalRandom;
 @Service
 public class GenerationService implements GenerationServiceInterface {
 
-    private final SubscriberServiceInterface subscriberServiceInterface;
-    private final TowerServiceInterface towerServiceInterface;
-    private final StatusServiceInterface statusServiceInterface;
     private final CallServiceInterface callServiceInterface;
 
-    public GenerationService(SubscriberServiceInterface subscriberServiceInterface,
-                             TowerServiceInterface towerServiceInterface, StatusServiceInterface statusServiceInterface,
-                             CallServiceInterface callServiceInterface) {
-        this.subscriberServiceInterface = subscriberServiceInterface;
-        this.towerServiceInterface = towerServiceInterface;
-        this.statusServiceInterface = statusServiceInterface;
+    public GenerationService(CallServiceInterface callServiceInterface) {
         this.callServiceInterface = callServiceInterface;
     }
 
     @Override
-    public void generateMillion() {
+    public void generateMillion(List<Long> listPhoneNumber, List<Integer> listTowerName, List<Integer> listStatusName) {
         long start = System.currentTimeMillis();
-        generate(125000, 01, 2000, 00, 2020);
+        generate(125000, 01, 2000, 00, 2020, listPhoneNumber, listTowerName,
+                listStatusName);
         System.out.println("Time: " + (System.currentTimeMillis() - start));
     }
 
     @Override
-    public void generate(int quantity, int fromMonth, int fromYear, int toMonth, int toYear) {
-        final List<Call> callList = new ArrayList<>();
-        final List<Long> listPhoneNumber = subscriberServiceInterface.getAllPhoneNumbers();
-        final List<Integer> listTowerName = towerServiceInterface.getAllListTowerId();
-        final List<Integer> listStatusName = statusServiceInterface.getAllListStatusCode();
+    public void generate(int quantity, int fromMonth, int fromYear, int toMonth, int toYear, List<Long> listPhoneNumber,
+                         List<Integer> listTowerName, List<Integer> listStatusName) {
+        final List<Call> callList = new ArrayList<>(125000);
         LocalDateTime date;
         LocalTime duration;
         int listPhoneNumberSize = listPhoneNumber.size();
