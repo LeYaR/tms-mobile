@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tower")
 public class TowerController {
 
     private final TowerServiceInterface service;
@@ -19,7 +18,7 @@ public class TowerController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/tower")
     public ModelAndView viewAllTowers(Model model,
                                       @RequestParam("page") Optional<Integer> page,
                                       @RequestParam("size") Optional<Integer> size) {

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/pricing-unit")
 public class PricingUnitController {
 
     private final PricingUnitServiceInterface service;
@@ -19,17 +18,15 @@ public class PricingUnitController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/pricing-unit")
     public ModelAndView viewAllPricingUnits(Model model,
                                             @RequestParam("page") Optional<Integer> page,
                                             @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<PricingUnit> pricingUnits = service.getAllPricingUnits(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, pricingUnits);
         model.addAttribute("pricingUnits", pricingUnits);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pricingUnit");
         return modelAndView;

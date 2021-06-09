@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/city")
 public class CityController {
 
     private final CityServiceInterface service;
@@ -19,17 +18,15 @@ public class CityController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/city")
     public ModelAndView viewAllCities(Model model,
                                       @RequestParam("page") Optional<Integer> page,
                                       @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<City> cityPage = service.getAllCity(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, cityPage);
         model.addAttribute("cities", cityPage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("city");
         return modelAndView;

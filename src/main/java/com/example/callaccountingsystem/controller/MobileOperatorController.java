@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/mobile-operator")
 public class MobileOperatorController {
 
     private final MobileOperatorServiceInterface service;
@@ -19,17 +18,15 @@ public class MobileOperatorController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/mobile-operator")
     public ModelAndView viewAllMobileOperators(Model model,
                                                @RequestParam("page") Optional<Integer> page,
                                                @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<MobileOperator> mobileOperatorPage = service.getAllMobileOperators(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, mobileOperatorPage);
         model.addAttribute("mobileOperators", mobileOperatorPage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mobileOperator");
         return modelAndView;
