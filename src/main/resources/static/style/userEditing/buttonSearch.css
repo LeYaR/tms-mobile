@@ -19,4 +19,9 @@ input[type = "number"]{
 input[type = "number"]:focus{
     border-color: #2ecc71;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
