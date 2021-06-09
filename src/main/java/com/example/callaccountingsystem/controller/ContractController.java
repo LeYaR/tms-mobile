@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/contract")
 public class ContractController {
 
     private final ContractServiceInterface service;
@@ -19,17 +18,15 @@ public class ContractController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/contract")
     public ModelAndView viewAllContracts(Model model,
                                          @RequestParam("page") Optional<Integer> page,
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<Contract> contractPage = service.getAllContracts(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, contractPage);
         model.addAttribute("contracts", contractPage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("contract");
         return modelAndView;

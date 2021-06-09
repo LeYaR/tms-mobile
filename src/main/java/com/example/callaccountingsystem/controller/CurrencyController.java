@@ -1,6 +1,5 @@
 package com.example.callaccountingsystem.controller;
 
-import com.example.callaccountingsystem.domain.dto.Address;
 import com.example.callaccountingsystem.domain.dto.Currency;
 import com.example.callaccountingsystem.service.CurrencyServiceInterface;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/currency")
 public class CurrencyController {
 
     private final CurrencyServiceInterface service;
@@ -20,17 +18,15 @@ public class CurrencyController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/currency")
     public ModelAndView viewAllCurrencies(Model model,
                                           @RequestParam("page") Optional<Integer> page,
                                           @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<Currency> currencyPage = service.getAllCurrencies(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, currencyPage);
         model.addAttribute("currencies", currencyPage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("currency");
         return modelAndView;

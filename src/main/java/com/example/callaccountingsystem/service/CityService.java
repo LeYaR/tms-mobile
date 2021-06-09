@@ -29,16 +29,16 @@ public class CityService implements CityServiceInterface {
 
     @Override
     public City get(Long id) {
-        return null;
+        return mapper.fromDbo(repository.findById(id).get());
     }
 
     @Override
     public void save(City city) {
-
+        repository.save(mapper.toDbo(city));
     }
 
     @Override
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 }

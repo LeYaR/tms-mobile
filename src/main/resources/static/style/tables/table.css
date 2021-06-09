@@ -7,8 +7,8 @@
     font-size: 0.9em;
     font-family: sans-serif;
     overflow: auto;
-    height: 590px;
-    width: 800px;
+    height: max-content;
+    width: 1300px;
     padding: 10px;
 }
 .table thead tr {

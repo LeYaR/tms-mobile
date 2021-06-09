@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/passport")
 public class PassportController {
 
     private final PassportServiceInterface service;
@@ -19,17 +18,15 @@ public class PassportController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/passport")
     public ModelAndView viewAllPassports(Model model,
                                          @RequestParam("page") Optional<Integer> page,
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<Passport> passportPage = service.getAllPassports(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, passportPage);
         model.addAttribute("passports", passportPage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("passport");
         return modelAndView;

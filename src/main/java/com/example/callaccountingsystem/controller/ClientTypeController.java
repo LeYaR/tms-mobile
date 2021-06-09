@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/client")
 public class ClientTypeController {
 
     private final ClientTypeServiceInterface service;
@@ -19,17 +18,15 @@ public class ClientTypeController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/client")
     public ModelAndView viewClientsType(Model model,
                                         @RequestParam("page") Optional<Integer> page,
                                         @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
         final Page<ClientType> clientTypePage = service.getAllClients(currentPage, pageSize);
         new Pagination().getPagination(model, currentPage, clientTypePage);
         model.addAttribute("clients", clientTypePage);
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("client");
         return modelAndView;
