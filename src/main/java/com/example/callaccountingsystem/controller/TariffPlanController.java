@@ -38,14 +38,14 @@ public class TariffPlanController {
 
     @RequestMapping("tariff-plan/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("tariffPlansEdit");
-        mav.addObject("tariffPlans", service.get(id));
+        ModelAndView mav = new ModelAndView("tariffPlanEdit");
+        mav.addObject("tariffPlan", service.get(id));
         return mav;
     }
 
     @RequestMapping(value = "tariff-plan/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("tariffPlans") TariffPlan tariffPlans) {
-        service.save(tariffPlans);
+    public String save(@ModelAttribute("tariffPlan") TariffPlan tariffPlan) {
+        service.save(tariffPlan);
         return "redirect:/tariff-plan";
     }
 

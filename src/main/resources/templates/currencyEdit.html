@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit currency</title>
+</head>
+<body>
+<div align="center">
+    <h1>Edit currency</h1>
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${currency}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID:</td>
+                <td><input type="text" th:field="${currency.id}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="${currency.name}"/></td>
+            </tr>
+            <tr>
+                <td>Code:</td>
+                <td><input type="text" th:field="${currency.code}"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

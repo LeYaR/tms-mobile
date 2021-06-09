@@ -38,7 +38,7 @@ public class CityController {
     @RequestMapping("city/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("cityEdit");
-        mav.addObject("address", service.get(id));
+        mav.addObject("city", service.get(id));
         return mav;
     }
 
