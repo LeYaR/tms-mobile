@@ -76,6 +76,11 @@
             <td th:text="${subscriber.mobileOperator.code}"></td>
             <td th:text="${subscriber.email}"></td>
             <td th:text="${subscriber.birthday}"></td>
+            <td>
+                <a th:href="@{'/subscriber/edit/' + ${subscriber.phoneNumber}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/subscriber/delete/' + ${subscriber.phoneNumber}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

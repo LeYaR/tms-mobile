@@ -4,10 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Tower;
 import com.example.callaccountingsystem.service.TowerServiceInterface;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -23,7 +20,8 @@ public class TowerController {
     }
 
     @GetMapping
-    public ModelAndView viewAllTowers(Model model, @RequestParam("page") Optional<Integer> page,
+    public ModelAndView viewAllTowers(Model model,
+                                      @RequestParam("page") Optional<Integer> page,
                                       @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
@@ -35,5 +33,24 @@ public class TowerController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("tower");
         return modelAndView;
+    }
+
+    @RequestMapping("tower/edit/{id}")
+    public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
+        ModelAndView mav = new ModelAndView("towerEdit");
+        mav.addObject("tower", service.get(id));
+        return mav;
+    }
+
+    @RequestMapping(value = "tower/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("tower") Tower tower) {
+        service.save(tower);
+        return "redirect:/tower";
+    }
+
+    @RequestMapping("tower/delete/{id}")
+    public String delete(@PathVariable(name = "id") Integer id) {
+        service.delete(id);
+        return "redirect:/tower";
     }
 }

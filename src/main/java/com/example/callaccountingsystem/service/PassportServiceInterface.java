@@ -8,5 +8,11 @@ public interface PassportServiceInterface {
 
     Page<Passport> getAllPassports(int currentPage, int pageSize);
 
+    Passport get(String id);
+
+    void save(Passport passport);
+
+    void delete(String id);
+
 }
 

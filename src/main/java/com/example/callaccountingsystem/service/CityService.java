@@ -27,4 +27,18 @@ public class CityService implements CityServiceInterface {
         return page.map(cityEntity -> (mapper.fromDbo(cityEntity)));
     }
 
+    @Override
+    public City get(Long id) {
+        return null;
+    }
+
+    @Override
+    public void save(City city) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
 }

@@ -56,8 +56,10 @@ public class GenerationController {
     }
 
     @PostMapping("/generation-facts")
-    public ModelAndView generateFacts(@RequestParam(name = "quantity") int quantity, @RequestParam(name = "fromMonth")
-            int fromMonth, @RequestParam(name = "fromYear") int fromYear, @RequestParam(name = "toMonth") int toMonth,
+    public ModelAndView generateFacts(@RequestParam(name = "quantity") int quantity,
+                                      @RequestParam(name = "fromMonth") int fromMonth,
+                                      @RequestParam(name = "fromYear") int fromYear,
+                                      @RequestParam(name = "toMonth") int toMonth,
                                       @RequestParam(name = "toYear") int toYear) {
         if (fromYear > toYear || (fromYear == toYear && fromMonth > toMonth)) {
             throw new IllegalPeriodForGeneration("Invalid period.");

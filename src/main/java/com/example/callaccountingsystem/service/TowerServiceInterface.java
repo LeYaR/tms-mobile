@@ -10,4 +10,11 @@ public interface TowerServiceInterface {
     Page<Tower> getAllTowers(int currentPage, int pageSize);
 
     List<Integer> getAllListTowerId();
+
+    Tower get(Integer id);
+
+    void save(Tower tower);
+
+    void delete(Integer id);
+
 }

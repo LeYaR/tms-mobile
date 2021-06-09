@@ -26,4 +26,18 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
         return page.map(mobileOperatorEntity -> (mapper.fromDbo(mobileOperatorEntity)));
     }
 
+    @Override
+    public MobileOperator get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(MobileOperator mobileOperator) {
+        repository.save(mapper.toDbo(mobileOperator));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

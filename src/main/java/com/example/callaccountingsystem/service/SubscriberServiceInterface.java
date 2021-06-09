@@ -10,4 +10,11 @@ public interface SubscriberServiceInterface {
     Page<Subscriber> getAllSubscribers(int currentPage, int pageSize);
 
     List<Long> getAllPhoneNumbers();
+
+    Subscriber get(Long phoneNumber);
+
+    void save(Subscriber subscriber);
+
+    void delete(Long phoneNumber);
+
 }

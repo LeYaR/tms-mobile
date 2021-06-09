@@ -36,6 +36,11 @@
             <td th:text="${tariffPlan.currency.numericalCode}"></td>
             <td th:text="${tariffPlan.currency.name}"></td>
             <td th:text="${tariffPlan.currency.code}"></td>
+            <td>
+                <a th:href="@{'/tariff-plan/edit/' + ${tariffPlan.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/tariff-plan/delete/' + ${tariffPlan.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

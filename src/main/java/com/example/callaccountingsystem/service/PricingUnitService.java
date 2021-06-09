@@ -27,4 +27,18 @@ public class PricingUnitService implements PricingUnitServiceInterface {
         return page.map(pricingUnitEntity -> (mapper.fromDbo(pricingUnitEntity)));
     }
 
+    @Override
+    public PricingUnit get(Integer id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(PricingUnit pricingUnit) {
+        repository.save(mapper.toDbo(pricingUnit));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }

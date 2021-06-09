@@ -7,4 +7,9 @@ public interface ClientTypeServiceInterface {
 
     Page<ClientType> getAllClients(int currentPage, int pageSize);
 
+    ClientType get(Integer id);
+
+    void save(ClientType clientType);
+
+    void delete(Integer id);
 }

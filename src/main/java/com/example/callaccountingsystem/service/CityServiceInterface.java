@@ -7,4 +7,10 @@ public interface CityServiceInterface {
 
     Page<City> getAllCity(int currentPage, int pageSize);
 
+    City get(Long id);
+
+    void save(City city);
+
+    void delete(Long id);
+
 }

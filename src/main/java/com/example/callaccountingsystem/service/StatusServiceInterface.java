@@ -10,4 +10,11 @@ public interface StatusServiceInterface {
     Page<Status> getAllStatuses(int currentPage, int pageSize);
 
     List<Integer> getAllListStatusCode();
+
+    Status get(Integer code);
+
+    void save(Status status);
+
+    void delete(Integer code);
+
 }

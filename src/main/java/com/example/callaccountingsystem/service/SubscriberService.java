@@ -34,4 +34,18 @@ public class SubscriberService implements SubscriberServiceInterface {
         return repository.findAllByPhoneNumber();
     }
 
+    @Override
+    public Subscriber get(Long phoneNumber) {
+        return mapper.fromDbo(repository.findById(phoneNumber).get());
+    }
+
+    @Override
+    public void save(Subscriber subscriber) {
+        repository.save(mapper.toDbo(subscriber));
+    }
+
+    @Override
+    public void delete(Long phoneNumber) {
+        repository.deleteById(phoneNumber);
+    }
 }

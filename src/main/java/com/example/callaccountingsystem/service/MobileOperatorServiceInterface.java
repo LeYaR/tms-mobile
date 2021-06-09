@@ -7,4 +7,10 @@ public interface MobileOperatorServiceInterface {
 
     Page<MobileOperator> getAllMobileOperators(int currentPage, int pageSize);
 
+    MobileOperator get(Long id);
+
+    void save(MobileOperator mobileOperator);
+
+    void delete(Long id);
+
 }

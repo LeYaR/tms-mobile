@@ -27,4 +27,18 @@ public class CountryService implements CountryServiceInterface {
         return page.map(countryEntity -> (mapper.fromDbo(countryEntity)));
     }
 
+    @Override
+    public Country get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Country country) {
+        repository.save(mapper.toDbo(country));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

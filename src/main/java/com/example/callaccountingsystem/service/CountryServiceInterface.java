@@ -7,4 +7,10 @@ public interface CountryServiceInterface {
 
     Page<Country> getAllCountries(int currentPage, int pageSize);
 
+    Country get(Long id);
+
+    void save(Country country);
+
+    void delete(Long id);
+
 }

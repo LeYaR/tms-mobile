@@ -24,6 +24,11 @@
         <tr th:each="status : ${statuses}">
             <td th:text="${status.code}"></td>
             <td th:text="${status.status}"></td>
+            <td>
+                <a th:href="@{'/status/edit/' + ${status.code}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/status/delete/' + ${status.code}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

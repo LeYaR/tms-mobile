@@ -34,4 +34,18 @@ public class StatusService implements StatusServiceInterface {
         return repository.findAllByCode();
     }
 
+    @Override
+    public Status get(Integer code) {
+        return mapper.fromDbo(repository.findById(code).get());
+    }
+
+    @Override
+    public void save(Status status) {
+        repository.save(mapper.toDbo(status));
+    }
+
+    @Override
+    public void delete(Integer code) {
+        repository.deleteById(code);
+    }
 }

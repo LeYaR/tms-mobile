@@ -22,6 +22,11 @@
         <tbody>
         <tr th:each="country : ${countries}">
             <td th:text="${country.country}"></td>
+            <td>
+                <a th:href="@{'/country/edit/' + ${country.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/country/delete/' + ${country.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

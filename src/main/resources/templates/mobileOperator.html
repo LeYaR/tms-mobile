@@ -24,6 +24,11 @@
         <tr th:each="mobileOperator : ${mobileOperators}">
             <td th:text="${mobileOperator.operator}"></td>
             <td th:text="${mobileOperator.code}"></td>
+            <td>
+                <a th:href="@{'/mobile-operator/edit/' + ${mobileOperator.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/mobile-operator/delete/' + ${mobileOperator.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -24,6 +24,11 @@
         <tr th:each="city: ${cities}">
             <td th:text="${city.country.country}"></td>
             <td th:text="${city.city}"></td>
+            <td>
+                <a th:href="@{'/city/edit/' + ${city.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/city/delete/' + ${city.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

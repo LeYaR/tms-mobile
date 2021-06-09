@@ -4,10 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Contract;
 import com.example.callaccountingsystem.service.ContractServiceInterface;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -23,7 +20,8 @@ public class ContractController {
     }
 
     @GetMapping
-    public ModelAndView viewAllContracts(Model model, @RequestParam("page") Optional<Integer> page,
+    public ModelAndView viewAllContracts(Model model,
+                                         @RequestParam("page") Optional<Integer> page,
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
@@ -35,5 +33,25 @@ public class ContractController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("contract");
         return modelAndView;
+    }
+
+
+    @RequestMapping("contract/edit/{id}")
+    public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
+        ModelAndView mav = new ModelAndView("contractEdit");
+        mav.addObject("contract", service.get(id));
+        return mav;
+    }
+
+    @RequestMapping(value = "contract/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("contract") Contract contract) {
+        service.save(contract);
+        return "redirect:/contract";
+    }
+
+    @RequestMapping("contract/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id) {
+        service.delete(id);
+        return "redirect:/contract";
     }
 }

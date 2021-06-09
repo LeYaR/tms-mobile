@@ -27,4 +27,18 @@ public class TariffPlanService implements TariffPlanServiceInterface {
         return page.map(tariffPlanEntity -> (mapper.fromDbo(tariffPlanEntity)));
     }
 
+    @Override
+    public TariffPlan get(Integer id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(TariffPlan tariffPlan) {
+        repository.save(mapper.toDbo(tariffPlan));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }

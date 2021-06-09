@@ -27,4 +27,18 @@ public class StreetService implements StreetServiceInterface {
         return page.map(streetEntity -> (mapper.fromDbo(streetEntity)));
     }
 
+    @Override
+    public Street get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Street street) {
+        repository.save(mapper.toDbo(street));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

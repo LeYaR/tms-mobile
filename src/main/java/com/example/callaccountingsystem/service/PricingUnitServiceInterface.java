@@ -7,4 +7,10 @@ public interface PricingUnitServiceInterface {
 
     Page<PricingUnit> getAllPricingUnits(int currentPage, int pageSize);
 
+    PricingUnit get(Integer id);
+
+    void save(PricingUnit pricingUnit);
+
+    void delete(Integer id);
+
 }

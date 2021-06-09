@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StatusRepository extends JpaRepository<StatusEntity, Long> {
+public interface StatusRepository extends JpaRepository<StatusEntity, Integer> {
 
     Page<StatusEntity> findAll(Pageable pageable);
 

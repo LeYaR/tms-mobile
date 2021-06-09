@@ -34,4 +34,18 @@ public class TowerService implements TowerServiceInterface {
         return repository.findAllById();
     }
 
+    @Override
+    public Tower get(Integer id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Tower tower) {
+        repository.save(mapper.toDbo(tower));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }

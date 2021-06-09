@@ -26,6 +26,11 @@
             <td th:text="${currency.numericalCode}"></td>
             <td th:text="${currency.name}"></td>
             <td th:text="${currency.code}"></td>
+            <td>
+                <a th:href="@{'/currency/edit/' + ${currency.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/currency/delete/' + ${currency.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

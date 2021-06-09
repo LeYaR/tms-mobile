@@ -26,6 +26,11 @@
             <td th:text="${tower.name}"></td>
             <td th:text="${tower.locationCity.country.country}"></td>
             <td th:text="${tower.locationCity.city}"></td>
+            <td>
+                <a th:href="@{'/tower/edit/' + ${tower.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/tower/delete/' + ${tower.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

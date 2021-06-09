@@ -7,4 +7,10 @@ public interface ContractServiceInterface {
 
     Page<Contract> getAllContracts(int currentPage, int pageSize);
 
+    Contract get(Long id);
+
+    void save(Contract contract);
+
+    void delete(Long id);
+
 }

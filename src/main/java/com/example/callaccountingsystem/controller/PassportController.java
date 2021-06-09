@@ -4,10 +4,7 @@ import com.example.callaccountingsystem.domain.dto.Passport;
 import com.example.callaccountingsystem.service.PassportServiceInterface;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -23,7 +20,8 @@ public class PassportController {
     }
 
     @GetMapping
-    public ModelAndView viewAllPassports(Model model, @RequestParam("page") Optional<Integer> page,
+    public ModelAndView viewAllPassports(Model model,
+                                         @RequestParam("page") Optional<Integer> page,
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
@@ -35,5 +33,24 @@ public class PassportController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("passport");
         return modelAndView;
+    }
+
+    @RequestMapping("passport/edit/{id}")
+    public ModelAndView showEdit(@PathVariable(name = "id") String id) {
+        ModelAndView mav = new ModelAndView("passportEdit");
+        mav.addObject("passport", service.get(id));
+        return mav;
+    }
+
+    @RequestMapping(value = "passport/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("passport") Passport passport) {
+        service.save(passport);
+        return "redirect:/passport";
+    }
+
+    @RequestMapping("passport/delete/{id}")
+    public String delete(@PathVariable(name = "id") String id) {
+        service.delete(id);
+        return "redirect:/passport";
     }
 }

@@ -28,6 +28,11 @@
             <td th:text="${passport.seriesNumber}"></td>
             <td th:text="${passport.date}"></td>
             <td th:text="${passport.issuer}"></td>
+            <td>
+                <a th:href="@{'/passport/edit/' + ${passport.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/passport/delete/' + ${passport.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

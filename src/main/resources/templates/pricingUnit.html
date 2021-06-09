@@ -22,6 +22,11 @@
         <tbody>
         <tr th:each="pricingUnit : ${pricingUnits}">
             <td th:text="${pricingUnit.unit}"></td>
+            <td>
+                <a th:href="@{'/pricing-unit/edit/' + ${pricingUnit.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/pricing-unit/delete/' + ${pricingUnit.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

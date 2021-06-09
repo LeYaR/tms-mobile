@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TowerRepository extends JpaRepository<TowerEntity, Long> {
+public interface TowerRepository extends JpaRepository<TowerEntity, Integer> {
 
     Page<TowerEntity> findAll(Pageable pageable);
 

@@ -6,4 +6,11 @@ import org.springframework.data.domain.Page;
 public interface CurrencyServiceInterface {
 
     Page<Currency> getAllCurrencies(int currentPage, int pageSize);
+
+    Currency get(Long id);
+
+    void save(Currency currency);
+
+    void delete(Long id);
+
 }

@@ -27,4 +27,18 @@ public class ContractService implements ContractServiceInterface {
         return page.map(contractEntity -> (mapper.fromDbo(contractEntity)));
     }
 
+    @Override
+    public Contract get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Contract contract) {
+        repository.save(mapper.toDbo(contract));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

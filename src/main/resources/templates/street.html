@@ -26,6 +26,11 @@
             <td th:text="${street.city.country.country}"></td>
             <td th:text="${street.city.city}"></td>
             <td th:text="${street.street}"></td>
+            <td>
+                <a th:href="@{'/street/edit/' + ${street.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/street/delete/' + ${street.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

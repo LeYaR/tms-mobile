@@ -4,10 +4,7 @@ import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import com.example.callaccountingsystem.service.PricingUnitServiceInterface;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -23,7 +20,8 @@ public class PricingUnitController {
     }
 
     @GetMapping
-    public ModelAndView viewAllPricingUnits(Model model, @RequestParam("page") Optional<Integer> page,
+    public ModelAndView viewAllPricingUnits(Model model,
+                                            @RequestParam("page") Optional<Integer> page,
                                             @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
@@ -35,5 +33,24 @@ public class PricingUnitController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pricingUnit");
         return modelAndView;
+    }
+
+    @RequestMapping("pricing-unit/edit/{id}")
+    public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
+        ModelAndView mav = new ModelAndView("pricingUnitEdit");
+        mav.addObject("pricingUnit", service.get(id));
+        return mav;
+    }
+
+    @RequestMapping(value = "pricing-unit/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
+        service.save(pricingUnit);
+        return "redirect:/pricing-unit";
+    }
+
+    @RequestMapping("pricing-unit/delete/{id}")
+    public String delete(@PathVariable(name = "id") Integer id) {
+        service.delete(id);
+        return "redirect:/pricing-unit";
     }
 }

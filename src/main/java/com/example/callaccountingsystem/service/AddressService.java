@@ -20,7 +20,6 @@ public class AddressService implements AddressServiceInterface {
         this.mapper = mapper;
     }
 
-
     @Override
     public Page<Address> getAllAddress(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
@@ -28,4 +27,17 @@ public class AddressService implements AddressServiceInterface {
         return page.map(addressEntity -> (mapper.fromDbo(addressEntity)));
     }
 
+    public Address get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Address address) {
+        repository.save(mapper.toDbo(address));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

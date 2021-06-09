@@ -3,43 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Calls</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
 <header th:insert="blocks/header :: header"/>
 
-<div class="table" id="scroll">
-    <h1>Calls list</h1>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Incoming phone number</th>
-            <th>Outgoing phone number</th>
-            <th>Duration</th>
-            <th>Tower</th>
-            <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="call : ${calls}">
-            <td th:text="${call.date}"></td>
-            <td th:text="${call.incomingSubscriber.phoneNumber}"></td>
-            <td th:text="${call.outgoingSubscriber.phoneNumber}"></td>
-            <td th:text="${call.duration}"></td>
-            <td th:text="${call.tower.name}"></td>
-            <td th:text="${call.status.status}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <span th:if="${totalPages > 0}"
-          th:each="pageNumber : ${pageNumbers}">
+<form action="#" th:action="@{/filter}" method="post">
+<span>
+<input type="date" th:name="date1"   th:placeholder="date1" min="0"/>
+<input type="date" th:name="date2"  value="" placeholder="to date" min="0"/>
+<input type="number" th:name="incoming"  value="" placeholder="Search for incoming phone.." min="0"/>
+<input type="number" th:name="outgoing"  value="" placeholder="Search for outgoing phone.." min="0"/>
+<input type="text" th:name="tower"  value="" placeholder="Search for tower.."/>
+<input type="text" th:name="status"  value="" placeholder="Search for status.."/>
+    <button type="submit">FILTER</button>
+</span>
+</form>
+
+<form action="/call" th:method="get">
+    <div class="table" id="scroll">
+        <h1>Calls list</h1>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Incoming phone number</th>
+                <th>Outgoing phone number</th>
+                <th>Duration</th>
+                <th>Tower</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="call : ${calls}">
+                <td th:text="${call.date}"></td>
+                <td th:text="${call.incomingSubscriber.phoneNumber}"></td>
+                <td th:text="${call.outgoingSubscriber.phoneNumber}"></td>
+                <td th:text="${call.duration}"></td>
+                <td th:text="${call.tower.name}"></td>
+                <td th:text="${call.status.status}"></td>
+                <td>
+                    <a th:href="@{'/call/edit/' + ${call.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/call/delete/' + ${call.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <span th:if="${totalPages > 0}"
+              th:each="pageNumber : ${pageNumbers}">
         <a th:href="@{/call(size=${calls.size}, page=${pageNumber})}"
            th:text="${pageNumber}"
            th:class="${pageNumber==calls.number + 1} ? active"></a>
     </span>
-</div>
+    </div>
+</form>
 </body>
 </html>

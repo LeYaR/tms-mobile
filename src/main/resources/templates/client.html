@@ -22,6 +22,11 @@
         <tbody>
         <tr th:each="client: ${clients}">
             <td th:text="${client.type}"></td>
+            <td>
+                <a th:href="@{'/client/edit/' + ${client.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/client/delete/' + ${client.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

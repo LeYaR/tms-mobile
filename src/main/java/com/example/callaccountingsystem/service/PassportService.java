@@ -28,4 +28,18 @@ public class PassportService implements PassportServiceInterface {
         return page.map(passportEntity -> (mapper.fromDbo(passportEntity)));
     }
 
+    @Override
+    public Passport get(String id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Passport passport) {
+        repository.save(mapper.toDbo(passport));
+    }
+
+    @Override
+    public void delete(String id) {
+        repository.deleteById(id);
+    }
 }

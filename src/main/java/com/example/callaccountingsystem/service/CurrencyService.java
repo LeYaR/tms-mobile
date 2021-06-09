@@ -27,4 +27,18 @@ public class CurrencyService implements CurrencyServiceInterface {
         return page.map(currencyEntity -> (mapper.fromDbo(currencyEntity)));
     }
 
+    @Override
+    public Currency get(Long id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(Currency currency) {
+        repository.save(mapper.toDbo(currency));
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

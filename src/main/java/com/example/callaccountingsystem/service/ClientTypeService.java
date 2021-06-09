@@ -27,4 +27,18 @@ public class ClientTypeService implements ClientTypeServiceInterface {
         return page.map(clientTypeEntity -> (mapper.fromDbo(clientTypeEntity)));
     }
 
+    @Override
+    public ClientType get(Integer id) {
+        return mapper.fromDbo(repository.findById(id).get());
+    }
+
+    @Override
+    public void save(ClientType clientType) {
+        repository.save(mapper.toDbo(clientType));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }
