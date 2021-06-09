@@ -12,26 +12,111 @@
 <header th:insert="blocks/header :: header"/>
 
 <form class="table" id="scroll" action="#" method="">   <!-- set action & method & delete this comment -->
-    <div class="user">
-        <h5>User</h5>
-        <input type="text" name="phone_number" placeholder="Phone" value="" required>
-        <input type="text" name="last_name" placeholder="Last Name" value="" required>
-        <input type="text" name="first_name" placeholder="First Name" value="" required>
-    </div>
-    <div class="passport">
-        <h5>Passport</h5>
-        <input type="text" name="series_number" placeholder="Series Number" value="" required>
-        <input type="text" name="date" placeholder="Date" value="" required>
-        <input type="text" name="issuer" placeholder="Issuer" value="" required>
-    </div>
-    <div class="address">
-        <h5>Address</h5>
-        <input type="text" name="county" placeholder="Country" value="" required>
-        <input type="text" name="city" placeholder="City" value="" required>
-        <input type="text" name="street" placeholder="Street" value="" required>
-        <input type="text" name="house" placeholder="House" value="" required>
-        <input type="text" name="flat" placeholder="Flat" value="" required>
-    </div>
+    <h1>Adding User</h1>
+    <input type="number" name="phone_number" placeholder="Phone number" value="" min="0" title="Phone number" required>
+    <input type="text" name="last_name" placeholder="Last Name" value="" pattern="^[a-zA-Z]+$" title="Last Name" required>
+    <input type="text" name="first_name" placeholder="First Name" value="" pattern="^[a-zA-Z]+$" title="First Name" required>
+    <input type="number" name="" placeholder="Passport number" value="" min="0" title="Passport number" required>
+    <input type="number" name="" placeholder="Passport series" value="" min="0" list="passportSeries" title="Passport series" required>
+        <datalist id="passportSeries">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.passport.seriesNumber}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Passport date" value="" title="Passport date, format: YYYY-MM-DD" required>  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <input type="text" name="" placeholder="Passport issuer" value="" pattern="^[a-zA-Z]+$" list="passportIssuer" title="Passport issuer" required>
+        <datalist id="passportIssuer">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.passport.issuer}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Country" value="" pattern="^[a-zA-Z]+$" list="county" title="Country" required>
+        <datalist id="county">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.address.street.city.country.country}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="City" value="" pattern="^[a-zA-Z]+$" list="city" title="City" required>
+        <datalist id="city">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.address.street.city.city}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Street" value="" pattern="^[a-zA-Z]+$" title="Street" required>
+    <input type="number" name="" placeholder="House" value="" min="0" title="House" required>
+    <input type="number" name="" placeholder="Flat" value="" min="0" title="Flat">
+    <input type="number" name="" placeholder="Contract number" value="" min="0" title="Contract number" required>
+    <input type="text" name="" placeholder="Contract date" value="" title="Contract date, format: YYYY-MM-DD" required> <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <input type="text" name="" placeholder="Client type" value="" pattern="^[a-zA-Z]+$" list="clientTpe" title="Client type" required>
+    <datalist id="clientTpe">
+        <select>
+            <option th:each="sub : ${subscribers}" th:value="${sub.contract.clientType.type}"/>
+        </select>
+    </datalist>
+    <input type="text" name="" placeholder="Tariff plan" value="" pattern="^[a-zA-Z]+$" list="tariffPlan" title="Tariff plan" required>
+        <datalist id="tariffPlan">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.name}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Description" value="new" title="Description" required disabled>
+    <input type="number" name="" placeholder="Abonent payment" value="" min="0" pattern="\d+(\.\d{2})?" list="abonentPayment" title="Abonent payment" required>
+        <datalist id="abonentPayment">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.abonentPayment}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Unit" value="" pattern="^[a-zA-Z]+$" list="unit" title="Unit" required>
+        <datalist id="unit">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.pricingUnit.unit}"/>
+            </select>
+        </datalist>
+    <input type="number" name="" placeholder="Price" value="" min="0" pattern="\d+(\.\d{2})?" list="price" title="Price" required>
+        <datalist id="price">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.price}"/>
+            </select>
+        </datalist>
+    <input type="number" name="" placeholder="Currency numerical code" value="" min="0" list="currencyNumericalCode" title="Currency numerical code" required>
+        <datalist id="currencyNumericalCode">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.currency.numericalCode}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Currency name" value="" list="currencyName" pattern="^[a-zA-Z]+$" title="Currency name" required>
+        <datalist id="currencyName">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.currency.name}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Currency code" value="" list="currencyCode" pattern="^[a-zA-Z]+$" title="Currency code" required>
+        <datalist id="currencyCode">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.contract.tariffPlan.currency.code}"/>
+            </select>
+        </datalist>
+    <input type="number" name="" placeholder="Discount" value="0" min="0" title="Discount" required>
+    <input type="text" name="" placeholder="Mobile operator" value="" list="mobileOperator" title="Mobile operator" required>
+        <datalist id="mobileOperator">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.mobileOperator.operator}"/>
+            </select>
+        </datalist>
+    <input type="number" name="" placeholder="Operator code" value="" min="0" list="operatorCode" title="Operator code" required>
+        <datalist id="operatorCode">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.mobileOperator.code}"/>
+            </select>
+        </datalist>
+    <input type="text" name="" placeholder="Email" value="" title="Email">
+    <input type="text" name="" placeholder="Birthday" value="" list="birthday" title="Birthday" required>
+        <datalist id="birthday">
+            <select>
+                <option th:each="sub : ${subscribers}" th:value="${sub.birthday}"/>
+            </select>
+        </datalist>
+
     <input type="submit" name="" value="Add">
 </form>
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>User Editing Search</title>
+    <link th:href="@{/style/userEditing/buttonSearch.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+  <header th:insert="blocks/header :: header"/>
+
+  <form th:action="@{'/user-editing'}" th:method="GET">
+    <div class="button">
+      <input type="number" name="number" value="" placeholder="Find by Phone Number">
+    </div>
+  </form>
+
+</body>
+</html>

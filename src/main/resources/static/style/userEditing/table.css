@@ -7,7 +7,7 @@
     font-size: 0.9em;
     font-family: sans-serif;
     overflow: auto;
-    width: 700px;
+    width: 800px;
     padding: 10px;
     text-align: center;
 }
@@ -16,7 +16,7 @@
     margin-top: 20px;
 }
 
-h5{
+h1{
     color: white;
 }
 #scroll::-webkit-scrollbar {

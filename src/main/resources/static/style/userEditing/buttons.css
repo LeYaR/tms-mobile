@@ -1,4 +1,4 @@
-.table input[type = "text"]{
+.table input[type = "text"],.table input[type = "number"]{
     background: none;
     border: 2px solid #3498db;
     padding: 14px 10px;
@@ -8,9 +8,11 @@
     transition: 0.25s;
     cursor: pointer;
     text-align: center;
+    margin: 5px;
+    outline: none;
 }
 
-.table input[type = "text"]:focus{
+.table input[type = "text"]:focus,.table input[type = "number"]:focus{
     border-color: #2ecc71;
 }
 
@@ -29,4 +31,10 @@
 }
 .table input[type = "submit"]:hover{
     background: #2ecc71;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
