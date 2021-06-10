@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Addresses</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -32,15 +32,13 @@
             <td th:text="${address.flat}"></td>
             <td>
                 <a th:href="@{'/address/edit/' + ${address.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/address/delete/' + ${address.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
 
     <span th:if="${totalPages > 0}"
-         th:each="pageNumber : ${pageNumbers}">
+          th:each="pageNumber : ${pageNumbers}">
         <a th:href="@{/address(size=${addresses.size}, page=${pageNumber})}"
            th:text="${pageNumber}"
            th:class="${pageNumber==addresses.number + 1} ? active"></a>

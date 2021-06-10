@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tariff plan Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<h1>Tariff plan Editing</h1>
+<br/>
+<form class="table" id="scroll" th:action="@{/tariff-plan/save}" th:object="${tariffPlan}" th:method="post">
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{description}"/>
+    <input type="text" th:field="*{abonentPayment}"/>
+    <input type="text" th:field="*{pricingUnit.unit}"/>
+    <input type="text" th:field="*{price}"/>
+    <input type="text" th:field="*{currency.numericalCode}"/>
+    <input type="text" th:field="*{currency.name}"/>
+    <input type="text" th:field="*{currency.code}"/>
+
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

@@ -37,8 +37,4 @@ public class ClientTypeService implements ClientTypeServiceInterface {
         repository.save(mapper.toDbo(clientType));
     }
 
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mobile Operators</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -26,8 +26,6 @@
             <td th:text="${mobileOperator.code}"></td>
             <td>
                 <a th:href="@{'/mobile-operator/edit/' + ${mobileOperator.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/mobile-operator/delete/' + ${mobileOperator.id}}">Delete</a>
             </td>
         </tr>
         </tbody>

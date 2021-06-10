@@ -32,22 +32,17 @@ public class CountryController {
         return modelAndView;
     }
 
-    @RequestMapping("country/edit/{id}")
+    @GetMapping("/country/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("countryEdit");
+        ModelAndView mav = new ModelAndView("countryEditing");
         mav.addObject("country", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "country/save", method = RequestMethod.POST)
+    @PostMapping("country/save")
     public String save(@ModelAttribute("country") Country country) {
         service.save(country);
         return "redirect:/country";
     }
 
-    @RequestMapping("country/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/country";
-    }
 }

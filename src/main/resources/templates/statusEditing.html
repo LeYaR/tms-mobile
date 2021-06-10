@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Status Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<h1>Edit status</h1>
+<form class="table" id="scroll" th:action="@{/status/save}" th:object="${status}" th:method="post">
+    <input type="text" th:field="*{code}" readonly="readonly"/>
+    <input type="text" th:field="${status}"/>
+
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

@@ -15,6 +15,4 @@ public interface TowerServiceInterface {
 
     void save(Tower tower);
 
-    void delete(Integer id);
-
 }

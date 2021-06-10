@@ -36,8 +36,4 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
         repository.save(mapper.toDbo(mobileOperator));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

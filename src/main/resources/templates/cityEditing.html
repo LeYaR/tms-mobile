@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<h1>City Editing</h1>
+<br/>
+<form class="table" id="scroll" th:action="@{/city/save}" th:object="${city}" th:method="post">
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="text" th:field="*{country.country}"/>
+    <input type="text" th:field="*{city}"/>
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

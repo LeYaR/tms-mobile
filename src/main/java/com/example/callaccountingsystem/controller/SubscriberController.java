@@ -32,22 +32,17 @@ public class SubscriberController {
         return modelAndView;
     }
 
-    @RequestMapping("subscriber/edit/{id}")
+    @GetMapping("/subscriber/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("subscriberEdit");
+        ModelAndView mav = new ModelAndView("userEditing");
         mav.addObject("subscriber", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "subscriber/save", method = RequestMethod.POST)
+    @PostMapping("/subscriber/save")
     public String save(@ModelAttribute("subscriber") Subscriber subscriber) {
         service.save(subscriber);
         return "redirect:/subscriber";
     }
 
-    @RequestMapping("subscriber/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/subscriber";
-    }
 }

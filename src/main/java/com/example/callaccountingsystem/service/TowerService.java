@@ -44,8 +44,4 @@ public class TowerService implements TowerServiceInterface {
         repository.save(mapper.toDbo(tower));
     }
 
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
 }

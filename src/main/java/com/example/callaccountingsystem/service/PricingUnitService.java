@@ -37,8 +37,4 @@ public class PricingUnitService implements PricingUnitServiceInterface {
         repository.save(mapper.toDbo(pricingUnit));
     }
 
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
 }

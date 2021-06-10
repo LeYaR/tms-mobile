@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -24,8 +24,6 @@
             <td th:text="${client.type}"></td>
             <td>
                 <a th:href="@{'/client/edit/' + ${client.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/client/delete/' + ${client.id}}">Delete</a>
             </td>
         </tr>
         </tbody>

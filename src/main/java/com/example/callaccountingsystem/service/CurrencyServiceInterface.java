@@ -11,6 +11,4 @@ public interface CurrencyServiceInterface {
 
     void save(Currency currency);
 
-    void delete(Long id);
-
 }

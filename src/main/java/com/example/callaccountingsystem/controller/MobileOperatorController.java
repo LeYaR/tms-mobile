@@ -32,22 +32,17 @@ public class MobileOperatorController {
         return modelAndView;
     }
 
-    @RequestMapping("mobile-operator/edit/{id}")
+    @GetMapping("/mobile-operator/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("mobileOperatorEdit");
+        ModelAndView mav = new ModelAndView("mobileOperatorEditing");
         mav.addObject("mobileOperator", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "mobile-operator/save", method = RequestMethod.POST)
+    @PostMapping("/mobile-operator/save")
     public String save(@ModelAttribute("mobileOperator") MobileOperator mobileOperator) {
         service.save(mobileOperator);
         return "redirect:/mobile-operator";
     }
 
-    @RequestMapping("mobile-operator/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/mobile-operator";
-    }
 }

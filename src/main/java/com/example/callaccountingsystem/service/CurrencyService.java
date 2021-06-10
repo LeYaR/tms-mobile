@@ -37,8 +37,4 @@ public class CurrencyService implements CurrencyServiceInterface {
         repository.save(mapper.toDbo(currency));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

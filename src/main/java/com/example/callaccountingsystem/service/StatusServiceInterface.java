@@ -15,6 +15,4 @@ public interface StatusServiceInterface {
 
     void save(Status status);
 
-    void delete(Integer code);
-
 }

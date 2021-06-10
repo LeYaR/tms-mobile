@@ -18,7 +18,7 @@ public class AddressController {
         this.service = service;
     }
 
-    @GetMapping("/address")
+    @GetMapping(value = "/address")
     public ModelAndView viewAllAddresses(Model model,
                                          @RequestParam("page") Optional<Integer> page,
                                          @RequestParam("size") Optional<Integer> size) {
@@ -32,24 +32,21 @@ public class AddressController {
         return modelAndView;
     }
 
-    @RequestMapping("address/edit/{id}")
+    @GetMapping("/address/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("addressEdit");
+        ModelAndView mav = new ModelAndView("addressEditing");
         mav.addObject("address", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "address/save", method = RequestMethod.POST)
+    @PostMapping("/address/save")
     public String save(@ModelAttribute("address") Address address) {
-        service.save(address);
+        if (address != null) {
+            service.save(address);
+        }
         return "redirect:/address";
     }
 
-    @RequestMapping("address/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/address";
-    }
 }
 
 

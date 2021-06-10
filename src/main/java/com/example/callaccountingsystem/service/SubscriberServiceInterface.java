@@ -15,6 +15,4 @@ public interface SubscriberServiceInterface {
 
     void save(Subscriber subscriber);
 
-    void delete(Long phoneNumber);
-
 }

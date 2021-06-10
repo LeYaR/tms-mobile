@@ -32,22 +32,17 @@ public class TariffPlanController {
         return modelAndView;
     }
 
-    @RequestMapping("tariff-plan/edit/{id}")
+    @GetMapping("/tariff-plan/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("tariffPlanEdit");
+        ModelAndView mav = new ModelAndView("tariffPlanEditing");
         mav.addObject("tariffPlan", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "tariff-plan/save", method = RequestMethod.POST)
+    @PostMapping("/tariff-plan/save")
     public String save(@ModelAttribute("tariffPlan") TariffPlan tariffPlan) {
         service.save(tariffPlan);
         return "redirect:/tariff-plan";
     }
 
-    @RequestMapping("tariff-plan/delete/{id}")
-    public String delete(@PathVariable(name = "id") Integer id) {
-        service.delete(id);
-        return "redirect:/tariff-plan";
-    }
 }

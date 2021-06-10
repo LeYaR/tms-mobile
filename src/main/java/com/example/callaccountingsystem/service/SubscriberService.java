@@ -44,8 +44,4 @@ public class SubscriberService implements SubscriberServiceInterface {
         repository.save(mapper.toDbo(subscriber));
     }
 
-    @Override
-    public void delete(Long phoneNumber) {
-        repository.deleteById(phoneNumber);
-    }
 }

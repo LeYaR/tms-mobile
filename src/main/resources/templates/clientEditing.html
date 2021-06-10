@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Сlient type Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<h1>Сlient type Editing</h1>
+<br/>
+<form class="table" id="scroll" th:action="@{/client/save}" th:object="${client}" th:method="post">
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="text" th:field="*{type}"/>
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

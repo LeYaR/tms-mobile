@@ -11,6 +11,4 @@ public interface StreetServiceInterface {
 
     void save(Street street);
 
-    void delete(Long id);
-
 }

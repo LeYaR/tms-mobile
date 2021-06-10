@@ -11,7 +11,7 @@
 
     <header th:insert="blocks/header :: header"/>
 
-    <form class="table" id="scroll" action="#" method="">   <!-- set action & method & delete this comment -->
+    <form class="table" id="scroll" th:action="@{/subscriber/save}" th:object="${subscriber}" th:method="post">
         <h1>User Editing</h1>
         <input type="number" name="phone_number" placeholder="Phone number" th:value="${subscriber.phoneNumber}" min="0" title="Phone number" required>
         <input type="text" name="last_name" placeholder="Last Name" th:value="${subscriber.lastName}" pattern="^[a-zA-Z]+$" title="Last Name" required>

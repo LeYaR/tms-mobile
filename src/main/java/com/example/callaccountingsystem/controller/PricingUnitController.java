@@ -32,22 +32,17 @@ public class PricingUnitController {
         return modelAndView;
     }
 
-    @RequestMapping("pricing-unit/edit/{id}")
+    @GetMapping("/pricing-unit/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("pricingUnitEdit");
+        ModelAndView mav = new ModelAndView("pricingUnitEditing");
         mav.addObject("pricingUnit", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "pricing-unit/save", method = RequestMethod.POST)
+    @PostMapping("/pricing-unit/save")
     public String save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
         service.save(pricingUnit);
         return "redirect:/pricing-unit";
     }
 
-    @RequestMapping("pricing-unit/delete/{id}")
-    public String delete(@PathVariable(name = "id") Integer id) {
-        service.delete(id);
-        return "redirect:/pricing-unit";
-    }
 }

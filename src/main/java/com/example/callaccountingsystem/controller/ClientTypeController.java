@@ -32,22 +32,17 @@ public class ClientTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("client/edit/{id}")
+    @GetMapping("/client/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("clientEdit");
+        ModelAndView mav = new ModelAndView("clientEditing");
         mav.addObject("client", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "client/save", method = RequestMethod.POST)
+    @PostMapping(value = "/client/save")
     public String save(@ModelAttribute("client") ClientType client) {
         service.save(client);
         return "redirect:/client";
     }
 
-    @RequestMapping("client/delete/{id}")
-    public String delete(@PathVariable(name = "id") Integer id) {
-        service.delete(id);
-        return "redirect:/client";
-    }
 }

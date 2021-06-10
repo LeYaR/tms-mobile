@@ -32,22 +32,17 @@ public class PassportController {
         return modelAndView;
     }
 
-    @RequestMapping("passport/edit/{id}")
+    @GetMapping("/passport/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") String id) {
-        ModelAndView mav = new ModelAndView("passportEdit");
+        ModelAndView mav = new ModelAndView("passportEditing");
         mav.addObject("passport", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "passport/save", method = RequestMethod.POST)
+    @PostMapping("/passport/save")
     public String save(@ModelAttribute("passport") Passport passport) {
         service.save(passport);
         return "redirect:/passport";
     }
 
-    @RequestMapping("passport/delete/{id}")
-    public String delete(@PathVariable(name = "id") String id) {
-        service.delete(id);
-        return "redirect:/passport";
-    }
 }

@@ -11,6 +11,4 @@ public interface PricingUnitServiceInterface {
 
     void save(PricingUnit pricingUnit);
 
-    void delete(Integer id);
-
 }

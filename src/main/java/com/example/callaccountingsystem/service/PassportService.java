@@ -38,8 +38,4 @@ public class PassportService implements PassportServiceInterface {
         repository.save(mapper.toDbo(passport));
     }
 
-    @Override
-    public void delete(String id) {
-        repository.deleteById(id);
-    }
 }

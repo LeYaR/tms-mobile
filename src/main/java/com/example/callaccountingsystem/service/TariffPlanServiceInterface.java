@@ -11,6 +11,4 @@ public interface TariffPlanServiceInterface {
 
     void save(TariffPlan tariffPlan);
 
-    void delete(Integer id);
-
 }

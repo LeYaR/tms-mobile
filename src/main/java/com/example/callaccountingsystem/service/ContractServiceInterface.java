@@ -11,6 +11,4 @@ public interface ContractServiceInterface {
 
     void save(Contract contract);
 
-    void delete(Long id);
-
 }

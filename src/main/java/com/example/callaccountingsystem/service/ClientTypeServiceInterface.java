@@ -11,5 +11,4 @@ public interface ClientTypeServiceInterface {
 
     void save(ClientType clientType);
 
-    void delete(Integer id);
 }

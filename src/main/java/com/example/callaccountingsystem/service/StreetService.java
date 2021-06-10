@@ -37,8 +37,4 @@ public class StreetService implements StreetServiceInterface {
         repository.save(mapper.toDbo(street));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

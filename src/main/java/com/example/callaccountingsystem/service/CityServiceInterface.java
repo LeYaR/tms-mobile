@@ -11,6 +11,4 @@ public interface CityServiceInterface {
 
     void save(City city);
 
-    void delete(Long id);
-
 }

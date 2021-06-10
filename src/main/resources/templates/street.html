@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Streets</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -28,8 +28,6 @@
             <td th:text="${street.street}"></td>
             <td>
                 <a th:href="@{'/street/edit/' + ${street.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/street/delete/' + ${street.id}}">Delete</a>
             </td>
         </tr>
         </tbody>

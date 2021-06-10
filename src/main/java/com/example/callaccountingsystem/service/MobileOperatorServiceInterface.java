@@ -11,6 +11,4 @@ public interface MobileOperatorServiceInterface {
 
     void save(MobileOperator mobileOperator);
 
-    void delete(Long id);
-
 }

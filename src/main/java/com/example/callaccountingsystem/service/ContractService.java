@@ -37,8 +37,4 @@ public class ContractService implements ContractServiceInterface {
         repository.save(mapper.toDbo(contract));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

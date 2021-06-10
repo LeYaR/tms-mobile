@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 
 @Configuration
 @EnableAsync
-public class AsyncConfiguration {
+public class AsyncConfig {
 
     @Bean(name = "generationThread")
     public Executor taskExecutor() {

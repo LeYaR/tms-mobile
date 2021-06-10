@@ -12,7 +12,5 @@ public interface PassportServiceInterface {
 
     void save(Passport passport);
 
-    void delete(String id);
-
 }
 

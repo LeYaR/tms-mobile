@@ -37,8 +37,4 @@ public class TariffPlanService implements TariffPlanServiceInterface {
         repository.save(mapper.toDbo(tariffPlan));
     }
 
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
 }

@@ -32,22 +32,17 @@ public class CurrencyController {
         return modelAndView;
     }
 
-    @RequestMapping("currency/edit/{id}")
+    @GetMapping("/currency/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("currencyEdit");
+        ModelAndView mav = new ModelAndView("currencyEditing");
         mav.addObject("currency", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "currency/save", method = RequestMethod.POST)
+    @PostMapping("/currency/save")
     public String save(@ModelAttribute("currency") Currency currency) {
         service.save(currency);
         return "redirect:/address";
     }
 
-    @RequestMapping("currency/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/currency";
-    }
 }

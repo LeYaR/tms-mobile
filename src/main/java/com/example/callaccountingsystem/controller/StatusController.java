@@ -32,22 +32,17 @@ public class StatusController {
         return modelAndView;
     }
 
-    @RequestMapping("status/edit/{id}")
+    @GetMapping("/status/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("statusEdit");
+        ModelAndView mav = new ModelAndView("statusEditing");
         mav.addObject("status", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "status/save", method = RequestMethod.POST)
+    @PostMapping("/status/save")
     public String save(@ModelAttribute("status") Status status) {
         service.save(status);
         return "redirect:/status";
     }
 
-    @RequestMapping("status/delete/{id}")
-    public String delete(@PathVariable(name = "id") Integer id) {
-        service.delete(id);
-        return "redirect:/status";
-    }
 }

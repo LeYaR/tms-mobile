@@ -37,8 +37,4 @@ public class CountryService implements CountryServiceInterface {
         repository.save(mapper.toDbo(country));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

@@ -44,8 +44,4 @@ public class StatusService implements StatusServiceInterface {
         repository.save(mapper.toDbo(status));
     }
 
-    @Override
-    public void delete(Integer code) {
-        repository.deleteById(code);
-    }
 }

@@ -37,8 +37,4 @@ public class CityService implements CityServiceInterface {
         repository.save(mapper.toDbo(city));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

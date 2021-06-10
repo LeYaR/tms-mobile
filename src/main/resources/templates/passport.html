@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Passports</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -30,8 +30,6 @@
             <td th:text="${passport.issuer}"></td>
             <td>
                 <a th:href="@{'/passport/edit/' + ${passport.idNumber}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/passport/delete/' + ${passport.idNumber}}">Delete</a>
             </td>
         </tr>
         </tbody>

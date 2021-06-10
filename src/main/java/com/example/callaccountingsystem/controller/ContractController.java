@@ -33,22 +33,17 @@ public class ContractController {
     }
 
 
-    @RequestMapping("contract/edit/{id}")
+    @GetMapping("contract/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("contractEdit");
+        ModelAndView mav = new ModelAndView("contractEditing");
         mav.addObject("contract", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "contract/save", method = RequestMethod.POST)
+    @PostMapping("contract/save")
     public String save(@ModelAttribute("contract") Contract contract) {
         service.save(contract);
         return "redirect:/contract";
     }
 
-    @RequestMapping("contract/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/contract";
-    }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<h1>Contract Editing</h1>
+<br/>
+<form class="table" id="scroll" th:action="@{/contract/save}" th:object="${contract}" th:method="post">
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="text" th:field="*{number}"/>
+    <input type="text" th:field="*{date}"/>
+    <input type="text" th:field="*{clientType.type}"/>
+    <input type="text" th:field="${contract.tariffPlan.name}"/>
+    <input type="text" th:field="${contract.tariffPlan.description}"/>
+    <input type="text" th:field="${contract.tariffPlan.abonentPayment}"/>
+    <input type="text" th:field="${contract.tariffPlan.pricingUnit.unit}"/>
+    <input type="text" th:field="${contract.tariffPlan.price}"/>
+    <input type="text" th:field="${contract.tariffPlan.currency.numericalCode}"/>
+    <input type="text" th:field="${contract.tariffPlan.currency.name}"/>
+    <input type="text" th:field="${contract.tariffPlan.currency.code}"/>
+    <input type="text" th:field="${contract.discount}"/>
+</form>
+</body>
+</html>

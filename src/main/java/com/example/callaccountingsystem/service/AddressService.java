@@ -36,8 +36,4 @@ public class AddressService implements AddressServiceInterface {
         repository.save(mapper.toDbo(address));
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

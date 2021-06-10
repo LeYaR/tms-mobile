@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Currencies</title>
-    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet" />
-    <link th:href="@{/style/tables/table.css}" rel="stylesheet" />
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -28,8 +28,6 @@
             <td th:text="${currency.code}"></td>
             <td>
                 <a th:href="@{'/currency/edit/' + ${currency.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/currency/delete/' + ${currency.id}}">Delete</a>
             </td>
         </tr>
         </tbody>

@@ -32,22 +32,17 @@ public class CityController {
         return modelAndView;
     }
 
-    @RequestMapping("city/edit/{id}")
+    @GetMapping("/city/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("cityEdit");
+        ModelAndView mav = new ModelAndView("cityEditing");
         mav.addObject("city", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "city/save", method = RequestMethod.POST)
+    @PostMapping("/city/save")
     public String save(@ModelAttribute("city") City city) {
         service.save(city);
         return "redirect:/city";
     }
 
-    @RequestMapping("city/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        service.delete(id);
-        return "redirect:/city";
-    }
 }

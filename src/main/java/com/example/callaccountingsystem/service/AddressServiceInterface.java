@@ -11,6 +11,4 @@ public interface AddressServiceInterface {
 
     void save(Address address);
 
-    void delete(Long id);
-
 }

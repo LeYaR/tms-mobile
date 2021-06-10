@@ -11,6 +11,4 @@ public interface CountryServiceInterface {
 
     void save(Country country);
 
-    void delete(Long id);
-
 }

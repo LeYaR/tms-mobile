@@ -34,22 +34,17 @@ public class TowerController {
         return modelAndView;
     }
 
-    @RequestMapping("tower/edit/{id}")
+    @GetMapping("/tower/edit/{id}")
     public ModelAndView showEdit(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("towerEdit");
+        ModelAndView mav = new ModelAndView("towerEditing");
         mav.addObject("tower", service.get(id));
         return mav;
     }
 
-    @RequestMapping(value = "tower/save", method = RequestMethod.POST)
+    @PostMapping("/tower/save")
     public String save(@ModelAttribute("tower") Tower tower) {
         service.save(tower);
         return "redirect:/tower";
     }
 
-    @RequestMapping("tower/delete/{id}")
-    public String delete(@PathVariable(name = "id") Integer id) {
-        service.delete(id);
-        return "redirect:/tower";
-    }
 }
