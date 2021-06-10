@@ -9,9 +9,9 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Address Editing</h1>
 <br/>
 <form class="table" id="scroll" th:action="@{/address/save}" th:object="${address}" th:method="post">
+    <h1>Address Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="hidden" th:field="*{street.city.country.id}"/>
     <input type="text" th:field="*{street.city.country.country}"/>

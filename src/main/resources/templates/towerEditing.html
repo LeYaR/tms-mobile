@@ -9,9 +9,9 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Tower Editing</h1>
 <br/>
 <form class="table" id="scroll" th:action="@{/tower/save}" th:object="${tower}" th:method="post">
+    <h1>Tower Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="text" th:field="*{name}"/>
     <input type="text" th:field="*{locationCity.country.country}"/>

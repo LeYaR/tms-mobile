@@ -9,9 +9,9 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Passport Editing</h1>
 <br/>
 <form class="table" id="scroll" th:action="@{/passport/save}" th:object="${passport}" th:method="post">
+    <h1>Passport Editing</h1>
     <input type="text" th:field="*{idNumber}" readonly="readonly"/>
     <input type="text" th:field="*{seriesNumber}"/>
     <input type="text" th:field="*{date}"/>

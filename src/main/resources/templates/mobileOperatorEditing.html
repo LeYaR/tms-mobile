@@ -9,9 +9,9 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Operator Editing</h1>
 <br/>
 <form class="table" id="scroll" th:action="@{/mobile-operator/save}" th:object="${mobileOperator}" th:method="post">
+    <h1>Operator Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="text" th:field="*{operator}"/>
     <input type="text" th:field="*{code}"/>

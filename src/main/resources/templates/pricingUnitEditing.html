@@ -9,9 +9,9 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Edit unit</h1>
 <br/>
 <form class="table" id="scroll" th:action="@{/pricing-unit/save}" th:object="${pricingUnit}" th:method="post">
+    <h1>Edit unit</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="text" th:field="*{unit}"/>
 

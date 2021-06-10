@@ -9,8 +9,8 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"/>
-<h1>Edit status</h1>
 <form class="table" id="scroll" th:action="@{/status/save}" th:object="${status}" th:method="post">
+    <h1>Edit status</h1>
     <input type="text" th:field="*{code}" readonly="readonly"/>
     <input type="text" th:field="${status}"/>
 
