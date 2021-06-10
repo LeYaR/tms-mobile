@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/home/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/home/search.css}" rel="stylesheet"/>
+    <link th:href="@{/style/generatingButtonStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<form class="search" th:method="POST" th:action="@{/generation-facts}">
+    <div><input type="number" name="quantity" placeholder="Quantity" min="1" max="10000" value="" required></div>
+    <span>
+        <input type="number" name="fromMonth" placeholder="from month" value="" size="7" min="1" max="12"
+               required>
+        <input type="number" name="fromYear" placeholder="from year" value="" required min="1900">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="number" placeholder="to month" name="toMonth" value="" size="7" min="1" max="12"
+               required>
+        <input type="number" name="toYear" placeholder="to year" value="" required min="1900">
+    </span>
+    <div>
+        <input type="submit" value="Generate"/>
+    </div>
+</form>
+
+<form class="search" th:method="POST" th:action="@{/generation-million}" >
+    <input type="submit" name="" value="Generating 1 million factors">
+</form>
+
+</body>
+</html>

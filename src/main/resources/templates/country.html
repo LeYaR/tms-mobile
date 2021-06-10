@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/currency'">Next page</a>
+    <h1>Countries list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="country : ${countries}">
+            <td th:text="${country.country}"></td>
+            <td>
+                <a th:href="@{'/country/edit/' + ${country.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/country(size=${countries.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==countries.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Address Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<br/>
+<form class="table" id="scroll" th:action="@{/address/save}" th:object="${address}" th:method="post">
+    <h1>Address Editing</h1>
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="hidden" th:field="*{street.city.country.id}"/>
+    <input type="text" th:field="*{street.city.country.country}"/>
+    <input type="hidden" th:field="*{street.city.id}"/>
+    <input type="text" th:field="*{street.city.city}"/>
+    <input type="hidden" th:field="*{street.id}"/>
+    <input type="text" th:field="*{street.street}"/>
+    <input type="text" th:field="*{house}"/>
+    <input type="text" th:field="*{flat}"/>
+
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

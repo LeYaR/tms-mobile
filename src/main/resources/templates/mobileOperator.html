@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Operators</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/passport'">Next page</a>
+    <h1>Mobile operators list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mobileOperator : ${mobileOperators}">
+            <td th:text="${mobileOperator.operator}"></td>
+            <td th:text="${mobileOperator.code}"></td>
+            <td>
+                <a th:href="@{'/mobile-operator/edit/' + ${mobileOperator.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/mobile-operator(size=${mobileOperators.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==mobileOperators.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

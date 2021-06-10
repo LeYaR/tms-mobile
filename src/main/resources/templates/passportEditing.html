@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Passport Editing</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<br/>
+<form class="table" id="scroll" th:action="@{/passport/save}" th:object="${passport}" th:method="post">
+    <h1>Passport Editing</h1>
+    <input type="text" th:field="*{idNumber}" readonly="readonly"/>
+    <input type="text" th:field="*{seriesNumber}"/>
+    <input type="text" th:field="*{date}"/>
+    <input type="text" th:field="*{issuer}"/>
+
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

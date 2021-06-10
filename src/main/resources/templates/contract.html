@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contracts</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/country'">Next page</a>
+    <h1>Contracts list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Date</th>
+            <th>Client type</th>
+            <th>Tariff plan</th>
+            <th>Description</th>
+            <th>Abonent payment</th>
+            <th>Unit</th>
+            <th>Price</th>
+            <th>Numerical currency code</th>
+            <th>Name</th>
+            <th>Currency code</th>
+            <th>Discount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract: ${contracts}">
+            <td th:text="${contract.number}"></td>
+            <td th:text="${contract.date}"></td>
+            <td th:text="${contract.clientType.type}"></td>
+            <td th:text="${contract.tariffPlan.name}"></td>
+            <td th:text="${contract.tariffPlan.description}"></td>
+            <td th:text="${contract.tariffPlan.abonentPayment}"></td>
+            <td th:text="${contract.tariffPlan.pricingUnit.unit}"></td>
+            <td th:text="${contract.tariffPlan.price}"></td>
+            <td th:text="${contract.tariffPlan.currency.numericalCode}"></td>
+            <td th:text="${contract.tariffPlan.currency.name}"></td>
+            <td th:text="${contract.tariffPlan.currency.code}"></td>
+            <td th:text="${contract.discount}"></td>
+            <td>
+                <a th:href="@{'/contract/edit/' + ${contract.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/contract(size=${contracts.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==contracts.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing units</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/status'">Next page</a>
+    <h1>Pricing units list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pricingUnit : ${pricingUnits}">
+            <td th:text="${pricingUnit.unit}"></td>
+            <td>
+                <a th:href="@{'/pricing-unit/edit/' + ${pricingUnit.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/pricing-unit(size=${pricingUnits.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==pricingUnits.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

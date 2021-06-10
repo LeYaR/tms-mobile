@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currencies</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/mobile-operator'">Next page</a>
+    <h1>Currencies list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Numerical currency code</th>
+            <th>Name</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="currency : ${currencies}">
+            <td th:text="${currency.numericalCode}"></td>
+            <td th:text="${currency.name}"></td>
+            <td th:text="${currency.code}"></td>
+            <td>
+                <a th:href="@{'/currency/edit/' + ${currency.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/currency(size=${currencies.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==currencies.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tariff plans</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"/>
+
+<div class="table" id="scroll">
+    <a th:href="'/tower'">Next page</a>
+    <h1>Tariff plans list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Abonent payment</th>
+            <th>Pricing unit</th>
+            <th>Price</th>
+            <th>Currency numerical code</th>
+            <th>Currency</th>
+            <th>Currency code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tariffPlan : ${tariffPlans}">
+            <td th:text="${tariffPlan.name}"></td>
+            <td th:text="${tariffPlan.description}"></td>
+            <td th:text="${tariffPlan.abonentPayment}"></td>
+            <td th:text="${tariffPlan.pricingUnit.unit}"></td>
+            <td th:text="${tariffPlan.price}"></td>
+            <td th:text="${tariffPlan.currency.numericalCode}"></td>
+            <td th:text="${tariffPlan.currency.name}"></td>
+            <td th:text="${tariffPlan.currency.code}"></td>
+            <td>
+                <a th:href="@{'/tariff-plan/edit/' + ${tariffPlan.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span th:if="${totalPages > 0}"
+          th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/tariff-plan(size=${tariffPlans.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==tariffPlans.number + 1} ? active"></a>
+    </span>
+</div>
+</body>
+</html>

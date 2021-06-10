@@ -1,0 +1,19 @@
+<div th:fragment="header">
+  <div class="header">
+    <form th:method="GET" th:action="@{/log-out}">   <!-- set action & method & delete this comment -->
+      <input class="headerButton" type="submit" name="" value="Log Out">
+    </form>
+    <form th:method="GET" th:action="@{/user-editing-search}">   <!-- set action & method & delete this comment -->
+      <input class="headerButton" type="submit" name="" value="User editing">
+    </form>
+    <form th:method="GET" th:action="@{/adding-user}">   <!-- set action & method & delete this comment -->
+      <input class="headerButton" type="submit" name="" value="Adding User">
+    </form>
+    <form th:method="GET" th:action="@{/generation}">   <!-- set action & method & delete this comment -->
+      <input class="headerButton" type="submit" name="" value="Generation">
+    </form>
+    <form th:method="GET" th:action="@{/tables}">   <!-- set action & method & delete this comment -->
+      <input class="headerButton" type="submit" name="" value="Tables">
+    </form>
+  </div>
+</div>
