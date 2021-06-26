@@ -17,13 +17,13 @@ public class AddressEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "street_id")
     private StreetEntity street;
 
     private String house;
     private String flat;
 
-    @OneToMany(mappedBy = "address", orphanRemoval = true)
+    @OneToMany(mappedBy = "address")
     private List<SubscriberEntity> subscribers;
 }

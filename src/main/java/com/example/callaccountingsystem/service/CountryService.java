@@ -24,7 +24,7 @@ public class CountryService implements CountryServiceInterface {
     public Page<Country> getAllCountries(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<CountryEntity> page = repository.findAll(pageable);
-        return page.map(countryEntity -> (mapper.fromDbo(countryEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

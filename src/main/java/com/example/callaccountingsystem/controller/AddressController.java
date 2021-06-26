@@ -40,11 +40,11 @@ public class AddressController {
     }
 
     @PostMapping("/address/save")
-    public String save(@ModelAttribute("address") Address address) {
+    public ModelAndView save(@ModelAttribute("address") Address address) {
         if (address != null) {
             service.save(address);
         }
-        return "redirect:/address";
+        return new ModelAndView("redirect:/address");
     }
 
 }

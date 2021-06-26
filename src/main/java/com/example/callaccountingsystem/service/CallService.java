@@ -7,6 +7,7 @@ import com.example.callaccountingsystem.repository.CallRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +25,9 @@ public class CallService implements CallServiceInterface {
 
     @Override
     public Page<Call> getAllCalls(int currentPage, int pageSize) {
-        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+        final Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("date").descending());
         final Page<CallEntity> page = repository.findAll(pageable);
-        return page.map(callEntity -> (mapper.fromDbo(callEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

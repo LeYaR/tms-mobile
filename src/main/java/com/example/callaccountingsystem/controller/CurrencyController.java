@@ -40,9 +40,9 @@ public class CurrencyController {
     }
 
     @PostMapping("/currency/save")
-    public String save(@ModelAttribute("currency") Currency currency) {
+    public ModelAndView save(@ModelAttribute("currency") Currency currency) {
         service.save(currency);
-        return "redirect:/address";
+        return new ModelAndView("redirect:/currency");
     }
 
 }

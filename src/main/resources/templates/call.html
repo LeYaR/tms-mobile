@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             <tr th:each="call : ${calls}">
-                <td th:text="${call.date}"></td>
+                <td th:text="${call.date.format(formatter)}"></td>
                 <td th:text="${call.incomingSubscriber.phoneNumber}"></td>
                 <td th:text="${call.outgoingSubscriber.phoneNumber}"></td>
                 <td th:text="${call.duration}"></td>

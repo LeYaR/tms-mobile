@@ -24,7 +24,7 @@ public class AddressService implements AddressServiceInterface {
     public Page<Address> getAllAddress(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<AddressEntity> page = repository.findAll(pageable);
-        return page.map(addressEntity -> (mapper.fromDbo(addressEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     public Address get(Long id) {

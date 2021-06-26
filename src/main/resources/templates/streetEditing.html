@@ -12,6 +12,8 @@
 <form class="table" id="scroll" th:action="@{/street/save}" th:object="${street}" th:method="post">
     <h1>Street Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="hidden" th:field="*{city.country.id}" readonly="readonly"/>
+    <input type="hidden" th:field="*{city.id}" readonly="readonly"/>
     <input type="text" th:field="*{city.country.country}"/>
     <input type="text" th:field="*{city.city}"/>
     <input type="text" th:field="*{street}"/>

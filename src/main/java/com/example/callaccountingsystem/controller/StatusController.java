@@ -40,9 +40,9 @@ public class StatusController {
     }
 
     @PostMapping("/status/save")
-    public String save(@ModelAttribute("status") Status status) {
+    public ModelAndView save(@ModelAttribute("status") Status status) {
         service.save(status);
-        return "redirect:/status";
+        return new ModelAndView("redirect:/status");
     }
 
 }

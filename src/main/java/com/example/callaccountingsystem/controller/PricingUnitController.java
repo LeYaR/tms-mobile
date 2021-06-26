@@ -40,9 +40,9 @@ public class PricingUnitController {
     }
 
     @PostMapping("/pricing-unit/save")
-    public String save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
+    public ModelAndView save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
         service.save(pricingUnit);
-        return "redirect:/pricing-unit";
+        return new ModelAndView("redirect:/pricing-unit");
     }
 
 }

@@ -24,7 +24,7 @@ public class TariffPlanService implements TariffPlanServiceInterface {
     public Page<TariffPlan> getAllTariffPlans(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<TariffPlanEntity> page = repository.findAll(pageable);
-        return page.map(tariffPlanEntity -> (mapper.fromDbo(tariffPlanEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

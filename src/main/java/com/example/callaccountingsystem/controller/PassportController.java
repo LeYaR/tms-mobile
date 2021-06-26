@@ -40,9 +40,9 @@ public class PassportController {
     }
 
     @PostMapping("/passport/save")
-    public String save(@ModelAttribute("passport") Passport passport) {
+    public ModelAndView save(@ModelAttribute("passport") Passport passport) {
         service.save(passport);
-        return "redirect:/passport";
+        return new ModelAndView("redirect:/passport");
     }
 
 }

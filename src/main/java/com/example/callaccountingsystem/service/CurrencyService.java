@@ -24,7 +24,7 @@ public class CurrencyService implements CurrencyServiceInterface {
     public Page<Currency> getAllCurrencies(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<CurrencyEntity> page = repository.findAll(pageable);
-        return page.map(currencyEntity -> (mapper.fromDbo(currencyEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

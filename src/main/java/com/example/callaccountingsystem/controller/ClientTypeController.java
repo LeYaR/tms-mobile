@@ -40,9 +40,8 @@ public class ClientTypeController {
     }
 
     @PostMapping(value = "/client/save")
-    public String save(@ModelAttribute("client") ClientType client) {
+    public ModelAndView save(@ModelAttribute("client") ClientType client) {
         service.save(client);
-        return "redirect:/client";
-    }
+        return new ModelAndView("redirect:/client");    }
 
 }

@@ -40,9 +40,9 @@ public class CountryController {
     }
 
     @PostMapping("country/save")
-    public String save(@ModelAttribute("country") Country country) {
+    public ModelAndView save(@ModelAttribute("country") Country country) {
         service.save(country);
-        return "redirect:/country";
+        return new ModelAndView("redirect:/country");
     }
 
 }

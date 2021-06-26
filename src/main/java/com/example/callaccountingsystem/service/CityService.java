@@ -24,7 +24,7 @@ public class CityService implements CityServiceInterface {
     public Page<City> getAllCity(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<CityEntity> page = repository.findAll(pageable);
-        return page.map(cityEntity -> (mapper.fromDbo(cityEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

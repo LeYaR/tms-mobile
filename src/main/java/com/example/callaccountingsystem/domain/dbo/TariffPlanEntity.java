@@ -33,6 +33,6 @@ public class TariffPlanEntity {
     @JoinColumn(name = "currency_id")
     private CurrencyEntity currency;
 
-    @OneToMany(mappedBy = "tariffPlan", orphanRemoval = true)
+    @OneToMany(mappedBy = "tariffPlan")
     private List<ContractEntity> contracts;
 }

@@ -16,15 +16,20 @@
     <input type="text" th:field="*{number}"/>
     <input type="text" th:field="*{date}"/>
     <input type="text" th:field="*{clientType.type}"/>
-    <input type="text" th:field="${contract.tariffPlan.name}"/>
-    <input type="text" th:field="${contract.tariffPlan.description}"/>
-    <input type="text" th:field="${contract.tariffPlan.abonentPayment}"/>
-    <input type="text" th:field="${contract.tariffPlan.pricingUnit.unit}"/>
-    <input type="text" th:field="${contract.tariffPlan.price}"/>
-    <input type="text" th:field="${contract.tariffPlan.currency.numericalCode}"/>
-    <input type="text" th:field="${contract.tariffPlan.currency.name}"/>
-    <input type="text" th:field="${contract.tariffPlan.currency.code}"/>
-    <input type="text" th:field="${contract.discount}"/>
+    <input type="text" th:field="*{tariffPlan.name}"/>
+    <input type="hidden" th:field="*{tariffPlan.id}" readonly="readonly"/>
+    <input type="text" th:field="*{tariffPlan.description}"/>
+    <input type="text" th:field="*{tariffPlan.abonentPayment}"/>
+    <input type="hidden" th:field="*{tariffPlan.pricingUnit.id}" readonly="readonly"/>
+    <input type="text" th:field="*{tariffPlan.pricingUnit.unit}"/>
+    <input type="text" th:field="*{tariffPlan.price}"/>
+    <input type="hidden" th:field="*{tariffPlan.currency.id}" readonly="readonly"/>
+    <input type="text" th:field="*{tariffPlan.currency.numericalCode}"/>
+    <input type="text" th:field="*{tariffPlan.currency.name}"/>
+    <input type="text" th:field="*{tariffPlan.currency.code}"/>
+    <input type="text" th:field="*{discount}"/>
+
+    <input type="submit" name="" value="Save">
 </form>
 </body>
 </html>

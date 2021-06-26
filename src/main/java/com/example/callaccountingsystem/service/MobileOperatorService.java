@@ -23,7 +23,7 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
     public Page<MobileOperator> getAllMobileOperators(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<MobileOperatorEntity> page = repository.findAll(pageable);
-        return page.map(mobileOperatorEntity -> (mapper.fromDbo(mobileOperatorEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

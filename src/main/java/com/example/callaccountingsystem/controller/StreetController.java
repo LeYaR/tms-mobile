@@ -40,9 +40,9 @@ public class StreetController {
     }
 
     @PostMapping("/street/save")
-    public String save(@ModelAttribute("street") Street street) {
+    public ModelAndView save(@ModelAttribute("street") Street street) {
         service.save(street);
-        return "redirect:/street";
+        return new ModelAndView("redirect:/street");
     }
 
 }

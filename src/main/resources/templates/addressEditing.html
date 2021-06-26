@@ -13,11 +13,11 @@
 <form class="table" id="scroll" th:action="@{/address/save}" th:object="${address}" th:method="post">
     <h1>Address Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="hidden" th:field="*{street.city.country.id}"/>
+    <input type="hidden" th:field="*{street.city.country.id}" readonly="readonly"/>
     <input type="text" th:field="*{street.city.country.country}"/>
-    <input type="hidden" th:field="*{street.city.id}"/>
+    <input type="hidden" th:field="*{street.city.id}" readonly="readonly"/>
     <input type="text" th:field="*{street.city.city}"/>
-    <input type="hidden" th:field="*{street.id}"/>
+    <input type="hidden" th:field="*{street.id}" readonly="readonly"/>
     <input type="text" th:field="*{street.street}"/>
     <input type="text" th:field="*{house}"/>
     <input type="text" th:field="*{flat}"/>

@@ -26,7 +26,7 @@ public class StatusService implements StatusServiceInterface {
     public Page<Status> getAllStatuses(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<StatusEntity> page = repository.findAll(pageable);
-        return page.map(statusEntity -> (mapper.fromDbo(statusEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

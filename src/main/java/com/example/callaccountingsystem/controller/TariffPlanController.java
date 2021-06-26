@@ -40,9 +40,9 @@ public class TariffPlanController {
     }
 
     @PostMapping("/tariff-plan/save")
-    public String save(@ModelAttribute("tariffPlan") TariffPlan tariffPlan) {
+    public ModelAndView save(@ModelAttribute("tariffPlan") TariffPlan tariffPlan) {
         service.save(tariffPlan);
-        return "redirect:/tariff-plan";
+        return new ModelAndView("redirect:/tariff-plan");
     }
 
 }

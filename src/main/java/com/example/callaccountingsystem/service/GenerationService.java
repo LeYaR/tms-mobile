@@ -41,7 +41,7 @@ public class GenerationService implements GenerationServiceInterface {
         int towerListSize = listTowerName.size();
         int statusListSize = listStatusName.size();
         int toYearForRandom = (toMonth == 12) ? (toYear + 1) : toYear;
-        int toMonthForRandom = (toMonth == 12) ? 01 : (toMonth + 1);
+        int toMonthForRandom = (toMonth == 12) ? 1 : (toMonth + 1);
 
 
         for (int i = 1; i <= quantity; i++) {

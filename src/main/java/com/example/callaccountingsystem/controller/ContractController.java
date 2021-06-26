@@ -41,9 +41,9 @@ public class ContractController {
     }
 
     @PostMapping("contract/save")
-    public String save(@ModelAttribute("contract") Contract contract) {
+    public ModelAndView save(@ModelAttribute("contract") Contract contract) {
         service.save(contract);
-        return "redirect:/contract";
+        return new ModelAndView("redirect:/contract");
     }
 
 }

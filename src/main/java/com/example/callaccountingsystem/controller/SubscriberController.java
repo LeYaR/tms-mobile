@@ -40,9 +40,9 @@ public class SubscriberController {
     }
 
     @PostMapping("/subscriber/save")
-    public String save(@ModelAttribute("subscriber") Subscriber subscriber) {
+    public ModelAndView save(@ModelAttribute("subscriber") Subscriber subscriber) {
         service.save(subscriber);
-        return "redirect:/subscriber";
+        return new ModelAndView("redirect:/subscriber");
     }
 
 }

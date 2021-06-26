@@ -26,7 +26,7 @@ public class SubscriberService implements SubscriberServiceInterface {
     public Page<Subscriber> getAllSubscribers(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<SubscriberEntity> page = repository.findAll(pageable);
-        return page.map(subscriberEntity -> (mapper.fromDbo(subscriberEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

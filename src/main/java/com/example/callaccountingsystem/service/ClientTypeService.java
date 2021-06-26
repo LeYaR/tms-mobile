@@ -24,7 +24,7 @@ public class ClientTypeService implements ClientTypeServiceInterface {
     public Page<ClientType> getAllClients(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<ClientTypeEntity> page = repository.findAll(pageable);
-        return page.map(clientTypeEntity -> (mapper.fromDbo(clientTypeEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

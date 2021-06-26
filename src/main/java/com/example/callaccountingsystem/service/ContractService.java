@@ -24,7 +24,7 @@ public class ContractService implements ContractServiceInterface {
     public Page<Contract> getAllContracts(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<ContractEntity> page = repository.findAll(pageable);
-        return page.map(contractEntity -> (mapper.fromDbo(contractEntity)));
+        return page.map(mapper::fromDbo);
     }
 
     @Override

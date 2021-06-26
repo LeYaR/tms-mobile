@@ -40,9 +40,8 @@ public class CityController {
     }
 
     @PostMapping("/city/save")
-    public String save(@ModelAttribute("city") City city) {
+    public ModelAndView save(@ModelAttribute("city") City city) {
         service.save(city);
-        return "redirect:/city";
-    }
+        return new ModelAndView("redirect:/city");    }
 
 }

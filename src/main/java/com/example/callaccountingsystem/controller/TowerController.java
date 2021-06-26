@@ -42,9 +42,9 @@ public class TowerController {
     }
 
     @PostMapping("/tower/save")
-    public String save(@ModelAttribute("tower") Tower tower) {
+    public ModelAndView save(@ModelAttribute("tower") Tower tower) {
         service.save(tower);
-        return "redirect:/tower";
+        return new ModelAndView("redirect:/tower");
     }
 
 }

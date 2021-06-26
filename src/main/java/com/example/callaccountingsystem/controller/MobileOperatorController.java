@@ -40,9 +40,9 @@ public class MobileOperatorController {
     }
 
     @PostMapping("/mobile-operator/save")
-    public String save(@ModelAttribute("mobileOperator") MobileOperator mobileOperator) {
+    public ModelAndView save(@ModelAttribute("mobileOperator") MobileOperator mobileOperator) {
         service.save(mobileOperator);
-        return "redirect:/mobile-operator";
+        return new ModelAndView("redirect:/mobile-operator");
     }
 
 }
