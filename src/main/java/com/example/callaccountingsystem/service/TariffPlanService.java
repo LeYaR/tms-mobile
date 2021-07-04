@@ -28,6 +28,11 @@ public class TariffPlanService implements TariffPlanServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public TariffPlan get(Integer id) {
         return mapper.fromDbo(repository.findById(id).get());
     }

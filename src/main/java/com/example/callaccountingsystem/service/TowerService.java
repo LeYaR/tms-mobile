@@ -35,6 +35,11 @@ public class TowerService implements TowerServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public Tower get(Integer id) {
         return mapper.fromDbo(repository.findById(id).get());
     }

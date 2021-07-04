@@ -27,6 +27,11 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public MobileOperator get(Long id) {
         return mapper.fromDbo(repository.findById(id).get());
     }

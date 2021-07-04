@@ -8,6 +8,8 @@ public interface PassportServiceInterface {
 
     Page<Passport> getAllPassports(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     Passport get(String id);
 
     void save(Passport passport);

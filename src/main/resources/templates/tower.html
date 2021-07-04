@@ -5,6 +5,7 @@
     <title>Towers</title>
     <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
     <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/pagination.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -33,12 +34,14 @@
         </tbody>
     </table>
 
-    <span th:if="${totalPages > 0}"
-          th:each="pageNumber : ${pageNumbers}">
-        <a th:href="@{/tower(size=${towers.size}, page=${pageNumber})}"
-           th:text="${pageNumber}"
-           th:class="${pageNumber==towers.number + 1} ? active"></a>
-    </span>
+    <div class="pagination">
+        <form th:action="@{/tower(size=${towers.size}, page=${page})}">
+            <input type="number" th:name="page" th:value="${numberPage}" min="1" th:max="${quantityPage}">
+            <h>/</h>
+            <h th:text="${quantityPage}"/>
+        </form>
+    </div>
+
 </div>
 </body>
 </html>

@@ -35,6 +35,11 @@ public class SubscriberService implements SubscriberServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public Subscriber get(Long phoneNumber) {
         return mapper.fromDbo(repository.findById(phoneNumber).get());
     }

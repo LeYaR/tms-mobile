@@ -7,6 +7,8 @@ public interface CurrencyServiceInterface {
 
     Page<Currency> getAllCurrencies(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     Currency get(Long id);
 
     void save(Currency currency);

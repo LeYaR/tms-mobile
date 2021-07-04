@@ -35,6 +35,11 @@ public class StatusService implements StatusServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public Status get(Integer code) {
         return mapper.fromDbo(repository.findById(code).get());
     }

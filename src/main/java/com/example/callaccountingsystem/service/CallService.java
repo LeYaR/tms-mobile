@@ -31,6 +31,11 @@ public class CallService implements CallServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public void saveListCalls(List<Call> list) {
         final List<CallEntity> entityList = mapper.listToDbo(list);
         repository.saveAll(entityList);

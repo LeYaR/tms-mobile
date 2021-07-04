@@ -27,6 +27,11 @@ public class AddressService implements AddressServiceInterface {
         return page.map(mapper::fromDbo);
     }
 
+    @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
     public Address get(Long id) {
         return mapper.fromDbo(repository.findById(id).get());
     }

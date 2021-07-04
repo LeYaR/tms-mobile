@@ -28,6 +28,11 @@ public class PricingUnitService implements PricingUnitServiceInterface {
     }
 
     @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
+    }
+
+    @Override
     public PricingUnit get(Integer id) {
         return mapper.fromDbo(repository.findById(id).get());
     }
