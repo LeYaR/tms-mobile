@@ -14,13 +14,13 @@
     <h1>Address Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="hidden" th:field="*{street.city.country.id}" readonly="readonly"/>
-    <input type="text" th:field="*{street.city.country.country}"/>
+    <input type="text" th:field="*{street.city.country.country}" th:placeholder="country" required/>
     <input type="hidden" th:field="*{street.city.id}" readonly="readonly"/>
-    <input type="text" th:field="*{street.city.city}"/>
+    <input type="text" th:field="*{street.city.city}" th:placeholder="city" required/>
     <input type="hidden" th:field="*{street.id}" readonly="readonly"/>
-    <input type="text" th:field="*{street.street}"/>
-    <input type="text" th:field="*{house}"/>
-    <input type="text" th:field="*{flat}"/>
+    <input type="text" th:field="*{street.street}" th:placeholder="street" required/>
+    <input type="number" th:field="*{house}" th:placeholder="house" required/>
+    <input type="number" th:field="*{flat}" th:placeholder="flat"/>
 
     <input type="submit" name="" value="Save">
 </form>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <title>Error</title>
+</head>
+<header th:insert="blocks/header :: header"/>
+
+<body style="background-color: #34495e">
+<h1 align="center" style="color: white" th:text="${apiResponse.code}"></h1>
+<h2 align="center" style="color: white" th:text="${apiResponse.message}"></h2>
+</body>
+</html>

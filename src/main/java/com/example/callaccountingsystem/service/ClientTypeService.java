@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.ClientTypeEntity;
 import com.example.callaccountingsystem.domain.dto.ClientType;
 import com.example.callaccountingsystem.domain.mapping.ClientTypeMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.ClientTypeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +29,7 @@ public class ClientTypeService implements ClientTypeServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -39,6 +40,9 @@ public class ClientTypeService implements ClientTypeServiceInterface {
 
     @Override
     public void save(ClientType clientType) {
+        if (repository.findFirstByType(clientType.getType().trim()).isPresent()) {
+            throw new FieldAlreadyExistException("Client type \"" + clientType.getType() + "\" already exists!");
+        }
         repository.save(mapper.toDbo(clientType));
     }
 

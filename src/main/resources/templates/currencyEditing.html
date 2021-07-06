@@ -13,9 +13,9 @@
 <form class="table" id="scroll" th:action="@{/currency/save}" th:object="${currency}" th:method="post">
     <h1>Currency Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="number" th:field="*{numericalCode}"/>
-    <input type="text" th:field="*{name}"/>
-    <input type="text" th:field="*{code}"/>
+    <input type="number" th:field="*{numericalCode}" th:placeholder="numerical_code" required/>
+    <input type="text" th:field="*{name}" th:placeholder="name" required/>
+    <input type="text" th:field="*{code}" th:placeholder="code" required/>
 
     <input type="submit" name="" value="Save">
 </form>

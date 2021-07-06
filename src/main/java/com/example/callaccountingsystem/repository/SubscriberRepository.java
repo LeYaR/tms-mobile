@@ -16,4 +16,5 @@ public interface SubscriberRepository extends JpaRepository<SubscriberEntity, Lo
 
     @Query("SELECT s.phoneNumber FROM SubscriberEntity s")
     List<Long> findAllByPhoneNumber();
+
 }

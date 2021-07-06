@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.MobileOperatorEntity;
 import com.example.callaccountingsystem.domain.dto.MobileOperator;
 import com.example.callaccountingsystem.domain.mapping.MobileOperatorMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.MobileOperatorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +28,7 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -38,6 +39,11 @@ public class MobileOperatorService implements MobileOperatorServiceInterface {
 
     @Override
     public void save(MobileOperator mobileOperator) {
+        if (repository.findFirstByCodeAndOperator(mobileOperator.getCode(),
+                mobileOperator.getOperator().trim()).isPresent()) {
+            throw new FieldAlreadyExistException("Mobile operator \""
+                    + mobileOperator.getOperator() + "(code " + mobileOperator.getCode() + ")\" already exists!");
+        }
         repository.save(mapper.toDbo(mobileOperator));
     }
 

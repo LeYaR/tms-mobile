@@ -14,8 +14,8 @@
     <h1>City Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="hidden" th:field="*{country.id}" readonly="readonly"/>
-    <input type="text" th:field="*{country.country}"/>
-    <input type="text" th:field="*{city}"/>
+    <input type="text" th:field="*{country.country}" th:placeholder="country" required/>
+    <input type="text" th:field="*{city}" th:placeholder="city" required/>
     <input type="submit" name="" value="Save">
 </form>
 </body>

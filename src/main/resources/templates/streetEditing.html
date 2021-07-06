@@ -14,9 +14,9 @@
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="hidden" th:field="*{city.country.id}" readonly="readonly"/>
     <input type="hidden" th:field="*{city.id}" readonly="readonly"/>
-    <input type="text" th:field="*{city.country.country}"/>
-    <input type="text" th:field="*{city.city}"/>
-    <input type="text" th:field="*{street}"/>
+    <input type="text" th:field="*{city.country.country}" th:placeholder="country" required/>
+    <input type="text" th:field="*{city.city}" th:placeholder="city" required/>
+    <input type="text" th:field="*{street}" th:placeholder="street" required/>
 
     <input type="submit" name="" value="Save">
 </form>

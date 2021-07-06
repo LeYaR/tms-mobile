@@ -18,7 +18,7 @@
         <input type="text" name="first_name" placeholder="First Name" th:field="*{firstName}"  title="First Name" required/>
         <input type="number" name="" placeholder="Passport number" th:field="*{passport.idNumber}" min="0" title="Passport number" required/>
         <input type="number" name="" placeholder="Passport series" th:field="*{passport.seriesNumber}" min="0" title="Passport series" required/>
-        <input type="text" name="" placeholder="Passport date" th:field="*{passport.date}" title="Passport date, format: YYYY-MM-DD" required/>  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+        <input type="text" name="" placeholder="Passport date" th:field="*{passport.date}" pattern="(\d{2})\.(\d{2})\.(\d{4})" title="DD.MM.YYYY" required/>
         <input type="text" name="" placeholder="Passport issuer" th:field="*{passport.issuer}"  title="Passport issuer" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{address.street.city.country.id}"/>
         <input type="text" name="" placeholder="Country" th:field="*{address.street.city.country.country}"  title="Country" required/>
@@ -31,16 +31,16 @@
         <input type="number" name="" placeholder="Flat" th:field="*{address.flat}" min="0" title="Flat"/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.id}"/>
         <input type="number" name="" placeholder="Contract number" th:field="*{contract.number}" min="0" title="Contract number" required/>
-        <input type="text" name="" placeholder="Contract date" th:field="*{contract.date}" title="Contract date, format: YYYY-MM-DD" required/> <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+        <input type="text" name="" placeholder="Contract date" th:field="*{contract.date}" pattern="(\d{2})\.(\d{2})\.(\d{4})" title="DD.MM.YYYY" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.clientType.id}"/>
         <input type="text" name="" placeholder="Client type" th:field="*{contract.clientType.type}"  title="Client type" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.id}"/>
         <input type="text" name="" placeholder="Tariff plan" th:field="*{contract.tariffPlan.name}"  title="Tariff plan" required/>
         <input type="text" name="" placeholder="Description" th:field="*{contract.tariffPlan.description}" title="Description"/>
-        <input type="text" name="" placeholder="Abonent payment" th:field="*{contract.tariffPlan.abonentPayment}" min="0" pattern="\d+(\.\d{2})?" title="Abonent payment" required/>
+        <input type="text" name="" placeholder="Abonent payment" th:field="*{contract.tariffPlan.abonentPayment}" min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.pricingUnit.id}"/>
         <input type="text" name="" placeholder="Unit" th:field="*{contract.tariffPlan.pricingUnit.unit}"  title="Unit" required/>
-        <input type="text" name="" placeholder="Price" th:field="*{contract.tariffPlan.price}" min="0" pattern="\d+(\.\d{2})?" title="Price" required/>
+        <input type="text" name="" placeholder="Price" th:field="*{contract.tariffPlan.price}" min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.currency.id}"/>
         <input type="number" name="" placeholder="Currency numerical code" th:field="*{contract.tariffPlan.currency.numericalCode}" min="0" title="Currency numerical code" required/>
         <input type="text" name="" placeholder="Currency name" th:field="*{contract.tariffPlan.currency.name}"  title="Currency name" required/>

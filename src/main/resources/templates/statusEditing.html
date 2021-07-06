@@ -12,7 +12,7 @@
 <form class="table" id="scroll" th:action="@{/status/save}" th:object="${status}" th:method="post">
     <h1>Status Editing</h1>
     <input type="hidden" th:field="*{code}" readonly="readonly"/>
-    <input type="text" th:field="*{status}"/>
+    <input type="text" th:field="*{status}" th:placeholder="status" required/>
 
     <input type="submit" name="" value="Save">
 </form>

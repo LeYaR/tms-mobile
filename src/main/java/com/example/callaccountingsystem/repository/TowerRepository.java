@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TowerRepository extends JpaRepository<TowerEntity, Integer> {
@@ -16,4 +17,9 @@ public interface TowerRepository extends JpaRepository<TowerEntity, Integer> {
 
     @Query("SELECT t.id FROM TowerEntity t")
     List<Integer> findAllById();
+
+    Optional<TowerEntity> findFirstByNameAndLocationCity_CityAndLocationCity_Country_Country(String name,
+                                                                                             String city,
+                                                                                             String country);
+
 }

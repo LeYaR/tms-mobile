@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.StatusEntity;
 import com.example.callaccountingsystem.domain.dto.Status;
 import com.example.callaccountingsystem.domain.mapping.StatusMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.StatusRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,7 +36,7 @@ public class StatusService implements StatusServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -46,6 +47,9 @@ public class StatusService implements StatusServiceInterface {
 
     @Override
     public void save(Status status) {
+        if (repository.findFirstByStatus(status.getStatus().trim()).isPresent()) {
+            throw new FieldAlreadyExistException("Status \"" + status.getStatus() + "\"" + " already exists!");
+        }
         repository.save(mapper.toDbo(status));
     }
 

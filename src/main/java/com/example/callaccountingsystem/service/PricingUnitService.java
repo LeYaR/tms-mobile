@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.PricingUnitEntity;
 import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import com.example.callaccountingsystem.domain.mapping.PricingUnitMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.PricingUnitRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +29,7 @@ public class PricingUnitService implements PricingUnitServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -39,6 +40,9 @@ public class PricingUnitService implements PricingUnitServiceInterface {
 
     @Override
     public void save(PricingUnit pricingUnit) {
+        if (repository.findFirstByUnit(pricingUnit.getUnit().trim()).isPresent()) {
+            throw new FieldAlreadyExistException("Pricing unit \"" + pricingUnit.getUnit() + "\" already exists!");
+        }
         repository.save(mapper.toDbo(pricingUnit));
     }
 

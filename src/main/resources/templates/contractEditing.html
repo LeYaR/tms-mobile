@@ -13,21 +13,24 @@
 <form class="table" id="scroll" th:action="@{/contract/save}" th:object="${contract}" th:method="post">
     <h1>Contract Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="text" th:field="*{number}"/>
-    <input type="text" th:field="*{date}"/>
-    <input type="text" th:field="*{clientType.type}"/>
-    <input type="text" th:field="*{tariffPlan.name}"/>
+    <input type="text" th:field="*{number}" th:placeholder="number" required/>
+    <input type="text" th:field="*{date}" th:placeholder="date" pattern="(\d{2})\.(\d{2})\.(\d{4})" title="DD.MM.YYYY"
+           required/>
+    <input type="text" th:field="*{clientType.type}" th:placeholder="type" required/>
+    <input type="text" th:field="*{tariffPlan.name}" th:placeholder="name" required/>
     <input type="hidden" th:field="*{tariffPlan.id}" readonly="readonly"/>
-    <input type="text" th:field="*{tariffPlan.description}"/>
-    <input type="text" th:field="*{tariffPlan.abonentPayment}"/>
+    <input type="text" th:field="*{tariffPlan.description}" th:placeholder="description" required/>
+    <input type="text" th:field="*{tariffPlan.abonentPayment}" th:placeholder="abonent_payment"
+           min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
     <input type="hidden" th:field="*{tariffPlan.pricingUnit.id}" readonly="readonly"/>
-    <input type="text" th:field="*{tariffPlan.pricingUnit.unit}"/>
-    <input type="text" th:field="*{tariffPlan.price}"/>
+    <input type="text" th:field="*{tariffPlan.pricingUnit.unit}" th:placeholder="unit" required/>
+    <input type="text" th:field="*{tariffPlan.price}" th:placeholder="price"
+           min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
     <input type="hidden" th:field="*{tariffPlan.currency.id}" readonly="readonly"/>
-    <input type="text" th:field="*{tariffPlan.currency.numericalCode}"/>
-    <input type="text" th:field="*{tariffPlan.currency.name}"/>
-    <input type="text" th:field="*{tariffPlan.currency.code}"/>
-    <input type="text" th:field="*{discount}"/>
+    <input type="number" th:field="*{tariffPlan.currency.numericalCode}" th:placeholder="currency_numerical_code" required/>
+    <input type="text" th:field="*{tariffPlan.currency.name}" th:placeholder="currency_name" required/>
+    <input type="text" th:field="*{tariffPlan.currency.code}" th:placeholder="currency_code" required/>
+    <input type="number" th:field="*{discount}" th:placeholder="discount"/>
 
     <input type="submit" name="" value="Save">
 </form>

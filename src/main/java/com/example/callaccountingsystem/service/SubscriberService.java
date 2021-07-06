@@ -1,8 +1,11 @@
 package com.example.callaccountingsystem.service;
 
 import com.example.callaccountingsystem.domain.dbo.SubscriberEntity;
+import com.example.callaccountingsystem.domain.dto.Address;
 import com.example.callaccountingsystem.domain.dto.Subscriber;
 import com.example.callaccountingsystem.domain.mapping.SubscriberMapper;
+import com.example.callaccountingsystem.repository.AddressRepository;
+import com.example.callaccountingsystem.repository.MobileOperatorRepository;
 import com.example.callaccountingsystem.repository.SubscriberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,10 +18,17 @@ import java.util.List;
 public class SubscriberService implements SubscriberServiceInterface {
 
     private final SubscriberRepository repository;
+    private final MobileOperatorRepository mobileOperatorRepository;
+    private final AddressRepository addressRepository;
     private final SubscriberMapper mapper;
 
-    public SubscriberService(SubscriberRepository repository, SubscriberMapper mapper) {
+    public SubscriberService(SubscriberRepository repository,
+                             MobileOperatorRepository mobileOperatorRepository,
+                             AddressRepository addressRepository,
+                             SubscriberMapper mapper) {
         this.repository = repository;
+        this.mobileOperatorRepository = mobileOperatorRepository;
+        this.addressRepository = addressRepository;
         this.mapper = mapper;
     }
 
@@ -35,7 +45,7 @@ public class SubscriberService implements SubscriberServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -46,7 +56,18 @@ public class SubscriberService implements SubscriberServiceInterface {
 
     @Override
     public void save(Subscriber subscriber) {
-        repository.save(mapper.toDbo(subscriber));
+        final Address address = subscriber.getAddress();
+        final SubscriberEntity subscriberEntity = mapper.toDbo(subscriber);
+        mobileOperatorRepository.findFirstByCodeAndOperator(subscriber.getMobileOperator().getCode(),
+                subscriber.getMobileOperator().getOperator()).ifPresent(subscriberEntity::setMobileOperator);
+        addressRepository.findFirstByFlatAndHouseAndStreet_StreetAndStreet_City_CityAndStreet_City_Country_Country(
+                address.getFlat().trim(),
+                address.getHouse().trim(),
+                address.getStreet().getStreet().trim(),
+                address.getStreet().getCity().getCity().trim(),
+                address.getStreet().getCity().getCountry().getCountry().trim())
+                .ifPresent(subscriberEntity::setAddress);
+        repository.save(subscriberEntity);
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.CountryEntity;
 import com.example.callaccountingsystem.domain.dto.Country;
 import com.example.callaccountingsystem.domain.mapping.CountryMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.CountryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +29,7 @@ public class CountryService implements CountryServiceInterface {
     }
 
     @Override
-    public int getQuantityPages(int pageSize){
+    public int getQuantityPages(int pageSize) {
         return repository.findAll().size() / pageSize + 1;
     }
 
@@ -39,6 +40,10 @@ public class CountryService implements CountryServiceInterface {
 
     @Override
     public void save(Country country) {
+        country.setCountry(country.getCountry().toUpperCase());
+        if (repository.findFirstByCountry(country.getCountry()).isPresent()) {
+            throw new FieldAlreadyExistException(country.getCountry() + " already exists!");
+        }
         repository.save(mapper.toDbo(country));
     }
 
