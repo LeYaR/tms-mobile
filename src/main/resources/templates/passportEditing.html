@@ -14,8 +14,7 @@
     <h1>Passport Editing</h1>
     <input type="text" th:field="*{idNumber}" readonly="readonly"/>
     <input type="text" th:field="*{seriesNumber}" th:placeholder="series_number" required/>
-    <input type="text" th:field="*{date}" th:placeholder="date" pattern="(\d{2})\.(\d{2})\.(\d{4})"
-           title="DD.MM.YYYY" required/>
+    <input type="date" th:field="*{date}" th:placeholder="date"  required/>
     <input type="text" th:field="*{issuer}" th:placeholder="issuer" required/>
 
     <input type="submit" name="" value="Save">

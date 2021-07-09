@@ -14,8 +14,7 @@
     <h1>Contract Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
     <input type="text" th:field="*{number}" th:placeholder="number" required/>
-    <input type="text" th:field="*{date}" th:placeholder="date" pattern="(\d{2})\.(\d{2})\.(\d{4})" title="DD.MM.YYYY"
-           required/>
+    <input type="date" th:field="*{date}" th:placeholder="date" required/>
     <input type="text" th:field="*{clientType.type}" th:placeholder="type" required/>
     <input type="text" th:field="*{tariffPlan.name}" th:placeholder="name" required/>
     <input type="hidden" th:field="*{tariffPlan.id}" readonly="readonly"/>
