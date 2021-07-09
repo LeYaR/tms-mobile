@@ -23,7 +23,7 @@
                 <option th:each="sub : ${subscribers}" th:value="${sub.passport.seriesNumber}"/>
             </select>
         </datalist>
-    <input type="text" name="" placeholder="Passport date" value="" title="Passport date, format: YYYY-MM-DD" required>  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <input type="date" name="" placeholder="Passport date" value="" title="Passport date" required>  <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
     <input type="text" name="" placeholder="Passport issuer" value="" pattern="^[a-zA-Z]+$" list="passportIssuer" title="Passport issuer" required>
         <datalist id="passportIssuer">
             <select>

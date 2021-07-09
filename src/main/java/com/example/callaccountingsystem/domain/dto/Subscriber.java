@@ -1,6 +1,7 @@
 package com.example.callaccountingsystem.domain.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ public class Subscriber {
     private Contract contract;
     private MobileOperator mobileOperator;
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
 }
