@@ -24,8 +24,13 @@ public class CurrencyController {
                                           @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<Currency> currencyPage = service.getAllCurrencies(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, currencyPage);
         model.addAttribute("currencies", currencyPage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("currency");
@@ -40,9 +45,9 @@ public class CurrencyController {
     }
 
     @PostMapping("/currency/save")
-    public String save(@ModelAttribute("currency") Currency currency) {
+    public ModelAndView save(@ModelAttribute("currency") Currency currency) {
         service.save(currency);
-        return "redirect:/address";
+        return new ModelAndView("redirect:/currency");
     }
 
 }

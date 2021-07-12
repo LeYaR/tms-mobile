@@ -24,8 +24,13 @@ public class MobileOperatorController {
                                                @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<MobileOperator> mobileOperatorPage = service.getAllMobileOperators(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, mobileOperatorPage);
         model.addAttribute("mobileOperators", mobileOperatorPage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mobileOperator");
@@ -40,9 +45,9 @@ public class MobileOperatorController {
     }
 
     @PostMapping("/mobile-operator/save")
-    public String save(@ModelAttribute("mobileOperator") MobileOperator mobileOperator) {
+    public ModelAndView save(@ModelAttribute("mobileOperator") MobileOperator mobileOperator) {
         service.save(mobileOperator);
-        return "redirect:/mobile-operator";
+        return new ModelAndView("redirect:/mobile-operator");
     }
 
 }

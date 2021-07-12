@@ -13,14 +13,17 @@
 <form class="table" id="scroll" th:action="@{/tariff-plan/save}" th:object="${tariffPlan}" th:method="post">
     <h1>Tariff plan Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="text" th:field="*{name}"/>
-    <input type="text" th:field="*{description}"/>
-    <input type="text" th:field="*{abonentPayment}"/>
-    <input type="text" th:field="*{pricingUnit.unit}"/>
-    <input type="text" th:field="*{price}"/>
-    <input type="text" th:field="*{currency.numericalCode}"/>
-    <input type="text" th:field="*{currency.name}"/>
-    <input type="text" th:field="*{currency.code}"/>
+    <input type="text" th:field="*{name}" th:placeholder="name" required/>
+    <input type="text" th:field="*{description}" th:placeholder="description"/>
+    <input type="text" th:field="*{abonentPayment}" th:placeholder="abonent_payment" min="0"
+           pattern="\d+(\.\d{2})?" title="0.00" required/>
+    <input type="hidden" th:field="*{pricingUnit.id}" readonly="readonly"/>
+    <input type="text" th:field="*{pricingUnit.unit}" th:placeholder="unit" required/>
+    <input type="text" th:field="*{price}" th:placeholder="price" min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
+    <input type="hidden" th:field="*{currency.id}" readonly="readonly"/>
+    <input type="number" th:field="*{currency.numericalCode}" th:placeholder="numerical_code" required/>
+    <input type="text" th:field="*{currency.name}" th:placeholder="name" required/>
+    <input type="text" th:field="*{currency.code}" th:placeholder="code" required/>
 
     <input type="submit" name="" value="Save">
 </form>

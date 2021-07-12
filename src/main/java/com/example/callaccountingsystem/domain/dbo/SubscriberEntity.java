@@ -33,7 +33,7 @@ public class SubscriberEntity {
     private AddressEntity address;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "contract_id", referencedColumnName = "id")
+    @JoinColumn(name = "contract_id")
     private ContractEntity contract;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

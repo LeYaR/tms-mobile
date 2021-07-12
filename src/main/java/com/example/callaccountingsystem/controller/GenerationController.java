@@ -1,7 +1,10 @@
 package com.example.callaccountingsystem.controller;
 
 import com.example.callaccountingsystem.exception.IllegalPeriodForGeneration;
-import com.example.callaccountingsystem.service.*;
+import com.example.callaccountingsystem.service.GenerationServiceInterface;
+import com.example.callaccountingsystem.service.StatusServiceInterface;
+import com.example.callaccountingsystem.service.SubscriberServiceInterface;
+import com.example.callaccountingsystem.service.TowerServiceInterface;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,17 +18,14 @@ import java.util.List;
 public class GenerationController {
 
     private final GenerationServiceInterface generationServiceInterface;
-    private final CallServiceInterface callServiceInterface;
     private final SubscriberServiceInterface subscriberServiceInterface;
     private final TowerServiceInterface towerServiceInterface;
     private final StatusServiceInterface statusServiceInterface;
 
-    public GenerationController(CallServiceInterface callServiceInterface,
-                                GenerationServiceInterface generationServiceInterface,
+    public GenerationController(GenerationServiceInterface generationServiceInterface,
                                 SubscriberServiceInterface subscriberServiceInterface,
                                 TowerServiceInterface towerServiceInterface,
                                 StatusServiceInterface statusServiceInterface) {
-        this.callServiceInterface = callServiceInterface;
         this.generationServiceInterface = generationServiceInterface;
         this.subscriberServiceInterface = subscriberServiceInterface;
         this.towerServiceInterface = towerServiceInterface;

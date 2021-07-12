@@ -24,6 +24,6 @@ public class MobileOperatorEntity {
             inverseJoinColumns = @JoinColumn(name = "country_id"))
     private List<CountryEntity> countries;
 
-    @OneToMany(mappedBy = "mobileOperator", orphanRemoval = true)
+    @OneToMany(mappedBy = "mobileOperator")
     private List<SubscriberEntity> subscribers;
 }

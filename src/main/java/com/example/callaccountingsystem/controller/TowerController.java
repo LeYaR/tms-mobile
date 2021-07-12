@@ -24,9 +24,13 @@ public class TowerController {
                                       @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
-
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<Tower> towerPage = service.getAllTowers(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, towerPage);
         model.addAttribute("towers", towerPage);
 
         ModelAndView modelAndView = new ModelAndView();
@@ -42,9 +46,9 @@ public class TowerController {
     }
 
     @PostMapping("/tower/save")
-    public String save(@ModelAttribute("tower") Tower tower) {
+    public ModelAndView save(@ModelAttribute("tower") Tower tower) {
         service.save(tower);
-        return "redirect:/tower";
+        return new ModelAndView("redirect:/tower");
     }
 
 }

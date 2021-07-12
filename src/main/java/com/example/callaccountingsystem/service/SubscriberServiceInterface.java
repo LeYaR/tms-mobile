@@ -11,6 +11,8 @@ public interface SubscriberServiceInterface {
 
     List<Long> getAllPhoneNumbers();
 
+    int getQuantityPages(int pageSize);
+
     Subscriber get(Long phoneNumber);
 
     void save(Subscriber subscriber);

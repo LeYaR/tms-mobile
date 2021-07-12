@@ -24,8 +24,13 @@ public class PricingUnitController {
                                             @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<PricingUnit> pricingUnits = service.getAllPricingUnits(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, pricingUnits);
         model.addAttribute("pricingUnits", pricingUnits);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pricingUnit");
@@ -40,9 +45,9 @@ public class PricingUnitController {
     }
 
     @PostMapping("/pricing-unit/save")
-    public String save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
+    public ModelAndView save(@ModelAttribute("pricingUnit") PricingUnit pricingUnit) {
         service.save(pricingUnit);
-        return "redirect:/pricing-unit";
+        return new ModelAndView("redirect:/pricing-unit");
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface StatusRepository extends JpaRepository<StatusEntity, Integer> {
@@ -16,4 +17,7 @@ public interface StatusRepository extends JpaRepository<StatusEntity, Integer> {
 
     @Query("SELECT s.code FROM StatusEntity s")
     List<Integer> findAllByCode();
+
+    Optional<StatusEntity> findFirstByStatus(String status);
+
 }

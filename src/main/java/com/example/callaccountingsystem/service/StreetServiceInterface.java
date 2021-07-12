@@ -7,6 +7,8 @@ public interface StreetServiceInterface {
 
     Page<Street> getAllStreets(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     Street get(Long id);
 
     void save(Street street);

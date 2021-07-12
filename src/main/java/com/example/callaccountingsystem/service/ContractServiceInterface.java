@@ -7,6 +7,8 @@ public interface ContractServiceInterface {
 
     Page<Contract> getAllContracts(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     Contract get(Long id);
 
     void save(Contract contract);

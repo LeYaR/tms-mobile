@@ -23,6 +23,6 @@ public class TowerEntity {
 
     private String name;
 
-    @OneToMany(mappedBy = "tower", orphanRemoval = true)
+    @OneToMany(mappedBy = "tower")
     private List<CallEntity> calls;
 }

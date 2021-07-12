@@ -24,8 +24,13 @@ public class CountryController {
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<Country> countryPage = service.getAllCountries(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, countryPage);
         model.addAttribute("countries", countryPage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("country");
@@ -40,9 +45,17 @@ public class CountryController {
     }
 
     @PostMapping("country/save")
-    public String save(@ModelAttribute("country") Country country) {
+    public ModelAndView save(@ModelAttribute("country") Country country) {
         service.save(country);
-        return "redirect:/country";
+        return new ModelAndView("redirect:/country");
+    }
+
+    @GetMapping("/country/new")
+    ModelAndView create(Model model){
+        Country country = new Country();
+        model.addAttribute("country", country);
+        ModelAndView mav = new ModelAndView("countryNew");
+        return mav;
     }
 
 }

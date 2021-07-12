@@ -3,6 +3,7 @@ package com.example.callaccountingsystem.service;
 import com.example.callaccountingsystem.domain.dbo.PricingUnitEntity;
 import com.example.callaccountingsystem.domain.dto.PricingUnit;
 import com.example.callaccountingsystem.domain.mapping.PricingUnitMapper;
+import com.example.callaccountingsystem.exception.FieldAlreadyExistException;
 import com.example.callaccountingsystem.repository.PricingUnitRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +25,12 @@ public class PricingUnitService implements PricingUnitServiceInterface {
     public Page<PricingUnit> getAllPricingUnits(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<PricingUnitEntity> page = repository.findAll(pageable);
-        return page.map(pricingUnitEntity -> (mapper.fromDbo(pricingUnitEntity)));
+        return page.map(mapper::fromDbo);
+    }
+
+    @Override
+    public int getQuantityPages(int pageSize) {
+        return repository.findAll().size() / pageSize + 1;
     }
 
     @Override
@@ -34,6 +40,9 @@ public class PricingUnitService implements PricingUnitServiceInterface {
 
     @Override
     public void save(PricingUnit pricingUnit) {
+        if (repository.findFirstByUnit(pricingUnit.getUnit().trim()).isPresent()) {
+            throw new FieldAlreadyExistException("Pricing unit \"" + pricingUnit.getUnit() + "\" already exists!");
+        }
         repository.save(mapper.toDbo(pricingUnit));
     }
 

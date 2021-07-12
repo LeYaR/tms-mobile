@@ -24,8 +24,13 @@ public class ClientTypeController {
                                         @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<ClientType> clientTypePage = service.getAllClients(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, clientTypePage);
         model.addAttribute("clients", clientTypePage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("client");
@@ -40,9 +45,8 @@ public class ClientTypeController {
     }
 
     @PostMapping(value = "/client/save")
-    public String save(@ModelAttribute("client") ClientType client) {
+    public ModelAndView save(@ModelAttribute("client") ClientType client) {
         service.save(client);
-        return "redirect:/client";
-    }
+        return new ModelAndView("redirect:/client");    }
 
 }

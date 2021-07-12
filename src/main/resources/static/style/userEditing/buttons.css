@@ -1,4 +1,4 @@
-.table input[type = "text"],.table input[type = "number"]{
+.table input[type = "text"],.table input[type = "number"],.table input[type = "date"]{
     background: none;
     border: 2px solid #3498db;
     padding: 14px 10px;

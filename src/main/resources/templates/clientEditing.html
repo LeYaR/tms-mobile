@@ -13,7 +13,7 @@
 <form class="table" id="scroll" th:action="@{/client/save}" th:object="${client}" th:method="post">
     <h1>Сlient type Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="text" th:field="*{type}"/>
+    <input type="text" th:field="*{type}" th:placeholder="type" required/>
     <input type="submit" name="" value="Save">
 </form>
 </body>

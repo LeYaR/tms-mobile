@@ -22,6 +22,6 @@ public class StreetEntity {
     @JoinColumn(name = "city_id")
     private CityEntity city;
 
-    @OneToMany(mappedBy = "street", orphanRemoval = true)
+    @OneToMany(mappedBy = "street")
     private List<AddressEntity> addresses;
 }

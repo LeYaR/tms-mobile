@@ -11,6 +11,8 @@ public interface StatusServiceInterface {
 
     List<Integer> getAllListStatusCode();
 
+    int getQuantityPages(int pageSize);
+
     Status get(Integer code);
 
     void save(Status status);

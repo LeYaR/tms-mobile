@@ -13,9 +13,9 @@
 <form class="table" id="scroll" th:action="@{/passport/save}" th:object="${passport}" th:method="post">
     <h1>Passport Editing</h1>
     <input type="text" th:field="*{idNumber}" readonly="readonly"/>
-    <input type="text" th:field="*{seriesNumber}"/>
-    <input type="text" th:field="*{date}"/>
-    <input type="text" th:field="*{issuer}"/>
+    <input type="text" th:field="*{seriesNumber}" th:placeholder="series_number" required/>
+    <input type="date" th:field="*{date}" th:placeholder="date"  required/>
+    <input type="text" th:field="*{issuer}" th:placeholder="issuer" required/>
 
     <input type="submit" name="" value="Save">
 </form>

@@ -7,6 +7,8 @@ public interface MobileOperatorServiceInterface {
 
     Page<MobileOperator> getAllMobileOperators(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     MobileOperator get(Long id);
 
     void save(MobileOperator mobileOperator);

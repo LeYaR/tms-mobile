@@ -9,6 +9,8 @@ public interface CallServiceInterface {
 
     Page<Call> getAllCalls(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     void saveListCalls(List<Call> list);
 
 }

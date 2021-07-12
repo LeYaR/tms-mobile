@@ -13,7 +13,7 @@
 <form class="table" id="scroll" th:action="@{/country/save}" th:object="${country}" th:method="post">
     <h1>Country Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="text" th:field="*{country}"/>
+    <input type="text" th:field="*{country}" th:placeholder="country" required/>
 
     <input type="submit" name="" value="Save">
 </form>

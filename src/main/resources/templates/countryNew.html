@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Country New</title>
+    <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/userEditing/buttons.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<br/>
+<form class="table" id="scroll" th:action="@{/country/save}" th:object="${country}" th:method="post">
+    <h1>Country Editing</h1>
+    <input type="hidden" th:field="*{id}" readonly="readonly"/>
+    <input type="text" th:field="*{country}" th:placeholder="country" required/>
+
+    <input type="submit" name="" value="Save">
+</form>
+</body>
+</html>

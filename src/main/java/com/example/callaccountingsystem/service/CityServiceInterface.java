@@ -7,6 +7,8 @@ public interface CityServiceInterface {
 
     Page<City> getAllCity(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     City get(Long id);
 
     void save(City city);

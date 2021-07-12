@@ -5,43 +5,45 @@
     <title>Calls</title>
     <link th:href="@{/style/blocks/headerStyle.css}" rel="stylesheet"/>
     <link th:href="@{/style/tables/table.css}" rel="stylesheet"/>
+    <link th:href="@{/style/tables/pagination.css}" rel="stylesheet"/>
 </head>
 <body>
 
 <header th:insert="blocks/header :: header"/>
 
-<form action="/call" th:method="get">
-    <div class="table" id="scroll">
-        <h1>Calls list</h1>
-        <table border="1">
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Incoming phone number</th>
-                <th>Outgoing phone number</th>
-                <th>Duration</th>
-                <th>Tower</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="call : ${calls}">
-                <td th:text="${call.date}"></td>
-                <td th:text="${call.incomingSubscriber.phoneNumber}"></td>
-                <td th:text="${call.outgoingSubscriber.phoneNumber}"></td>
-                <td th:text="${call.duration}"></td>
-                <td th:text="${call.tower.name}"></td>
-                <td th:text="${call.status.status}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <span th:if="${totalPages > 0}"
-              th:each="pageNumber : ${pageNumbers}">
-        <a th:href="@{/call(size=${calls.size}, page=${pageNumber})}"
-           th:text="${pageNumber}"
-           th:class="${pageNumber==calls.number + 1} ? active"></a>
-    </span>
+<div class="table" id="scroll">
+    <h1>Calls list</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Incoming phone number</th>
+            <th>Outgoing phone number</th>
+            <th>Duration</th>
+            <th>Tower</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="call : ${calls}">
+            <td th:text="${call.date.format(formatter)}"></td>
+            <td th:text="${call.incomingSubscriber.phoneNumber}"></td>
+            <td th:text="${call.outgoingSubscriber.phoneNumber}"></td>
+            <td th:text="${call.duration}"></td>
+            <td th:text="${call.tower.name}"></td>
+            <td th:text="${call.status.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <form th:action="@{/call(size=${calls.size}, page=${page})}">
+            <input type="number" th:name="page" th:value="${numberPage}" min="1" th:max="${quantityPage}">
+            <h>/</h>
+            <h th:text="${quantityPage}"/>
+        </form>
     </div>
-</form>
+
+</div>
 </body>
 </html>

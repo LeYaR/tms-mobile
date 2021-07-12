@@ -25,7 +25,12 @@ public class PassportService implements PassportServiceInterface {
     public Page<Passport> getAllPassports(int currentPage, int pageSize) {
         final Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
         final Page<PassportEntity> page = repository.findAll(pageable);
-        return page.map(passportEntity -> (mapper.fromDbo(passportEntity)));
+        return page.map(mapper::fromDbo);
+    }
+
+    @Override
+    public int getQuantityPages(int pageSize){
+        return repository.findAll().size() / pageSize + 1;
     }
 
     @Override

@@ -24,8 +24,13 @@ public class PassportController {
                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<Passport> passportPage = service.getAllPassports(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, passportPage);
         model.addAttribute("passports", passportPage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("passport");
@@ -40,9 +45,9 @@ public class PassportController {
     }
 
     @PostMapping("/passport/save")
-    public String save(@ModelAttribute("passport") Passport passport) {
+    public ModelAndView save(@ModelAttribute("passport") Passport passport) {
         service.save(passport);
-        return "redirect:/passport";
+        return new ModelAndView("redirect:/passport");
     }
 
 }

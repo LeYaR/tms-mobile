@@ -24,8 +24,13 @@ public class SubscriberController {
                                            @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
+        int quantityPage = service.getQuantityPages(pageSize);
+        if(currentPage > quantityPage || currentPage < 1){
+            return new ModelAndView("redirect:/tables");
+        }
+        model.addAttribute("quantityPage", quantityPage);
+        model.addAttribute("numberPage", currentPage);
         final Page<Subscriber> subscriberPage = service.getAllSubscribers(currentPage, pageSize);
-        new Pagination().getPagination(model, currentPage, subscriberPage);
         model.addAttribute("subscribers", subscriberPage);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("subscriber");
@@ -39,10 +44,17 @@ public class SubscriberController {
         return mav;
     }
 
-    @PostMapping("/subscriber/save")
-    public String save(@ModelAttribute("subscriber") Subscriber subscriber) {
-        service.save(subscriber);
-        return "redirect:/subscriber";
+    @GetMapping("/adding-user")
+    ModelAndView create(Model model){
+        Subscriber subscriber = new Subscriber();
+        model.addAttribute("subscriber", subscriber);
+        ModelAndView mav = new ModelAndView("addingUser");
+        return mav;
     }
 
+    @PostMapping("/subscriber/save")
+    public ModelAndView save(@ModelAttribute("subscriber") Subscriber subscriber) {
+        service.save(subscriber);
+        return new ModelAndView("redirect:/subscriber");
+    }
 }

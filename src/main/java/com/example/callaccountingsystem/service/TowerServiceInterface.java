@@ -11,6 +11,8 @@ public interface TowerServiceInterface {
 
     List<Integer> getAllListTowerId();
 
+    int getQuantityPages(int pageSize);
+
     Tower get(Integer id);
 
     void save(Tower tower);

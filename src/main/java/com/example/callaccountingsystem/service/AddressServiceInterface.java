@@ -7,6 +7,8 @@ public interface AddressServiceInterface {
 
     Page<Address> getAllAddress(int currentPage, int pageSize);
 
+    int getQuantityPages(int pageSize);
+
     Address get(Long id);
 
     void save(Address address);

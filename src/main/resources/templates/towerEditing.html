@@ -13,10 +13,11 @@
 <form class="table" id="scroll" th:action="@{/tower/save}" th:object="${tower}" th:method="post">
     <h1>Tower Editing</h1>
     <input type="hidden" th:field="*{id}" readonly="readonly"/>
-    <input type="text" th:field="*{name}"/>
-    <input type="text" th:field="*{locationCity.country.country}"/>
-    <input type="text" th:field="*{locationCity.city}"/>
-
+    <input type="text" th:field="*{name}" th:placeholder="name" required/>
+    <input type="hidden" th:field="*{locationCity.country.id}" readonly="readonly"/>
+    <input type="text" th:field="*{locationCity.country.country}" th:placeholder="country" required/>
+    <input type="hidden" th:field="*{locationCity.id}" readonly="readonly"/>
+    <input type="text" th:field="*{locationCity.city}" th:placeholder="city" required/>
     <input type="submit" name="" value="Save">
 </form>
 </body>
