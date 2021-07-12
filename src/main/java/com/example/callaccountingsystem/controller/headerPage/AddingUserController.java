@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/adding-user")
+@RequestMapping("/adding-user/")
 public class AddingUserController {
     private final SubscriberServiceInterface service;
 

@@ -34,12 +34,11 @@
         <input type="text" name="" placeholder="Client type" th:field="*{contract.clientType.type}"  title="Client type" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.id}"/>
         <input type="text" name="" placeholder="Tariff plan" th:field="*{contract.tariffPlan.name}"  title="Tariff plan" required/>
-        <input type="text" name="" placeholder="Description" th:field="*{contract.tariffPlan.description}" title="Description"/>
         <input type="text" name="" placeholder="Abonent payment" th:field="*{contract.tariffPlan.abonentPayment}" min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
         <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.pricingUnit.id}"/>
         <input type="text" name="" placeholder="Unit" th:field="*{contract.tariffPlan.pricingUnit.unit}"  title="Unit" required/>
         <input type="text" name="" placeholder="Price" th:field="*{contract.tariffPlan.price}" min="0" pattern="\d+(\.\d{2})?" title="0.00" required/>
-        <input type="hidden" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.currency.id}"/>
+        <input type="text" name="" placeholder="Passport issuer" th:field="*{contract.tariffPlan.currency.id}"/>
         <input type="number" name="" placeholder="Currency numerical code" th:field="*{contract.tariffPlan.currency.numericalCode}" min="0" title="Currency numerical code" required/>
         <input type="text" name="" placeholder="Currency name" th:field="*{contract.tariffPlan.currency.name}"  title="Currency name" required/>
         <input type="text" name="" placeholder="Currency code" th:field="*{contract.tariffPlan.currency.code}"  title="Currency code" required/>
@@ -48,7 +47,7 @@
         <input type="text" name="" placeholder="Mobile operator" th:field="*{mobileOperator.operator}" title="Mobile operator" required/>
         <input type="number" name="" placeholder="Operator code" th:field="*{mobileOperator.code}" min="0" title="Operator code" required/>
         <input type="text" name="" placeholder="Email" th:field="*{email}" title="Email"/>
-        <input type="text" name="" placeholder="Birthday" th:field="*{birthday}" title="Birthday" required/>
+        <input type="date" name="" placeholder="Birthday" th:field="*{birthday}" title="Birthday" required/>
 
         <input type="submit" name="" value="Save">
     </form>

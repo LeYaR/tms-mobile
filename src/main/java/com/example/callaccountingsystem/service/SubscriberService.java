@@ -1,6 +1,5 @@
 package com.example.callaccountingsystem.service;
 
-import com.example.callaccountingsystem.domain.dbo.CityEntity;
 import com.example.callaccountingsystem.domain.dbo.CountryEntity;
 import com.example.callaccountingsystem.domain.dbo.SubscriberEntity;
 import com.example.callaccountingsystem.domain.dto.Address;
@@ -13,6 +12,7 @@ import com.example.callaccountingsystem.repository.CountryRepository;
 import com.example.callaccountingsystem.repository.MobileOperatorRepository;
 import com.example.callaccountingsystem.repository.StreetRepository;
 import com.example.callaccountingsystem.repository.SubscriberRepository;
+import com.example.callaccountingsystem.repository.TariffPlanRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,17 +28,19 @@ public class SubscriberService implements SubscriberServiceInterface {
     private final CountryRepository countryRepository;
     private final ClientTypeRepository clientTypeRepository;
     private final MobileOperatorRepository mobileOperatorRepository;
+    private final TariffPlanRepository tariffPlanRepository;
     private final AddressRepository addressRepository;
     private final SubscriberMapper mapper;
 
     public SubscriberService(SubscriberRepository repository,
                              CountryRepository countryRepository, ClientTypeRepository clientTypeRepository, CityRepository cityRepository, StreetRepository streetRepository, MobileOperatorRepository mobileOperatorRepository,
-                             AddressRepository addressRepository,
+                             TariffPlanRepository tariffPlanRepository, AddressRepository addressRepository,
                              SubscriberMapper mapper) {
         this.repository = repository;
         this.countryRepository = countryRepository;
         this.clientTypeRepository = clientTypeRepository;
         this.mobileOperatorRepository = mobileOperatorRepository;
+        this.tariffPlanRepository = tariffPlanRepository;
         this.addressRepository = addressRepository;
         this.mapper = mapper;
     }
@@ -82,6 +84,7 @@ public class SubscriberService implements SubscriberServiceInterface {
         if (countryEntity.isPresent()){
             subscriberEntity.getAddress().getStreet().getCity().setCountry(countryEntity.get());
         };
+        tariffPlanRepository.findFirstByName(subscriber.getContract().getTariffPlan().getName()).ifPresent(subscriberEntity.getContract()::setTariffPlan);
         clientTypeRepository.findFirstByType(subscriber.getContract().getClientType().getType().trim()).ifPresent(subscriberEntity.getContract()::setClientType);
         repository.save(subscriberEntity);
     }

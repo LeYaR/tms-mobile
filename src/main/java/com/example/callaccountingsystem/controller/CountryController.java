@@ -50,4 +50,12 @@ public class CountryController {
         return new ModelAndView("redirect:/country");
     }
 
+    @GetMapping("/country/new")
+    ModelAndView create(Model model){
+        Country country = new Country();
+        model.addAttribute("country", country);
+        ModelAndView mav = new ModelAndView("countryNew");
+        return mav;
+    }
+
 }

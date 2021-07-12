@@ -44,10 +44,17 @@ public class SubscriberController {
         return mav;
     }
 
+    @GetMapping("/adding-user")
+    ModelAndView create(Model model){
+        Subscriber subscriber = new Subscriber();
+        model.addAttribute("subscriber", subscriber);
+        ModelAndView mav = new ModelAndView("addingUser");
+        return mav;
+    }
+
     @PostMapping("/subscriber/save")
     public ModelAndView save(@ModelAttribute("subscriber") Subscriber subscriber) {
         service.save(subscriber);
         return new ModelAndView("redirect:/subscriber");
     }
-
 }
