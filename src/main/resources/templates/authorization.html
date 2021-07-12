@@ -1,19 +1,39 @@
-<!DOCTYPE html>
+<!--<body>-->
+<!--    <form class="box" action="#" method="">     &lt;!&ndash; set action & method & delete this comment &ndash;&gt;-->
+<!--        <h1>Login</h1>-->
+<!--        <input type="text" name="name" placeholder="Username" value="" required >-->
+<!--        <input type="password" name="password" placeholder="Password" value="" required>-->
+<!--        <input type="submit" name="" value="Login">-->
+<!--        <a href="#">Registration</a>    &lt;!&ndash; set href & delete this comment &ndash;&gt;-->
+<!--    </form>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Log In</title>
-    <link th:href="@{/style/enter/enter.css}" rel="stylesheet"/>
+    <link th:href="@{/style/enter/enter.css}"/>
 </head>
 <body>
-
-    <form class="box" action="#" method="">     <!-- set action & method & delete this comment -->
+<div>
+    <form class="box" name="f" th:action="@{/perform-login}" method="post">
         <h1>Login</h1>
-        <input type="text" name="name" placeholder="Username" value="" required >
-        <input type="password" name="password" placeholder="Password" value="" required>
-        <input type="submit" name="" value="Login">
-        <a href="#">Registration</a>    <!-- set href & delete this comment -->
-    </form>
 
+
+        <div th:if="${param.error}" class="alert alert-error">
+            Неправильные имя и пароль.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+        <input type="text" id="user" name="user" placeholder="Username" value="" required >
+        <input type="password" id="pass" name="pass" placeholder="Password" value="" required>
+        <input type="submit" name="" value="Login">
+        <a href="/registration">Registration</a>
+
+    </form>
+</div>
 </body>
 </html>

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class LoginController {
 
-        @GetMapping("/")
+        @GetMapping("/login")
         public ModelAndView greeting(Model model) {
             model.addAttribute("title", "Hello World");
 
