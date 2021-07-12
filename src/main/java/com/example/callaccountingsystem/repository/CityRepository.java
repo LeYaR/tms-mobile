@@ -14,5 +14,4 @@ public interface CityRepository extends JpaRepository<CityEntity, Long> {
     Page<CityEntity> findAll(Pageable pageable);
 
     Optional<CityEntity> findFirstByCountry_CountryAndCity(String country, String city);
-
 }

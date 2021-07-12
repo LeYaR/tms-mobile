@@ -1,11 +1,17 @@
 package com.example.callaccountingsystem.service;
 
+import com.example.callaccountingsystem.domain.dbo.CityEntity;
+import com.example.callaccountingsystem.domain.dbo.CountryEntity;
 import com.example.callaccountingsystem.domain.dbo.SubscriberEntity;
 import com.example.callaccountingsystem.domain.dto.Address;
 import com.example.callaccountingsystem.domain.dto.Subscriber;
 import com.example.callaccountingsystem.domain.mapping.SubscriberMapper;
 import com.example.callaccountingsystem.repository.AddressRepository;
+import com.example.callaccountingsystem.repository.CityRepository;
+import com.example.callaccountingsystem.repository.ClientTypeRepository;
+import com.example.callaccountingsystem.repository.CountryRepository;
 import com.example.callaccountingsystem.repository.MobileOperatorRepository;
+import com.example.callaccountingsystem.repository.StreetRepository;
 import com.example.callaccountingsystem.repository.SubscriberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,20 +19,25 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SubscriberService implements SubscriberServiceInterface {
 
     private final SubscriberRepository repository;
+    private final CountryRepository countryRepository;
+    private final ClientTypeRepository clientTypeRepository;
     private final MobileOperatorRepository mobileOperatorRepository;
     private final AddressRepository addressRepository;
     private final SubscriberMapper mapper;
 
     public SubscriberService(SubscriberRepository repository,
-                             MobileOperatorRepository mobileOperatorRepository,
+                             CountryRepository countryRepository, ClientTypeRepository clientTypeRepository, CityRepository cityRepository, StreetRepository streetRepository, MobileOperatorRepository mobileOperatorRepository,
                              AddressRepository addressRepository,
                              SubscriberMapper mapper) {
         this.repository = repository;
+        this.countryRepository = countryRepository;
+        this.clientTypeRepository = clientTypeRepository;
         this.mobileOperatorRepository = mobileOperatorRepository;
         this.addressRepository = addressRepository;
         this.mapper = mapper;
@@ -67,6 +78,11 @@ public class SubscriberService implements SubscriberServiceInterface {
                 address.getStreet().getCity().getCity().trim(),
                 address.getStreet().getCity().getCountry().getCountry().trim())
                 .ifPresent(subscriberEntity::setAddress);
+        final Optional<CountryEntity> countryEntity = countryRepository.findFirstByCountry(subscriber.getAddress().getStreet().getCity().getCountry().getCountry());
+        if (countryEntity.isPresent()){
+            subscriberEntity.getAddress().getStreet().getCity().setCountry(countryEntity.get());
+        };
+        clientTypeRepository.findFirstByType(subscriber.getContract().getClientType().getType().trim()).ifPresent(subscriberEntity.getContract()::setClientType);
         repository.save(subscriberEntity);
     }
 
